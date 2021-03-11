@@ -27,16 +27,16 @@ var current;
 var vpack;
 
 // 0x186655F4
-var temp4
-var temp3
-var temp2
-var temp1
+var t4 = -100;
+var t3 = -100;
+var t2 = -100;
+var t1 = -100;
 
 // 0x186755F4
-var temp8;
-var temp7;
-var temp6;
-var temp5;
+var t8 = -100;
+var t7 = -100;
+var t6 = -100;
+var t5 = -100;
 
 // 0x186955F4
 var minvolt;
@@ -109,7 +109,7 @@ catch(err){
 */
 // EDP thingsboard info override
 const THINGSBOARD_HOST = "demo.thingsboard.io";
-const ACCESS_TOKEN = "AAh3rTnWHD5cDXJoHpDh";
+const ACCESS_TOKEN = "RrDCEfZ8C6W0Rt24q9eQ";
 //let valueEnergyBuy = 0;
 //let valueEnergySell = 0;
 //let energyBuy = 0;
@@ -133,9 +133,9 @@ function can_msg(msg){
     if(power<=50 && power>=-50){
       power = 0;
     }
+    power = -power;
     data.main = {...data.main, power,warning,ver_bms}
     //mesma coisaque o de cima
-    //power = -power;
     //data["power"] = power;
     //data["warning"] = warning;
     //data["ver_bms"] = ver_bms;
@@ -248,6 +248,14 @@ function can_msg(msg){
           '"Max Voltage":' + maxvolt + ',' +
           '"Min Temperature":' + mintemp + ',' +
           '"Max Temperature":' + maxtemp + ',' +
+          '"Temp 1":' + t1 + ',' +
+          '"Temp 2":' + t2 + ',' +
+          '"Temp 3":' + t3 + ',' +
+          '"Temp 4":' + t4 + ',' +
+          '"Temp 5":' + t5 + ',' +
+          '"Temp 6":' + t6 + ',' +
+          '"Temp 7":' + t7 + ',' +
+          '"Temp 8":' + t8 + ',' +
           '"Voltage 1":' + v1 + ',' +
           '"Voltage 2":' + v2 + ',' +
           '"Voltage 3":' + v3 + ',' +
@@ -315,12 +323,12 @@ function upStream(){
     let d = new Date();
     //console.log(power*custoKwhP/(1000*3600));
     client.publish('v1/devices/me/telemetry',  upMsg);
-    //console.table(data);
+    console.table(data);
     console.clear();
     console.table(data.main);
     console.table(data.temp);
     console.table(data.voltage);
-    //console.log(data);
+    console.log(upMsg);
     //console.log(JSON.stringify(JSON.parse(upMsg),null,2));
     
   }
