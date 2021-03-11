@@ -9,6 +9,9 @@ var fs = require('fs');
 var error = null;
 
 // Can Variables -------
+var data = {};
+data.voltage = {};
+
 var discard;
 var msgAvail = 0;
 
@@ -75,7 +78,6 @@ const custoKwhP = 1.2;
 
 // file load
 
-var data;
 /*
 try{
   data = fs.readFileSync('./config.json');
@@ -107,10 +109,10 @@ catch(err){
 // EDP thingsboard info override
 const THINGSBOARD_HOST = "demo.thingsboard.io";
 const ACCESS_TOKEN = "AAh3rTnWHD5cDXJoHpDh";
-let valueEnergyBuy = 0;
-let valueEnergySell = 0;
-let energyBuy = 0;
-let energySell = 0;
+//let valueEnergyBuy = 0;
+//let valueEnergySell = 0;
+//let energyBuy = 0;
+//let energySell = 0;
 // create can chanell
 var channel = can.createRawChannel("can0", true);
 
@@ -130,7 +132,12 @@ function can_msg(msg){
     if(power<=50 && power>=-50){
       power = 0;
     }
-    power = -power;
+    data.main = {...data.main, power,warning,ver_bms}
+    //mesma coisaque o de cima
+    //power = -power;
+    //data["power"] = power;
+    //data["warning"] = warning;
+    //data["ver_bms"] = ver_bms;
     //console.log(power);
   }
   if(msg.id == 0x186555F4){ //SoC,Current,Current,Vpack
@@ -141,6 +148,11 @@ function can_msg(msg){
     if(current & 0x8000){
       current = current | 0xffff0000;
     }
+    data.main = {...data.main, soc,current,vpack}
+    //mesma coisaque o de cima
+    //data["soc"] = soc;
+    //data["current"] = current;
+    //data["vpack"] = vpack;
     //console.log(current);
   }
   if(msg.id == 0x186655F4){ //SoC,Current,Current,Vpack
@@ -148,12 +160,24 @@ function can_msg(msg){
     temp3 = msg.data[4] | msg.data[5] << 8;
     temp2 = msg.data[2] | msg.data[3] << 8;
     temp1 = msg.data[0] | msg.data[1] << 8;
+    data.temp = {...data.temp,temp4,temp3,temp2,temp1};
+    //mesma coisaque o de cima
+    //data["temp4"] = temp4;
+    //data["temp3"] = temp3;
+    //data["temp2"] = temp2;
+    //data["temp1"] = temp1;
   }
   if(msg.id == 0x186755F4){ //SoC,Current,Current,Vpack
     temp8 = msg.data[6] | msg.data[7] << 8;
     temp7 = msg.data[4] | msg.data[5] << 8;
     temp6 = msg.data[2] | msg.data[3] << 8;
     temp5 = msg.data[0] | msg.data[1] << 8;
+    data.temp = {...data.temp,temp8,temp7,temp6,temp5};
+    //mesma coisaque o de cima
+    //data["temp8"] = temp8;
+    //data["temp7"] = temp7;
+    //data["temp6"] = temp6;
+    //data["temp5"] = temp5;
   }
   if(msg.id == 0x186955F4){ //SoC,Current,Current,Vpack
     minvolt = (msg.data[6] | msg.data[7] << 8)/1000;
@@ -164,30 +188,56 @@ function can_msg(msg){
       mintemp = -20;
       maxtemp = -20;
     }
+    data.main = {...data.main, minvolt,maxvolt,mintemp,maxtemp}
+    //mesma coisaque o de cima
+    //data["minvolt"] = minvolt;
+    //data["maxvolt"] = maxvolt;
+    //data["mintemp"] = mintemp;
+    //data["maxtemp"] = maxtemp;
   }
   if(msg.id == 0x186b55F4){ //SoC,Current,Current,Vpack
     v4 = msg.data[6] | msg.data[7] << 8;
     v3 = msg.data[4] | msg.data[5] << 8;
     v2 = msg.data[2] | msg.data[3] << 8;
     v1 = msg.data[0] | msg.data[1] << 8;
+    data.voltage.s1 = {...data.voltage.s1,v1,v2,v3,v4};
+    //voltage.v4 = v4;
+    //voltage.v3 = v3;
+    //voltage.v2 = v2;
+    //voltage.v1 = v1;
   }
   if(msg.id == 0x186c55F4){ //SoC,Current,Current,Vpack
     v8 = msg.data[6] | msg.data[7] << 8;
     v7 = msg.data[4] | msg.data[5] << 8;
     v6 = msg.data[2] | msg.data[3] << 8;
     v5 = msg.data[0] | msg.data[1] << 8;
+    data.voltage.s1 = {...data.voltage.s1,v5,v6,v7,v8};
+    //data["v8"] = v8;
+    //data["v7"] = v7;
+    //data["v6"] = v6;
+    //data["v5"] = v5;
   }
   if(msg.id == 0x186d55F4){ //SoC,Current,Current,Vpack
     v12 = msg.data[6] | msg.data[7] << 8;
     v11 = msg.data[4] | msg.data[5] << 8;
     v10 = msg.data[2] | msg.data[3] << 8;
     v9 = msg.data[0] | msg.data[1] << 8;
+    data.voltage.s1 = {...data.voltage.s1,v9,v10,v11,v12};
+    //data["v12"] = v12;
+    //data["v11"] = v11;
+    //data["v10"] = v10;
+    //data["v9"] = v9;
   }
   if(msg.id == 0x186e55F4){ //SoC,Current,Current,Vpack
     v16 = msg.data[6] | msg.data[7] << 8;
     v15 = msg.data[4] | msg.data[5] << 8;
     v14 = msg.data[2] | msg.data[3] << 8;
     v13 = msg.data[0] | msg.data[1] << 8;
+    data.voltage.s1 = {...data.voltage.s1,v13,v14,v15,v16};
+    //data["v16"] = v16;
+    //data["v15"] = v15;
+    //data["v14"] = v14;
+    //data["v13"] = v13;
   }
   //console.log(power);
   upMsg = '{"Power":' + power + ',' +
@@ -214,7 +264,7 @@ function can_msg(msg){
           '"Voltage 15":' + v15 + ',' +
           '"Voltage 16":' + v16 + ',' +
           '"latitude": -27.430775,' +
-          '"longitude": -48.441352,';
+          '"longitude": -48.441352}';
 }
 
 //client.on('connect', function () {
@@ -224,56 +274,65 @@ function can_msg(msg){
 function upStream(){
   //Price and Power algorithms
   let d = new Date();
-  if (d.getHours() >= 18 && d.getHours() <= 21){
-    if(power<0){
-      valueEnergyBuy = valueEnergyBuy - power*custoKwhP/(1000*3600)   // 4 -> dt = 0.25s
-    }else{
-      valueEnergySell = valueEnergySell + power*custoKwhP/(1000*3600) // 4 -> dt = 0.25s
-    }
-    valor = "caro";
-  }else{
-    if(power<0){
-      valueEnergyBuy = valueEnergyBuy - power*custoKwhFP/(1000*3600)   // 4 -> dt = 0.25s
-    }else{
-      valueEnergySell = valueEnergySell + power*custoKwhFP/(1000*3600) // 4 -> dt = 0.25s
-    }
-    valor = "barato";
-  }
+//  if (d.getHours() >= 18 && d.getHours() <= 21){
+//    if(power<0){
+//      valueEnergyBuy = valueEnergyBuy - power*custoKwhP/(1000*3600)   // 4 -> dt = 0.25s
+//    }else{
+//      valueEnergySell = valueEnergySell + power*custoKwhP/(1000*3600) // 4 -> dt = 0.25s
+//    }
+//    valor = "caro";
+//  }else{
+//    if(power<0){
+//      valueEnergyBuy = valueEnergyBuy - power*custoKwhFP/(1000*3600)   // 4 -> dt = 0.25s
+//    }else{
+//      valueEnergySell = valueEnergySell + power*custoKwhFP/(1000*3600) // 4 -> dt = 0.25s
+//    }
+//    valor = "barato";
+//  }
   // adding price to msg
-  upMsg = upMsg + '"saving":' + (valueEnergySell - valueEnergyBuy) + '}';
-  let myOptions = {
-    ValueEnergyBuy: valueEnergyBuy,
-    ValueEnergySell: valueEnergySell,
-    EnergyBuy: energyBuy,
-    EnergySell: energySell,
-    ThingsboardHost: THINGSBOARD_HOST,
-    AccessToken: ACCESS_TOKEN
-  };
+//  upMsg = upMsg + '"saving":' + (valueEnergySell - valueEnergyBuy) + '}';
+//  let myOptions = {
+//    ValueEnergyBuy: valueEnergyBuy,
+//    ValueEnergySell: valueEnergySell,
+//    EnergyBuy: energyBuy,
+//    EnergySell: energySell,
+//    ThingsboardHost: THINGSBOARD_HOST,
+//    AccessToken: ACCESS_TOKEN
+//  };
   // Storing persistent info
-  data = JSON.stringify(myOptions);
-  fs.writeFile('./config.json', data, function (err) {
-    if (err) {
-      console.log('There has been an error saving your configuration data.');
-      console.log(err.message);
-      return;
-    }
-    console.log('Configuration saved successfully.')
-  });
+//  data = JSON.stringify(myOptions);
+//  fs.writeFile('./config.json', data, function (err) {
+//    if (err) {
+//      console.log('There has been an error saving your configuration data.');
+//      console.log(err.message);
+//      return;
+//    }
+//    console.log('Configuration saved successfully.')
+//  });
   // Sending mqtt msg
   if(msgAvail!=0 && error == null){
     let d = new Date();
     //console.log(power*custoKwhP/(1000*3600));
     client.publish('v1/devices/me/telemetry',  upMsg);
-    console.log(upMsg);
+    //console.table(data);
+    console.clear();
+    console.table(data.main);
+    console.table(data.temp);
+    console.table(data.voltage);
+    //console.log(data);
+    //console.log(JSON.stringify(JSON.parse(upMsg),null,2));
+    
   }
   msgAvail = 0;
 }
+
 try{
   console.log('Connecting to: %s using access token: %s', THINGSBOARD_HOST, ACCESS_TOKEN);
 }catch(err){
   error = "Mqtt conection problem";
   console.log('Verifique os parametros do mqtt');
 }
+
 // can msg listener function
 channel.addListener("onMessage", function(msg){can_msg(msg)});
 
