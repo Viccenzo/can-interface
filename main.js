@@ -11,6 +11,7 @@ var error = null;
 // Can Variables -------
 var data = {};
 data.voltage = {};
+data.temp = {};
 
 var discard;
 var msgAvail = 0;
@@ -156,11 +157,11 @@ function can_msg(msg){
     //console.log(current);
   }
   if(msg.id == 0x186655F4){ //SoC,Current,Current,Vpack
-    temp4 = msg.data[6] | msg.data[7] << 8;
-    temp3 = msg.data[4] | msg.data[5] << 8;
-    temp2 = msg.data[2] | msg.data[3] << 8;
-    temp1 = msg.data[0] | msg.data[1] << 8;
-    data.temp = {...data.temp,temp4,temp3,temp2,temp1};
+    t4 = msg.data[6] | msg.data[7] << 8;
+    t3 = msg.data[4] | msg.data[5] << 8;
+    t2 = msg.data[2] | msg.data[3] << 8;
+    t1 = msg.data[0] | msg.data[1] << 8;
+    data.temp.s1 = {...data.temp.s1,t1,t2,t3,t4};
     //mesma coisaque o de cima
     //data["temp4"] = temp4;
     //data["temp3"] = temp3;
@@ -168,11 +169,11 @@ function can_msg(msg){
     //data["temp1"] = temp1;
   }
   if(msg.id == 0x186755F4){ //SoC,Current,Current,Vpack
-    temp8 = msg.data[6] | msg.data[7] << 8;
-    temp7 = msg.data[4] | msg.data[5] << 8;
-    temp6 = msg.data[2] | msg.data[3] << 8;
-    temp5 = msg.data[0] | msg.data[1] << 8;
-    data.temp = {...data.temp,temp8,temp7,temp6,temp5};
+    t8 = msg.data[6] | msg.data[7] << 8;
+    t7 = msg.data[4] | msg.data[5] << 8;
+    t6 = msg.data[2] | msg.data[3] << 8;
+    t5 = msg.data[0] | msg.data[1] << 8;
+    data.temp.s1 = {...data.temp.s1,t5,t6,t7,t8};
     //mesma coisaque o de cima
     //data["temp8"] = temp8;
     //data["temp7"] = temp7;
