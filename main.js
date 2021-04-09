@@ -167,6 +167,7 @@ const cliWrite =
     console.log("1 - (EN - Display BMS information)\/(PT - Mostrar informações do BMS)");
     console.log("\n");
     console.log("2 - (EN - Sendo BMS configuration file)\/(PT - Mandar arquivo de configuração do BMS)");
+    console.log("\n");
     resolve();
   })
   .then(() =>{
