@@ -123,23 +123,6 @@ var channel = can.createRawChannel("can0", true);
 //var client = mqtt.connect('mqtt://'+THINGSBOARD_HOST,{username: ACCESS_TOKEN});
 
 
-
-// every 1 sec 
-function upStream(){
-  //console.table(data);
-  console.clear();
-  console.table(data.main);
-  console.table(data.temp);
-  console.table(data.voltage);
-  //console.log(upMsg);
-  //let d = new Date();
-  /*if(msgAvail!=0 && error == null){
-    let d = new Date();
-    client.publish('v1/devices/me/telemetry',  upMsg);
-    
-  }*/
-  msgAvail = 0;
-}
 /*
 try{
   console.log('Connecting to: %s using access token: %s', THINGSBOARD_HOST, ACCESS_TOKEN);
@@ -177,7 +160,10 @@ const caninit =
 // define periodic function
 console.log("Starting program");
 //setInterval(upStream,1000);
-figlet('Hello World!!', function(err, data) {
+
+
+console.clear();
+figlet('Atlas Power', function(err, data) {
   if (err) {
     console.log('Something went wrong...');
     console.dir(err);
@@ -187,6 +173,23 @@ figlet('Hello World!!', function(err, data) {
 });
 
 // Function Definitions:
+
+// every 1 sec 
+function upStream(){
+  //console.table(data);
+  console.clear();
+  console.table(data.main);
+  console.table(data.temp);
+  console.table(data.voltage);
+  //console.log(upMsg);
+  //let d = new Date();
+  /*if(msgAvail!=0 && error == null){
+    let d = new Date();
+    client.publish('v1/devices/me/telemetry',  upMsg);
+    
+  }*/
+  msgAvail = 0;
+}
 
 function can_msg(msg){
   msgAvail = 1;
