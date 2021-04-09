@@ -137,6 +137,10 @@ try{
 console.log("Starting program");
 //setInterval(upStream,1000);
 
+const op = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
 console.clear();
 const cliWrite = 
@@ -163,19 +167,18 @@ const cliWrite =
     console.log("1 - (EN - Display BMS information)\/(PT - Mostrar informações do BMS)");
     console.log("\n");
     console.log("2 - (EN - Sendo BMS configuration file)\/(PT - Mandar arquivo de configuração do BMS)");
-  });
+    resolve();
+  })
+  .then(() =>{
+    op.question('Enter an option / Escolha uma opção: ', (answer) => {
+      // TODO: Log the answer in a database
+      console.log(`Thank you for your valuable feedback: ${answer}`);
+    
+      op.close();
+    });
+  })
 
-const op = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
 
-op.question('Enter an option / Escolha uma opção: ', (answer) => {
-  // TODO: Log the answer in a database
-  console.log(`Thank you for your valuable feedback: ${answer}`);
-
-  op.close();
-});
 
 // create can chanell
 var channel = can.createRawChannel("can0", true);
