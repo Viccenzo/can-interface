@@ -286,34 +286,229 @@ function can_msg(msg){
   if(msg.id == 0x18CB55F4){ //SoC,Current,Current,Vpack
     data.temp.s16 = {...data.temp.s16,t5,t6,t7,t8};
   }
-  // Voltages
-  if(msg.id == 0x186b55F4){ //SoC,Current,Current,Vpack
+  // Voltages s1 **** Terminar de mudar os endereços ***
+  if(msg.id == 0x186B55F4){ //SoC,Current,Current,Vpack
     v4 = can4;
     v3 = can3;
     v2 = can2;
     v1 = can1;
     data.voltage.s1 = {...data.voltage.s1,v1,v2,v3,v4};
   }
-  if(msg.id == 0x186c55F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x186C55F4){ //SoC,Current,Current,Vpack
     v8 = can4;
     v7 = can3;
     v6 = can2;
     v5 = can1;
     data.voltage.s1 = {...data.voltage.s1,v5,v6,v7,v8};
   }
-  if(msg.id == 0x186d55F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x186D55F4){ //SoC,Current,Current,Vpack
     v12 = can4;
     v11 = can3;
     v10 = can2;
     v9 = can1;
     data.voltage.s1 = {...data.voltage.s1,v9,v10,v11,v12};
   }
-  if(msg.id == 0x186e55F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x186E55F4){ //SoC,Current,Current,Vpack
     v16 = can4;
     v15 = can3;
     v14 = can2;
     v13 = can1;
     data.voltage.s1 = {...data.voltage.s1,v13,v14,v15,v16};
+  }
+  // Voltages s2
+  if(msg.id == 0x186F55F4){ //SoC,Current,Current,Vpack
+    data.voltage.s2 = {...data.voltage.s2,v1,v2,v3,v4};
+  }
+  if(msg.id == 0x187055F4){ //SoC,Current,Current,Vpack
+    data.voltage.s2 = {...data.voltage.s2,v5,v6,v7,v8};
+  }
+  if(msg.id == 0x187155F4){ //SoC,Current,Current,Vpack
+    data.voltage.s2 = {...data.voltage.s2,v9,v10,v11,v12};
+  }
+  if(msg.id == 0x187255F4){ //SoC,Current,Current,Vpack
+    data.voltage.s2 = {...data.voltage.s2,v13,v14,v15,v16};
+  }
+  // Voltages s3
+  if(msg.id == 0x187355F4){ //SoC,Current,Current,Vpack
+    data.voltage.s3 = {...data.voltage.s3,v1,v2,v3,v4};
+  }
+  if(msg.id == 0x187455F4){ //SoC,Current,Current,Vpack
+    data.voltage.s3 = {...data.voltage.s3,v5,v6,v7,v8};
+  }
+  if(msg.id == 0x187555F4){ //SoC,Current,Current,Vpack
+    data.voltage.s3 = {...data.voltage.s3,v9,v10,v11,v12};
+  }
+  if(msg.id == 0x187655F4){ //SoC,Current,Current,Vpack
+    data.voltage.s3 = {...data.voltage.s3,v13,v14,v15,v16};
+  }
+  // Voltages s4
+  if(msg.id == 0x187755F4){ //SoC,Current,Current,Vpack
+    data.voltage.s4 = {...data.voltage.s4,v1,v2,v3,v4};
+  }
+  if(msg.id == 0x187855F4){ //SoC,Current,Current,Vpack
+    data.voltage.s4 = {...data.voltage.s4,v5,v6,v7,v8};
+  }
+  if(msg.id == 0x187955F4){ //SoC,Current,Current,Vpack
+    data.voltage.s4 = {...data.voltage.s4,v9,v10,v11,v12};
+  }
+  if(msg.id == 0x187A55F4){ //SoC,Current,Current,Vpack
+    data.voltage.s4 = {...data.voltage.s4,v13,v14,v15,v16};
+  }
+  // Voltages s5
+  if(msg.id == 0x187B55F4){ //SoC,Current,Current,Vpack
+    data.voltage.s5 = {...data.voltage.s5,v1,v2,v3,v4};
+  }
+  if(msg.id == 0x187C55F4){ //SoC,Current,Current,Vpack
+    data.voltage.s5 = {...data.voltage.s5,v5,v6,v7,v8};
+  }
+  if(msg.id == 0x187D55F4){ //SoC,Current,Current,Vpack
+    data.voltage.s5 = {...data.voltage.s5,v9,v10,v11,v12};
+  }
+  if(msg.id == 0x187E55F4){ //SoC,Current,Current,Vpack
+    data.voltage.s5 = {...data.voltage.s5,v13,v14,v15,v16};
+  }
+  // Voltages s6
+  if(msg.id == 0x187F55F4){ //SoC,Current,Current,Vpack
+    data.voltage.s6 = {...data.voltage.s6,v1,v2,v3,v4};
+  }
+  if(msg.id == 0x188055F4){ //SoC,Current,Current,Vpack
+    data.voltage.s6 = {...data.voltage.s6,v5,v6,v7,v8};
+  }
+  if(msg.id == 0x188155F4){ //SoC,Current,Current,Vpack
+    data.voltage.s6 = {...data.voltage.s6,v9,v10,v11,v12};
+  }
+  if(msg.id == 0x188255F4){ //SoC,Current,Current,Vpack
+    data.voltage.s6 = {...data.voltage.s6,v13,v14,v15,v16};
+  }
+  // Voltages s7
+  if(msg.id == 0x188355F4){ //SoC,Current,Current,Vpack
+    data.voltage.s7 = {...data.voltage.s7,v1,v2,v3,v4};
+  }
+  if(msg.id == 0x188455F4){ //SoC,Current,Current,Vpack
+    data.voltage.s7 = {...data.voltage.s7,v5,v6,v7,v8};
+  }
+  if(msg.id == 0x188555F4){ //SoC,Current,Current,Vpack
+    data.voltage.s7 = {...data.voltage.s7,v9,v10,v11,v12};
+  }
+  if(msg.id == 0x188655F4){ //SoC,Current,Current,Vpack
+    data.voltage.s7 = {...data.voltage.s7,v13,v14,v15,v16};
+  }
+  // Voltages s8
+  if(msg.id == 0x188755F4){ //SoC,Current,Current,Vpack
+    data.voltage.s8 = {...data.voltage.s8,v1,v2,v3,v4};
+  }
+  if(msg.id == 0x188855F4){ //SoC,Current,Current,Vpack
+    data.voltage.s8 = {...data.voltage.s8,v5,v6,v7,v8};
+  }
+  if(msg.id == 0x188955F4){ //SoC,Current,Current,Vpack
+    data.voltage.s8 = {...data.voltage.s8,v9,v10,v11,v12};
+  }
+  if(msg.id == 0x188A55F4){ //SoC,Current,Current,Vpack
+    data.voltage.s8 = {...data.voltage.s8,v13,v14,v15,v16};
+  }
+  // Voltages s9
+  if(msg.id == 0x188B55F4){ //SoC,Current,Current,Vpack
+    data.voltage.s9 = {...data.voltage.s9,v1,v2,v3,v4};
+  }
+  if(msg.id == 0x188C55F4){ //SoC,Current,Current,Vpack
+    data.voltage.s9 = {...data.voltage.s9,v5,v6,v7,v8};
+  }
+  if(msg.id == 0x188D55F4){ //SoC,Current,Current,Vpack
+    data.voltage.s9 = {...data.voltage.s9,v9,v10,v11,v12};
+  }
+  if(msg.id == 0x188E55F4){ //SoC,Current,Current,Vpack
+    data.voltage.s9 = {...data.voltage.s9,v13,v14,v15,v16};
+  }
+  // Voltages s10
+  if(msg.id == 0x188F55F4){ //SoC,Current,Current,Vpack
+    data.voltage.s10 = {...data.voltage.s10,v1,v2,v3,v4};
+  }
+  if(msg.id == 0x189055F4){ //SoC,Current,Current,Vpack
+    data.voltage.s10 = {...data.voltage.s10,v5,v6,v7,v8};
+  }
+  if(msg.id == 0x189155F4){ //SoC,Current,Current,Vpack
+    data.voltage.s10 = {...data.voltage.s10,v9,v10,v11,v12};
+  }
+  if(msg.id == 0x189255F4){ //SoC,Current,Current,Vpack
+    data.voltage.s10 = {...data.voltage.s10,v13,v14,v15,v16};
+  }
+  // Voltages s11
+  if(msg.id == 0x189355F4){ //SoC,Current,Current,Vpack
+    data.voltage.s11 = {...data.voltage.s11,v1,v2,v3,v4};
+  }
+  if(msg.id == 0x189455F4){ //SoC,Current,Current,Vpack
+    data.voltage.s11 = {...data.voltage.s11,v5,v6,v7,v8};
+  }
+  if(msg.id == 0x189555F4){ //SoC,Current,Current,Vpack
+    data.voltage.s11 = {...data.voltage.s11,v9,v10,v11,v12};
+  }
+  if(msg.id == 0x189655F4){ //SoC,Current,Current,Vpack
+    data.voltage.s11 = {...data.voltage.s11,v13,v14,v15,v16};
+  }
+  // Voltages s12
+  if(msg.id == 0x189755F4){ //SoC,Current,Current,Vpack
+    data.voltage.s12 = {...data.voltage.s12,v1,v2,v3,v4};
+  }
+  if(msg.id == 0x189855F4){ //SoC,Current,Current,Vpack
+    data.voltage.s12 = {...data.voltage.s12,v5,v6,v7,v8};
+  }
+  if(msg.id == 0x189955F4){ //SoC,Current,Current,Vpack
+    data.voltage.s2 = {...data.voltage.s2,v9,v10,v11,v12};
+  }
+  if(msg.id == 0x189A55F4){ //SoC,Current,Current,Vpack
+    data.voltage.s12 = {...data.voltage.s12,v13,v14,v15,v16};
+  }
+  // Voltages s13
+  if(msg.id == 0x189B55F4){ //SoC,Current,Current,Vpack
+    data.voltage.s13 = {...data.voltage.s13,v1,v2,v3,v4};
+  }
+  if(msg.id == 0x189C55F4){ //SoC,Current,Current,Vpack
+    data.voltage.s13 = {...data.voltage.s13,v5,v6,v7,v8};
+  }
+  if(msg.id == 0x189D55F4){ //SoC,Current,Current,Vpack
+    data.voltage.s13 = {...data.voltage.s13,v9,v10,v11,v12};
+  }
+  if(msg.id == 0x189E55F4){ //SoC,Current,Current,Vpack
+    data.voltage.s13 = {...data.voltage.s13,v13,v14,v15,v16};
+  }
+  // Voltages s14
+  if(msg.id == 0x189F55F4){ //SoC,Current,Current,Vpack
+    data.voltage.s14 = {...data.voltage.s14,v1,v2,v3,v4};
+  }
+  if(msg.id == 0x18A055F4){ //SoC,Current,Current,Vpack
+    data.voltage.s14 = {...data.voltage.s14,v5,v6,v7,v8};
+  }
+  if(msg.id == 0x18A155F4){ //SoC,Current,Current,Vpack
+    data.voltage.s14 = {...data.voltage.s14,v9,v10,v11,v12};
+  }
+  if(msg.id == 0x18A255F4){ //SoC,Current,Current,Vpack
+    data.voltage.s14 = {...data.voltage.s14,v13,v14,v15,v16};
+  }
+  // Voltages s15
+  if(msg.id == 0x18A355F4){ //SoC,Current,Current,Vpack
+    data.voltage.s15 = {...data.voltage.s15,v1,v2,v3,v4};
+  }
+  if(msg.id == 0x18A455F4){ //SoC,Current,Current,Vpack
+    data.voltage.s15 = {...data.voltage.s15,v5,v6,v7,v8};
+  }
+  if(msg.id == 0x18A555F4){ //SoC,Current,Current,Vpack
+    data.voltage.s15 = {...data.voltage.s15,v9,v10,v11,v12};
+  }
+  if(msg.id == 0x18A655F4){ //SoC,Current,Current,Vpack
+    data.voltage.s2s15 = {...data.voltage.s15,v13,v14,v15,v16};
+  }
+  // Voltages s16
+  if(msg.id == 0x18A755F4){ //SoC,Current,Current,Vpack
+    data.voltage.s16 = {...data.voltage.s16,v1,v2,v3,v4};
+  }
+  if(msg.id == 0x18A855F4){ //SoC,Current,Current,Vpack
+    data.voltage.s16 = {...data.voltage.s16,v5,v6,v7,v8};
+  }
+  if(msg.id == 0x18A955F4){ //SoC,Current,Current,Vpack
+    data.voltage.s16 = {...data.voltage.s16,v9,v10,v11,v12};
+  }
+  if(msg.id == 0x18AA55F4){ //SoC,Current,Current,Vpack
+    data.voltage.s16 = {...data.voltage.s16,v13,v14,v15,v16};
   }
   //Just for web visualization propouse, will not be here in the future;
   upMsg = '{"Power":' + power + ',' +
