@@ -177,7 +177,7 @@ const caninit =
 // define periodic function
 console.log("Starting program");
 //setInterval(upStream,1000);
-imageToAscii("img/atlas_power_preta.png", (err, converted) => {
+imageToAscii("/img/atlas_power_preta.png", (err, converted) => {
   console.log("teste");
   console.log(err || converted);
 });
