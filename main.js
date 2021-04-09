@@ -163,14 +163,18 @@ console.log("Starting program");
 
 
 console.clear();
-
-figlet('Atlas Power', function(err, data) {
-  if (err) {
-    console.log('Something went wrong...');
-    console.dir(err);
-    return;
-  }
-  console.log(data)
+const caninit = 
+  new Promise((resolve,reject) => {
+    figlet('Atlas Power', function(err, data) {
+      if (err) {
+        console.log('Something went wrong...');
+        console.dir(err);
+        return;
+      }
+      console.log(data);
+    });
+    resolve();
+  })
   .then(() =>{
     console.log("*-----------------------------------------------*");
     console.log("\n");
@@ -182,7 +186,6 @@ figlet('Atlas Power', function(err, data) {
     console.log("\n");
     console.log("1 - (EN - Display BMS information)\/(PT - Mostrar informações do BMS)");
   });
-});
 
 
 
