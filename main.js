@@ -2,6 +2,7 @@ var can = require('socketcan');
 var mqtt = require('mqtt');
 var cmd = require('node-cmd');
 var figlet = require('figlet');
+const readline = require('readline');
 
 var fs = require('fs');
 const { resolve } = require('path');
@@ -131,6 +132,54 @@ try{
   console.log('Verifique os parametros do mqtt');
 }
 */
+
+// define periodic function
+console.log("Starting program");
+//setInterval(upStream,1000);
+
+
+console.clear();
+const cliWrite = 
+  new Promise((resolve,reject) => {
+    figlet('Atlas Power', function(err, data) {
+      if (err) {
+        console.log('Something went wrong...');
+        console.dir(err);
+        return;
+      }
+      console.log(data);
+      resolve();
+    });
+  })
+  .then(() =>{
+    console.log("*-----------------------------------------------*");
+    console.log("\n");
+    console.log("EN - Welcome to Atlas Power BMS can interface CLI. Navigate through the options using your Keyboard. (Do you need help? Use --help option)");
+    console.log("\n");
+    console.log("PT - Bem vindo a interface CLI do BMS Atlas Power. Utilize o teclado para navegar pelas opções. (Precisa de ajuda? use a opção --help)");
+    console.log("\n");
+    console.log("*-----------------------------------------------*");
+    console.log("\n");
+    console.log("1 - (EN - Display BMS information)\/(PT - Mostrar informações do BMS)");
+    console.log("\n");
+    console.log("2 - (EN - Sendo BMS configuration file)\/(PT - Mandar arquivo de configuração do BMS)");
+  });
+
+const op = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+p1.question('Enter an option / Escolha uma opção: ', (answer) => {
+  // TODO: Log the answer in a database
+  console.log(`Thank you for your valuable feedback: ${answer}`);
+
+  rl.close();
+});
+
+// create can chanell
+var channel = can.createRawChannel("can0", true);
+
 // can msg listener function
 channel.addListener("onMessage", function(msg){can_msg(msg)});
 
@@ -156,36 +205,6 @@ const caninit =
     channel.start();
     resolve();
   })
-
-// define periodic function
-console.log("Starting program");
-//setInterval(upStream,1000);
-
-
-console.clear();
-const cliWrite = 
-  new Promise((resolve,reject) => {
-    figlet('Atlas Power', function(err, data) {
-      if (err) {
-        console.log('Something went wrong...');
-        console.dir(err);
-        return;
-      }
-      console.log(data);
-      resolve();
-    });
-  })
-  .then(() =>{
-    console.log("*-----------------------------------------------*");
-    console.log("\n");
-    console.log("EN - Welcome to Atlas Power BMS can interface CLI. Navigate through the options uosing your Keyboard. (Do you need help? Use --help option)");
-    console.log("\n");
-    console.log("PT - Bem vindo a interface CLI do BMS Atlas Power. Utilize o teclado para navegar pelas opções. (Precisa de ajuda? use a opção --help)");
-    console.log("\n");
-    console.log("*-----------------------------------------------*");
-    console.log("\n");
-    console.log("1 - (EN - Display BMS information)\/(PT - Mostrar informações do BMS)");
-  });
 
 
 
