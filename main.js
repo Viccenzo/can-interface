@@ -170,11 +170,11 @@ const op = readline.createInterface({
   output: process.stdout
 });
 
-p1.question('Enter an option / Escolha uma opção: ', (answer) => {
+op.question('Enter an option / Escolha uma opção: ', (answer) => {
   // TODO: Log the answer in a database
   console.log(`Thank you for your valuable feedback: ${answer}`);
 
-  rl.close();
+  op.close();
 });
 
 // create can chanell
