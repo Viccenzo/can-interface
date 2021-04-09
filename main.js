@@ -226,7 +226,7 @@ function can_msg(msg){
     data.main = {...data.main, minvolt,maxvolt,mintemp,maxtemp}
   }
   // Temperatures s1
-  if(msg.id == 0x18AC55F4){ /
+  if(msg.id == 0x18AC55F4){
     t4 = can4;
     t3 = can3;
     t2 = can2;
