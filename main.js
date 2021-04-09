@@ -156,20 +156,6 @@ function can_msg(msg){
     }
     data.main = {...data.main, soc,current,vpack}
   }
-  if(msg.id == 0x186655F4){ //SoC,Current,Current,Vpack
-    t4 = can4;
-    t3 = can3;
-    t2 = can2;
-    t1 = can1;
-    data.temp.s1 = {...data.temp.s1,t1,t2,t3,t4};
-  }
-  if(msg.id == 0x186755F4){ //SoC,Current,Current,Vpack
-    t8 = can4;
-    t7 = can3;
-    t6 = can2;
-    t5 = can1;
-    data.temp.s1 = {...data.temp.s1,t5,t6,t7,t8};
-  }
   if(msg.id == 0x186955F4){ //SoC,Current,Current,Vpack
     minvolt = (can4)/1000;
     maxvolt = (can3)/1000;
@@ -181,6 +167,246 @@ function can_msg(msg){
     }
     data.main = {...data.main, minvolt,maxvolt,mintemp,maxtemp}
   }
+  // Temperatures s1
+  if(msg.id == 0x18AC55F4){ //SoC,Current,Current,Vpack
+    t4 = can4;
+    t3 = can3;
+    t2 = can2;
+    t1 = can1;
+    data.temp.s1 = {...data.temp.s1,t1,t2,t3,t4};
+  }
+  if(msg.id == 0x18AD55F4){ //SoC,Current,Current,Vpack
+    t8 = can4;
+    t7 = can3;
+    t6 = can2;
+    t5 = can1;
+    data.temp.s1 = {...data.temp.s1,t5,t6,t7,t8};
+  }
+  // Temperatures s2
+  if(msg.id == 0x18AE55F4){ //SoC,Current,Current,Vpack
+    //t4 = can4;
+    //t3 = can3;
+    //t2 = can2;
+    //t1 = can1;
+    data.temp.s2 = {...data.temp.s2,t1,t2,t3,t4};
+  }
+  if(msg.id == 0x18AF55F4){ //SoC,Current,Current,Vpack
+    //t8 = can4;
+    //t7 = can3;
+    //t6 = can2;
+    //t5 = can1;
+    data.temp.s2 = {...data.temp.s2,t5,t6,t7,t8};
+  }
+  // Temperatures s3
+  if(msg.id == 0x18B055F4){ //SoC,Current,Current,Vpack
+    //t4 = can4;
+    //t3 = can3;
+    //t2 = can2;
+    //t1 = can1;
+    data.temp.s3 = {...data.temp.s3,t1,t2,t3,t4};
+  }
+  if(msg.id == 0x18B155F4){ //SoC,Current,Current,Vpack
+    //t8 = can4;
+    //t7 = can3;
+    //t6 = can2;
+    //t5 = can1;
+    data.temp.s3 = {...data.temp.s3,t5,t6,t7,t8};
+  }// Temperatures s4
+  if(msg.id == 0x18B255F4){ //SoC,Current,Current,Vpack
+    //t4 = can4;
+    //t3 = can3;
+    //t2 = can2;
+    //t1 = can1;
+    data.temp.s4 = {...data.temp.s4,t1,t2,t3,t4};
+  }
+  if(msg.id == 0x18B355F4){ //SoC,Current,Current,Vpack
+    //t8 = can4;
+    //t7 = can3;
+    //t6 = can2;
+    //t5 = can1;
+    data.temp.s4 = {...data.temp.s4,t5,t6,t7,t8};
+  }
+  // Temperatures s5
+  if(msg.id == 0x18B455F4){ //SoC,Current,Current,Vpack
+    //t4 = can4;
+    //t3 = can3;
+    //t2 = can2;
+    //t1 = can1;
+    data.temp.s5 = {...data.temp.s5,t1,t2,t3,t4};
+  }
+  if(msg.id == 0x18B555F4){ //SoC,Current,Current,Vpack
+    //t8 = can4;
+    //t7 = can3;
+    //t6 = can2;
+    //t5 = can1;
+    data.temp.s5 = {...data.temp.s5,t5,t6,t7,t8};
+  }
+  // Temperatures s6
+  if(msg.id == 0x18B655F4){ //SoC,Current,Current,Vpack
+    //t4 = can4;
+    //t3 = can3;
+    //t2 = can2;
+    //t1 = can1;
+    data.temp.s6 = {...data.temp.s6,t1,t2,t3,t4};
+  }
+  if(msg.id == 0x18B755F4){ //SoC,Current,Current,Vpack
+    //t8 = can4;
+    //t7 = can3;
+    //t6 = can2;
+    //t5 = can1;
+    data.temp.s6 = {...data.temp.s6,t5,t6,t7,t8};
+  }
+  // Temperatures s7
+  if(msg.id == 0x18B855F4){ //SoC,Current,Current,Vpack
+    //t4 = can4;
+    //t3 = can3;
+    //t2 = can2;
+    //t1 = can1;
+    data.temp.s7 = {...data.temp.s7,t1,t2,t3,t4};
+  }
+  if(msg.id == 0x18B955F4){ //SoC,Current,Current,Vpack
+    //t8 = can4;
+    //t7 = can3;
+    //t6 = can2;
+    //t5 = can1;
+    data.temp.s7 = {...data.temp.s7,t5,t6,t7,t8};
+  }
+  // Temperatures s8
+  if(msg.id == 0x18BA55F4){ //SoC,Current,Current,Vpack
+    //t4 = can4;
+    //t3 = can3;
+    //t2 = can2;
+    //t1 = can1;
+    data.temp.s8 = {...data.temp.s8,t1,t2,t3,t4};
+  }
+  if(msg.id == 0x18BB55F4){ //SoC,Current,Current,Vpack
+    //t8 = can4;
+    //t7 = can3;
+    //t6 = can2;
+    //t5 = can1;
+    data.temp.s8 = {...data.temp.s8,t5,t6,t7,t8};
+  }
+  // Temperatures s9
+  if(msg.id == 0x18BC55F4){ //SoC,Current,Current,Vpack
+    //t4 = can4;
+    //t3 = can3;
+    //t2 = can2;
+    //t1 = can1;
+    data.temp.s9 = {...data.temp.s9,t1,t2,t3,t4};
+  }
+  if(msg.id == 0x18BD55F4){ //SoC,Current,Current,Vpack
+    //t8 = can4;
+    //t7 = can3;
+    //t6 = can2;
+    //t5 = can1;
+    data.temp.s9 = {...data.temp.s9,t5,t6,t7,t8};
+  }
+  // Temperatures s10
+  if(msg.id == 0x18BE55F4){ //SoC,Current,Current,Vpack
+    //t4 = can4;
+    //t3 = can3;
+    //t2 = can2;
+    //t1 = can1;
+    data.temp.s10 = {...data.temp.s10,t1,t2,t3,t4};
+  }
+  if(msg.id == 0x18BF55F4){ //SoC,Current,Current,Vpack
+    //t8 = can4;
+    //t7 = can3;
+    //t6 = can2;
+    //t5 = can1;
+    data.temp.s10 = {...data.temp.s10,t5,t6,t7,t8};
+  }
+  // Temperatures s11
+  if(msg.id == 0x18C055F4){ //SoC,Current,Current,Vpack
+    //t4 = can4;
+    //t3 = can3;
+    //t2 = can2;
+    //t1 = can1;
+    data.temp.s11 = {...data.temp.s11,t1,t2,t3,t4};
+  }
+  if(msg.id == 0x18C155F4){ //SoC,Current,Current,Vpack
+    //t8 = can4;
+    //t7 = can3;
+    //t6 = can2;
+    //t5 = can1;
+    data.temp.s11 = {...data.temp.s11,t5,t6,t7,t8};
+  }
+  // Temperatures s12
+  if(msg.id == 0x18C255F4){ //SoC,Current,Current,Vpack
+    //t4 = can4;
+    //t3 = can3;
+    //t2 = can2;
+    //t1 = can1;
+    data.temp.s12 = {...data.temp.s12,t1,t2,t3,t4};
+  }
+  if(msg.id == 0x18C355F4){ //SoC,Current,Current,Vpack
+    //t8 = can4;
+    //t7 = can3;
+    //t6 = can2;
+    //t5 = can1;
+    data.temp.s12 = {...data.temp.s12,t5,t6,t7,t8};
+  }
+  // Temperatures s13
+  if(msg.id == 0x18C455F4){ //SoC,Current,Current,Vpack
+    //t4 = can4;
+    //t3 = can3;
+    //t2 = can2;
+    //t1 = can1;
+    data.temp.s13 = {...data.temp.s13,t1,t2,t3,t4};
+  }
+  if(msg.id == 0x18C555F4){ //SoC,Current,Current,Vpack
+    //t8 = can4;
+    //t7 = can3;
+    //t6 = can2;
+    //t5 = can1;
+    data.temp.s13 = {...data.temp.s13,t5,t6,t7,t8};
+  }
+  // Temperatures s14
+  if(msg.id == 0x18C655F4){ //SoC,Current,Current,Vpack
+    //t4 = can4;
+    //t3 = can3;
+    //t2 = can2;
+    //t1 = can1;
+    data.temp.s14 = {...data.temp.s14,t1,t2,t3,t4};
+  }
+  if(msg.id == 0x18C755F4){ //SoC,Current,Current,Vpack
+    //t8 = can4;
+    //t7 = can3;
+    //t6 = can2;
+    //t5 = can1;
+    data.temp.s14 = {...data.temp.s14,t5,t6,t7,t8};
+  }
+  // Temperatures s15
+  if(msg.id == 0x18C855F4){ //SoC,Current,Current,Vpack
+    //t4 = can4;
+    //t3 = can3;
+    //t2 = can2;
+    //t1 = can1;
+    data.temp.s15 = {...data.temp.s15,t1,t2,t3,t4};
+  }
+  if(msg.id == 0x18C955F4){ //SoC,Current,Current,Vpack
+    //t8 = can4;
+    //t7 = can3;
+    //t6 = can2;
+    //t5 = can1;
+    data.temp.s15 = {...data.temp.s15,t5,t6,t7,t8};
+  }
+  // Temperatures s16
+  if(msg.id == 0x18CA55F4){ //SoC,Current,Current,Vpack
+    //t4 = can4;
+    //t3 = can3;
+    //t2 = can2;
+    //t1 = can1;
+    data.temp.s16 = {...data.temp.s16,t1,t2,t3,t4};
+  }
+  if(msg.id == 0x18CB55F4){ //SoC,Current,Current,Vpack
+    //t8 = can4;
+    //t7 = can3;
+    //t6 = can2;
+    //t5 = can1;
+    data.temp.s16 = {...data.temp.s16,t5,t6,t7,t8};
+  }
+  // Voltages
   if(msg.id == 0x186b55F4){ //SoC,Current,Current,Vpack
     v4 = can4;
     v3 = can3;
@@ -295,4 +521,5 @@ const caninit =
   })
 
 // define periodic function
+console.log("Starting can Channel");
 setInterval(upStream,1000);
