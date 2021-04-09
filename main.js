@@ -189,22 +189,22 @@ channel.addListener("onMessage", function(msg){can_msg(msg)});
 // Starting can channel
 const caninit = 
   new Promise((resolve,reject) => {
-    console.log("Closing any can instance");
+    //console.log("Closing any can instance");
     cmd.get('sudo ifdown can0');
     resolve();
   })
   .then(() =>{
-    console.log("Initializing can periferic");
+    //console.log("Initializing can periferic");
     cmd.get('sudo ifup can0');
     resolve();
   })
   .then(() =>{
-    console.log("Configuring can interface");
+    //console.log("Configuring can interface");
     cmd.get('sudo ip link set can0 up type can bitrate 125000');
     resolve();
   })
   .then(() =>{
-    console.log("Starting can Channel");
+    //console.log("Starting can Channel");
     channel.start();
     resolve();
   })
