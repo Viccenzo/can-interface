@@ -163,7 +163,7 @@ console.log("Starting program");
 
 
 console.clear();
-const caninit = 
+const cliWrite = 
   new Promise((resolve,reject) => {
     figlet('Atlas Power', function(err, data) {
       if (err) {
