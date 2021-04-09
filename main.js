@@ -171,9 +171,16 @@ figlet('Atlas Power', function(err, data) {
   }
   console.log(data)
 });
-console.log("");
-console.log("EN - Welcome to Atlas Power BMS can interface CLI. Navigate through the options uosing your Keyboard. (Do you need help? Use --help option)")
-console.log("PT - Bem vindo a interface CLI do BMS Atlas Power. Utilize o teclado para navegar pelas opções. (Precisa de ajuda? use a opção --help)")
+console.log("*-----------------------------------------------*");
+console.log("\n");
+console.log("EN - Welcome to Atlas Power BMS can interface CLI. Navigate through the options uosing your Keyboard. (Do you need help? Use --help option)");
+console.log("\n");
+console.log("PT - Bem vindo a interface CLI do BMS Atlas Power. Utilize o teclado para navegar pelas opções. (Precisa de ajuda? use a opção --help)");
+console.log("\n");
+console.log("*-----------------------------------------------*");
+console.log("\n");
+console.log("1 - (EN - Display BMS information)\/(PT - Mostrar informações do BMS)");
+
 
 // Function Definitions:
 
