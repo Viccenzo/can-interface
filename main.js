@@ -123,14 +123,14 @@ var client = mqtt.connect('mqtt://'+THINGSBOARD_HOST,{username: ACCESS_TOKEN});
 function can_msg(msg){
   msgAvail = 1;
   can4 = msg.data[6] | msg.data[7] << 8;
-  can4 = msg.data[4] | msg.data[5] << 8;
+  can3 = msg.data[4] | msg.data[5] << 8;
   can2 = msg.data[2] | msg.data[3] << 8;
   can1 = msg.data[0] | msg.data[1] << 8;
   if(msg.id == 0x186455F4){ //Power,Warning,VersaoBMS
     power = can4;
-    warning = msg.data[4] | msg.data[5] << 8;
-    discard = msg.data[2] | msg.data[3] << 8;
-    ver_bms = msg.data[0] | msg.data[1] << 8;
+    warning = can3;
+    discard = can2;
+    ver_bms = can1;
     if(power & 0x8000){
       power = power | 0xffff0000;
     }
@@ -147,9 +147,9 @@ function can_msg(msg){
   }
   if(msg.id == 0x186555F4){ //SoC,Current,Current,Vpack
     soc = Math.round(can4);
-    current = msg.data[4] | msg.data[5] << 8;
-    discard = msg.data[2] | msg.data[3] << 8;
-    vpack = (msg.data[0] | msg.data[1] << 8)/10;
+    current = can3;
+    discard = can2;
+    vpack = (can1)/10;
     if(current & 0x8000){
       current = current | 0xffff0000;
     }
@@ -162,9 +162,9 @@ function can_msg(msg){
   }
   if(msg.id == 0x186655F4){ //SoC,Current,Current,Vpack
     t4 = can4;
-    t3 = msg.data[4] | msg.data[5] << 8;
-    t2 = msg.data[2] | msg.data[3] << 8;
-    t1 = msg.data[0] | msg.data[1] << 8;
+    t3 = can3;
+    t2 = can2;
+    t1 = can1;
     data.temp.s1 = {...data.temp.s1,t1,t2,t3,t4};
     //mesma coisaque o de cima
     //data["temp4"] = temp4;
@@ -174,9 +174,9 @@ function can_msg(msg){
   }
   if(msg.id == 0x186755F4){ //SoC,Current,Current,Vpack
     t8 = can4;
-    t7 = msg.data[4] | msg.data[5] << 8;
-    t6 = msg.data[2] | msg.data[3] << 8;
-    t5 = msg.data[0] | msg.data[1] << 8;
+    t7 = can3;
+    t6 = can2;
+    t5 = can1;
     data.temp.s1 = {...data.temp.s1,t5,t6,t7,t8};
     //mesma coisaque o de cima
     //data["temp8"] = temp8;
@@ -186,9 +186,9 @@ function can_msg(msg){
   }
   if(msg.id == 0x186955F4){ //SoC,Current,Current,Vpack
     minvolt = (can4)/1000;
-    maxvolt = (msg.data[4] | msg.data[5] << 8)/1000;
-    mintemp = msg.data[2] | msg.data[3] << 8;
-    maxtemp = msg.data[0] | msg.data[1] << 8;
+    maxvolt = (can3)/1000;
+    mintemp = can2;
+    maxtemp = can1;
     if(maxtemp > 2000){
       mintemp = -20;
       maxtemp = -20;
@@ -202,9 +202,9 @@ function can_msg(msg){
   }
   if(msg.id == 0x186b55F4){ //SoC,Current,Current,Vpack
     v4 = can4;
-    v3 = msg.data[4] | msg.data[5] << 8;
-    v2 = msg.data[2] | msg.data[3] << 8;
-    v1 = msg.data[0] | msg.data[1] << 8;
+    v3 = can3;
+    v2 = can2;
+    v1 = can1;
     data.voltage.s1 = {...data.voltage.s1,v1,v2,v3,v4};
     //voltage.v4 = v4;
     //voltage.v3 = v3;
@@ -213,9 +213,9 @@ function can_msg(msg){
   }
   if(msg.id == 0x186c55F4){ //SoC,Current,Current,Vpack
     v8 = can4;
-    v7 = msg.data[4] | msg.data[5] << 8;
-    v6 = msg.data[2] | msg.data[3] << 8;
-    v5 = msg.data[0] | msg.data[1] << 8;
+    v7 = can3;
+    v6 = can2;
+    v5 = can1;
     data.voltage.s1 = {...data.voltage.s1,v5,v6,v7,v8};
     //data["v8"] = v8;
     //data["v7"] = v7;
@@ -224,9 +224,9 @@ function can_msg(msg){
   }
   if(msg.id == 0x186d55F4){ //SoC,Current,Current,Vpack
     v12 = can4;
-    v11 = msg.data[4] | msg.data[5] << 8;
-    v10 = msg.data[2] | msg.data[3] << 8;
-    v9 = msg.data[0] | msg.data[1] << 8;
+    v11 = can3;
+    v10 = can2;
+    v9 = can1;
     data.voltage.s1 = {...data.voltage.s1,v9,v10,v11,v12};
     //data["v12"] = v12;
     //data["v11"] = v11;
@@ -235,9 +235,9 @@ function can_msg(msg){
   }
   if(msg.id == 0x186e55F4){ //SoC,Current,Current,Vpack
     v16 = can4;
-    v15 = msg.data[4] | msg.data[5] << 8;
-    v14 = msg.data[2] | msg.data[3] << 8;
-    v13 = msg.data[0] | msg.data[1] << 8;
+    v15 = can3;
+    v14 = can2;
+    v13 = can1;
     data.voltage.s1 = {...data.voltage.s1,v13,v14,v15,v16};
     //data["v16"] = v16;
     //data["v15"] = v15;
