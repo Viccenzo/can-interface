@@ -3,6 +3,7 @@ var mqtt = require('mqtt');
 var cmd = require('node-cmd');
 
 var fs = require('fs');
+const { resolve } = require('path');
 
 // System variables
 
@@ -154,11 +155,6 @@ function can_msg(msg){
       current = current | 0xffff0000;
     }
     data.main = {...data.main, soc,current,vpack}
-    //mesma coisaque o de cima
-    //data["soc"] = soc;
-    //data["current"] = current;
-    //data["vpack"] = vpack;
-    //console.log(current);
   }
   if(msg.id == 0x186655F4){ //SoC,Current,Current,Vpack
     t4 = can4;
@@ -166,11 +162,6 @@ function can_msg(msg){
     t2 = can2;
     t1 = can1;
     data.temp.s1 = {...data.temp.s1,t1,t2,t3,t4};
-    //mesma coisaque o de cima
-    //data["temp4"] = temp4;
-    //data["temp3"] = temp3;
-    //data["temp2"] = temp2;
-    //data["temp1"] = temp1;
   }
   if(msg.id == 0x186755F4){ //SoC,Current,Current,Vpack
     t8 = can4;
@@ -178,11 +169,6 @@ function can_msg(msg){
     t6 = can2;
     t5 = can1;
     data.temp.s1 = {...data.temp.s1,t5,t6,t7,t8};
-    //mesma coisaque o de cima
-    //data["temp8"] = temp8;
-    //data["temp7"] = temp7;
-    //data["temp6"] = temp6;
-    //data["temp5"] = temp5;
   }
   if(msg.id == 0x186955F4){ //SoC,Current,Current,Vpack
     minvolt = (can4)/1000;
@@ -194,11 +180,6 @@ function can_msg(msg){
       maxtemp = -20;
     }
     data.main = {...data.main, minvolt,maxvolt,mintemp,maxtemp}
-    //mesma coisaque o de cima
-    //data["minvolt"] = minvolt;
-    //data["maxvolt"] = maxvolt;
-    //data["mintemp"] = mintemp;
-    //data["maxtemp"] = maxtemp;
   }
   if(msg.id == 0x186b55F4){ //SoC,Current,Current,Vpack
     v4 = can4;
@@ -206,10 +187,6 @@ function can_msg(msg){
     v2 = can2;
     v1 = can1;
     data.voltage.s1 = {...data.voltage.s1,v1,v2,v3,v4};
-    //voltage.v4 = v4;
-    //voltage.v3 = v3;
-    //voltage.v2 = v2;
-    //voltage.v1 = v1;
   }
   if(msg.id == 0x186c55F4){ //SoC,Current,Current,Vpack
     v8 = can4;
@@ -217,10 +194,6 @@ function can_msg(msg){
     v6 = can2;
     v5 = can1;
     data.voltage.s1 = {...data.voltage.s1,v5,v6,v7,v8};
-    //data["v8"] = v8;
-    //data["v7"] = v7;
-    //data["v6"] = v6;
-    //data["v5"] = v5;
   }
   if(msg.id == 0x186d55F4){ //SoC,Current,Current,Vpack
     v12 = can4;
@@ -228,10 +201,6 @@ function can_msg(msg){
     v10 = can2;
     v9 = can1;
     data.voltage.s1 = {...data.voltage.s1,v9,v10,v11,v12};
-    //data["v12"] = v12;
-    //data["v11"] = v11;
-    //data["v10"] = v10;
-    //data["v9"] = v9;
   }
   if(msg.id == 0x186e55F4){ //SoC,Current,Current,Vpack
     v16 = can4;
@@ -239,12 +208,8 @@ function can_msg(msg){
     v14 = can2;
     v13 = can1;
     data.voltage.s1 = {...data.voltage.s1,v13,v14,v15,v16};
-    //data["v16"] = v16;
-    //data["v15"] = v15;
-    //data["v14"] = v14;
-    //data["v13"] = v13;
   }
-  //console.log(power);
+  //Just for web visualization propouse, will not be here in the future;
   upMsg = '{"Power":' + power + ',' +
           '"SoC":' + soc + ',' +
           '"Pack Voltage":' + vpack + ',' +
@@ -280,52 +245,11 @@ function can_msg(msg){
           '"longitude": -48.441352}';
 }
 
-//client.on('connect', function () {
-//});
-
 // every 1 sec
 function upStream(){
-  //Price and Power algorithms
   let d = new Date();
-//  if (d.getHours() >= 18 && d.getHours() <= 21){
-//    if(power<0){
-//      valueEnergyBuy = valueEnergyBuy - power*custoKwhP/(1000*3600)   // 4 -> dt = 0.25s
-//    }else{
-//      valueEnergySell = valueEnergySell + power*custoKwhP/(1000*3600) // 4 -> dt = 0.25s
-//    }
-//    valor = "caro";
-//  }else{
-//    if(power<0){
-//      valueEnergyBuy = valueEnergyBuy - power*custoKwhFP/(1000*3600)   // 4 -> dt = 0.25s
-//    }else{
-//      valueEnergySell = valueEnergySell + power*custoKwhFP/(1000*3600) // 4 -> dt = 0.25s
-//    }
-//    valor = "barato";
-//  }
-  // adding price to msg
-//  upMsg = upMsg + '"saving":' + (valueEnergySell - valueEnergyBuy) + '}';
-//  let myOptions = {
-//    ValueEnergyBuy: valueEnergyBuy,
-//    ValueEnergySell: valueEnergySell,
-//    EnergyBuy: energyBuy,
-//    EnergySell: energySell,
-//    ThingsboardHost: THINGSBOARD_HOST,
-//    AccessToken: ACCESS_TOKEN
-//  };
-  // Storing persistent info
-//  data = JSON.stringify(myOptions);
-//  fs.writeFile('./config.json', data, function (err) {
-//    if (err) {
-//      console.log('There has been an error saving your configuration data.');
-//      console.log(err.message);
-//      return;
-//    }
-//    console.log('Configuration saved successfully.')
-//  });
-  // Sending mqtt msg
   if(msgAvail!=0 && error == null){
     let d = new Date();
-    //console.log(power*custoKwhP/(1000*3600));
     client.publish('v1/devices/me/telemetry',  upMsg);
     console.table(data);
     console.clear();
@@ -333,8 +257,6 @@ function upStream(){
     console.table(data.temp);
     console.table(data.voltage);
     console.log(upMsg);
-    //console.log(JSON.stringify(JSON.parse(upMsg),null,2));
-    
   }
   msgAvail = 0;
 }
@@ -350,10 +272,22 @@ try{
 channel.addListener("onMessage", function(msg){can_msg(msg)});
 
 // Starting can channel
-cmd.get('sudo ifdown can0');
-cmd.get('sudo ifup can0');
-cmd.get('sudo ip link set can0 up type can bitrate 125000');
-channel.start();
+const candown = 
+  new Promise((resolve,reject) => {
+    cmd.get('sudo ifdown can0')
+    resolve();
+  })
+  .then(() =>{
+    cmd.get('sudo ifup can0')
+    resolve();
+  })
+  .then(() =>{
+    cmd.get('sudo ip link set can0 up type can bitrate 125000');
+    resolve();
+  })
+  .then(() =>{
+    channel.start();
+  })
 
 // define periodic function
 setInterval(upStream,1000);
