@@ -171,6 +171,7 @@ figlet('Atlas Power', function(err, data) {
     return;
   }
   console.log(data)
+  return;
 })
 .then(() =>{
   console.log("*-----------------------------------------------*");
