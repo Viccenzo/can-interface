@@ -109,8 +109,8 @@ catch(err){
 }
 */
 // EDP thingsboard info override
-const THINGSBOARD_HOST = "demo.thingsboard.io";
-const ACCESS_TOKEN = "RrDCEfZ8C6W0Rt24q9eQ";
+//const THINGSBOARD_HOST = "demo.thingsboard.io";
+//const ACCESS_TOKEN = "RrDCEfZ8C6W0Rt24q9eQ";
 //let valueEnergyBuy = 0;
 //let valueEnergySell = 0;
 //let energyBuy = 0;
@@ -119,7 +119,65 @@ const ACCESS_TOKEN = "RrDCEfZ8C6W0Rt24q9eQ";
 var channel = can.createRawChannel("can0", true);
 
 // create mqtt client
-var client = mqtt.connect('mqtt://'+THINGSBOARD_HOST,{username: ACCESS_TOKEN});
+//var client = mqtt.connect('mqtt://'+THINGSBOARD_HOST,{username: ACCESS_TOKEN});
+
+
+
+// every 1 sec 
+function upStream(){
+  //console.table(data);
+  console.clear();
+  console.table(data.main);
+  console.table(data.temp);
+  console.table(data.voltage);
+  //console.log(upMsg);
+  //let d = new Date();
+  /*if(msgAvail!=0 && error == null){
+    let d = new Date();
+    client.publish('v1/devices/me/telemetry',  upMsg);
+    
+  }*/
+  msgAvail = 0;
+}
+/*
+try{
+  console.log('Connecting to: %s using access token: %s', THINGSBOARD_HOST, ACCESS_TOKEN);
+}catch(err){
+  error = "Mqtt conection problem";
+  console.log('Verifique os parametros do mqtt');
+}
+*/
+// can msg listener function
+channel.addListener("onMessage", function(msg){can_msg(msg)});
+
+// Starting can channel
+const caninit = 
+  new Promise((resolve,reject) => {
+    console.log("Closing any can instance");
+    cmd.get('sudo ifdown can0');
+    resolve();
+  })
+  .then(() =>{
+    console.log("Initializing can periferic");
+    cmd.get('sudo ifup can0');
+    resolve();
+  })
+  .then(() =>{
+    console.log("Configuring can interface");
+    cmd.get('sudo ip link set can0 up type can bitrate 125000');
+    resolve();
+  })
+  .then(() =>{
+    console.log("Starting can Channel");
+    channel.start();
+    resolve();
+  })
+
+// define periodic function
+console.log("Starting program");
+setInterval(upStream,1000);
+
+// Function Definitions:
 
 function can_msg(msg){
   msgAvail = 1;
@@ -168,14 +226,14 @@ function can_msg(msg){
     data.main = {...data.main, minvolt,maxvolt,mintemp,maxtemp}
   }
   // Temperatures s1
-  if(msg.id == 0x18AC55F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18AC55F4){ /
     t4 = can4;
     t3 = can3;
     t2 = can2;
     t1 = can1;
     data.temp.s1 = {...data.temp.s1,t1,t2,t3,t4};
   }
-  if(msg.id == 0x18AD55F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18AD55F4){ 
     t8 = can4;
     t7 = can3;
     t6 = can2;
@@ -183,107 +241,227 @@ function can_msg(msg){
     data.temp.s1 = {...data.temp.s1,t5,t6,t7,t8};
   }
   // Temperatures s2
-  if(msg.id == 0x18AE55F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18AE55F4){ 
+    t4 = can4;
+    t3 = can3;
+    t2 = can2;
+    t1 = can1;
     data.temp.s2 = {...data.temp.s2,t1,t2,t3,t4};
   }
-  if(msg.id == 0x18AF55F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18AF55F4){ 
+    t8 = can4;
+    t7 = can3;
+    t6 = can2;
+    t5 = can1;
     data.temp.s2 = {...data.temp.s2,t5,t6,t7,t8};
   }
   // Temperatures s3
-  if(msg.id == 0x18B055F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18B055F4){ 
+    t4 = can4;
+    t3 = can3;
+    t2 = can2;
+    t1 = can1;
     data.temp.s3 = {...data.temp.s3,t1,t2,t3,t4};
   }
-  if(msg.id == 0x18B155F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18B155F4){ 
+    t8 = can4;
+    t7 = can3;
+    t6 = can2;
+    t5 = can1;
     data.temp.s3 = {...data.temp.s3,t5,t6,t7,t8};
   }// Temperatures s4
-  if(msg.id == 0x18B255F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18B255F4){ 
+    t4 = can4;
+    t3 = can3;
+    t2 = can2;
+    t1 = can1;
     data.temp.s4 = {...data.temp.s4,t1,t2,t3,t4};
   }
-  if(msg.id == 0x18B355F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18B355F4){ 
+    t8 = can4;
+    t7 = can3;
+    t6 = can2;
+    t5 = can1;
     data.temp.s4 = {...data.temp.s4,t5,t6,t7,t8};
   }
   // Temperatures s5
-  if(msg.id == 0x18B455F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18B455F4){ 
+    t4 = can4;
+    t3 = can3;
+    t2 = can2;
+    t1 = can1;
     data.temp.s5 = {...data.temp.s5,t1,t2,t3,t4};
   }
-  if(msg.id == 0x18B555F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18B555F4){ 
+    t8 = can4;
+    t7 = can3;
+    t6 = can2;
+    t5 = can1;
     data.temp.s5 = {...data.temp.s5,t5,t6,t7,t8};
   }
   // Temperatures s6
-  if(msg.id == 0x18B655F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18B655F4){ 
+    t4 = can4;
+    t3 = can3;
+    t2 = can2;
+    t1 = can1;
     data.temp.s6 = {...data.temp.s6,t1,t2,t3,t4};
   }
-  if(msg.id == 0x18B755F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18B755F4){ 
+    t8 = can4;
+    t7 = can3;
+    t6 = can2;
+    t5 = can1;
     data.temp.s6 = {...data.temp.s6,t5,t6,t7,t8};
   }
   // Temperatures s7
-  if(msg.id == 0x18B855F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18B855F4){ 
+    t4 = can4;
+    t3 = can3;
+    t2 = can2;
+    t1 = can1;
     data.temp.s7 = {...data.temp.s7,t1,t2,t3,t4};
   }
-  if(msg.id == 0x18B955F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18B955F4){ 
+    t8 = can4;
+    t7 = can3;
+    t6 = can2;
+    t5 = can1;
     data.temp.s7 = {...data.temp.s7,t5,t6,t7,t8};
   }
   // Temperatures s8
-  if(msg.id == 0x18BA55F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18BA55F4){ 
+    t4 = can4;
+    t3 = can3;
+    t2 = can2;
+    t1 = can1;
     data.temp.s8 = {...data.temp.s8,t1,t2,t3,t4};
   }
-  if(msg.id == 0x18BB55F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18BB55F4){ 
+    t8 = can4;
+    t7 = can3;
+    t6 = can2;
+    t5 = can1;
     data.temp.s8 = {...data.temp.s8,t5,t6,t7,t8};
   }
   // Temperatures s9
-  if(msg.id == 0x18BC55F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18BC55F4){ 
+    t4 = can4;
+    t3 = can3;
+    t2 = can2;
+    t1 = can1;
     data.temp.s9 = {...data.temp.s9,t1,t2,t3,t4};
   }
-  if(msg.id == 0x18BD55F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18BD55F4){ 
+    t8 = can4;
+    t7 = can3;
+    t6 = can2;
+    t5 = can1;
     data.temp.s9 = {...data.temp.s9,t5,t6,t7,t8};
   }
   // Temperatures s10
-  if(msg.id == 0x18BE55F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18BE55F4){ 
+    t4 = can4;
+    t3 = can3;
+    t2 = can2;
+    t1 = can1;
     data.temp.s10 = {...data.temp.s10,t1,t2,t3,t4};
   }
-  if(msg.id == 0x18BF55F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18BF55F4){ 
+    t8 = can4;
+    t7 = can3;
+    t6 = can2;
+    t5 = can1;
     data.temp.s10 = {...data.temp.s10,t5,t6,t7,t8};
   }
   // Temperatures s11
-  if(msg.id == 0x18C055F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18C055F4){ 
+    t4 = can4;
+    t3 = can3;
+    t2 = can2;
+    t1 = can1;
     data.temp.s11 = {...data.temp.s11,t1,t2,t3,t4};
   }
-  if(msg.id == 0x18C155F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18C155F4){ 
+    t8 = can4;
+    t7 = can3;
+    t6 = can2;
+    t5 = can1;
     data.temp.s11 = {...data.temp.s11,t5,t6,t7,t8};
   }
   // Temperatures s12
-  if(msg.id == 0x18C255F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18C255F4){ 
+    t4 = can4;
+    t3 = can3;
+    t2 = can2;
+    t1 = can1;
     data.temp.s12 = {...data.temp.s12,t1,t2,t3,t4};
   }
-  if(msg.id == 0x18C355F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18C355F4){ 
+    t8 = can4;
+    t7 = can3;
+    t6 = can2;
+    t5 = can1;
     data.temp.s12 = {...data.temp.s12,t5,t6,t7,t8};
   }
   // Temperatures s13
-  if(msg.id == 0x18C455F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18C455F4){ 
+    t4 = can4;
+    t3 = can3;
+    t2 = can2;
+    t1 = can1;
     data.temp.s13 = {...data.temp.s13,t1,t2,t3,t4};
   }
-  if(msg.id == 0x18C555F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18C555F4){ 
+    t8 = can4;
+    t7 = can3;
+    t6 = can2;
+    t5 = can1;
     data.temp.s13 = {...data.temp.s13,t5,t6,t7,t8};
   }
   // Temperatures s14
-  if(msg.id == 0x18C655F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18C655F4){ 
+    t4 = can4;
+    t3 = can3;
+    t2 = can2;
+    t1 = can1;
     data.temp.s14 = {...data.temp.s14,t1,t2,t3,t4};
   }
-  if(msg.id == 0x18C755F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18C755F4){ 
+    t8 = can4;
+    t7 = can3;
+    t6 = can2;
+    t5 = can1;
     data.temp.s14 = {...data.temp.s14,t5,t6,t7,t8};
   }
   // Temperatures s15
-  if(msg.id == 0x18C855F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18C855F4){ 
+    t4 = can4;
+    t3 = can3;
+    t2 = can2;
+    t1 = can1;
     data.temp.s15 = {...data.temp.s15,t1,t2,t3,t4};
   }
-  if(msg.id == 0x18C955F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18C955F4){ 
+    t8 = can4;
+    t7 = can3;
+    t6 = can2;
+    t5 = can1;
     data.temp.s15 = {...data.temp.s15,t5,t6,t7,t8};
   }
   // Temperatures s16
-  if(msg.id == 0x18CA55F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18CA55F4){ 
+    t4 = can4;
+    t3 = can3;
+    t2 = can2;
+    t1 = can1;
     data.temp.s16 = {...data.temp.s16,t1,t2,t3,t4};
   }
-  if(msg.id == 0x18CB55F4){ //SoC,Current,Current,Vpack
+  if(msg.id == 0x18CB55F4){ 
+    t8 = can4;
+    t7 = can3;
+    t6 = can2;
+    t5 = can1;
     data.temp.s16 = {...data.temp.s16,t5,t6,t7,t8};
   }
   // Voltages s1 **** Terminar de mudar os endereços ***
@@ -317,199 +495,441 @@ function can_msg(msg){
   }
   // Voltages s2
   if(msg.id == 0x186F55F4){ //SoC,Current,Current,Vpack
+    v4 = can4;
+    v3 = can3;
+    v2 = can2;
+    v1 = can1;
     data.voltage.s2 = {...data.voltage.s2,v1,v2,v3,v4};
   }
   if(msg.id == 0x187055F4){ //SoC,Current,Current,Vpack
+    v8 = can4;
+    v7 = can3;
+    v6 = can2;
+    v5 = can1;
     data.voltage.s2 = {...data.voltage.s2,v5,v6,v7,v8};
   }
   if(msg.id == 0x187155F4){ //SoC,Current,Current,Vpack
+    v12 = can4;
+    v11 = can3;
+    v10 = can2;
+    v9 = can1;
     data.voltage.s2 = {...data.voltage.s2,v9,v10,v11,v12};
   }
   if(msg.id == 0x187255F4){ //SoC,Current,Current,Vpack
+    v16 = can4;
+    v15 = can3;
+    v14 = can2;
+    v13 = can1;
     data.voltage.s2 = {...data.voltage.s2,v13,v14,v15,v16};
   }
   // Voltages s3
   if(msg.id == 0x187355F4){ //SoC,Current,Current,Vpack
+    v4 = can4;
+    v3 = can3;
+    v2 = can2;
+    v1 = can1;
     data.voltage.s3 = {...data.voltage.s3,v1,v2,v3,v4};
   }
   if(msg.id == 0x187455F4){ //SoC,Current,Current,Vpack
+    v8 = can4;
+    v7 = can3;
+    v6 = can2;
+    v5 = can1;
     data.voltage.s3 = {...data.voltage.s3,v5,v6,v7,v8};
   }
   if(msg.id == 0x187555F4){ //SoC,Current,Current,Vpack
+    v12 = can4;
+    v11 = can3;
+    v10 = can2;
+    v9 = can1;
     data.voltage.s3 = {...data.voltage.s3,v9,v10,v11,v12};
   }
   if(msg.id == 0x187655F4){ //SoC,Current,Current,Vpack
+    v16 = can4;
+    v15 = can3;
+    v14 = can2;
+    v13 = can1;
     data.voltage.s3 = {...data.voltage.s3,v13,v14,v15,v16};
   }
   // Voltages s4
   if(msg.id == 0x187755F4){ //SoC,Current,Current,Vpack
+    v4 = can4;
+    v3 = can3;
+    v2 = can2;
+    v1 = can1;
     data.voltage.s4 = {...data.voltage.s4,v1,v2,v3,v4};
   }
   if(msg.id == 0x187855F4){ //SoC,Current,Current,Vpack
+    v8 = can4;
+    v7 = can3;
+    v6 = can2;
+    v5 = can1;
     data.voltage.s4 = {...data.voltage.s4,v5,v6,v7,v8};
   }
   if(msg.id == 0x187955F4){ //SoC,Current,Current,Vpack
+    v12 = can4;
+    v11 = can3;
+    v10 = can2;
+    v9 = can1;
     data.voltage.s4 = {...data.voltage.s4,v9,v10,v11,v12};
   }
   if(msg.id == 0x187A55F4){ //SoC,Current,Current,Vpack
+    v16 = can4;
+    v15 = can3;
+    v14 = can2;
+    v13 = can1;
     data.voltage.s4 = {...data.voltage.s4,v13,v14,v15,v16};
   }
   // Voltages s5
   if(msg.id == 0x187B55F4){ //SoC,Current,Current,Vpack
+    v4 = can4;
+    v3 = can3;
+    v2 = can2;
+    v1 = can1;
     data.voltage.s5 = {...data.voltage.s5,v1,v2,v3,v4};
   }
   if(msg.id == 0x187C55F4){ //SoC,Current,Current,Vpack
+    v8 = can4;
+    v7 = can3;
+    v6 = can2;
+    v5 = can1;
     data.voltage.s5 = {...data.voltage.s5,v5,v6,v7,v8};
   }
   if(msg.id == 0x187D55F4){ //SoC,Current,Current,Vpack
+    v12 = can4;
+    v11 = can3;
+    v10 = can2;
+    v9 = can1;
     data.voltage.s5 = {...data.voltage.s5,v9,v10,v11,v12};
   }
   if(msg.id == 0x187E55F4){ //SoC,Current,Current,Vpack
+    v16 = can4;
+    v15 = can3;
+    v14 = can2;
+    v13 = can1;
     data.voltage.s5 = {...data.voltage.s5,v13,v14,v15,v16};
   }
   // Voltages s6
   if(msg.id == 0x187F55F4){ //SoC,Current,Current,Vpack
+    v4 = can4;
+    v3 = can3;
+    v2 = can2;
+    v1 = can1;
     data.voltage.s6 = {...data.voltage.s6,v1,v2,v3,v4};
   }
   if(msg.id == 0x188055F4){ //SoC,Current,Current,Vpack
+    v8 = can4;
+    v7 = can3;
+    v6 = can2;
+    v5 = can1;
     data.voltage.s6 = {...data.voltage.s6,v5,v6,v7,v8};
   }
   if(msg.id == 0x188155F4){ //SoC,Current,Current,Vpack
+    v12 = can4;
+    v11 = can3;
+    v10 = can2;
+    v9 = can1;
     data.voltage.s6 = {...data.voltage.s6,v9,v10,v11,v12};
   }
   if(msg.id == 0x188255F4){ //SoC,Current,Current,Vpack
+    v16 = can4;
+    v15 = can3;
+    v14 = can2;
+    v13 = can1;
     data.voltage.s6 = {...data.voltage.s6,v13,v14,v15,v16};
   }
   // Voltages s7
   if(msg.id == 0x188355F4){ //SoC,Current,Current,Vpack
+    v4 = can4;
+    v3 = can3;
+    v2 = can2;
+    v1 = can1;
     data.voltage.s7 = {...data.voltage.s7,v1,v2,v3,v4};
   }
   if(msg.id == 0x188455F4){ //SoC,Current,Current,Vpack
+    v8 = can4;
+    v7 = can3;
+    v6 = can2;
+    v5 = can1;
     data.voltage.s7 = {...data.voltage.s7,v5,v6,v7,v8};
   }
   if(msg.id == 0x188555F4){ //SoC,Current,Current,Vpack
+    v12 = can4;
+    v11 = can3;
+    v10 = can2;
+    v9 = can1;
     data.voltage.s7 = {...data.voltage.s7,v9,v10,v11,v12};
   }
   if(msg.id == 0x188655F4){ //SoC,Current,Current,Vpack
+    v16 = can4;
+    v15 = can3;
+    v14 = can2;
+    v13 = can1;
     data.voltage.s7 = {...data.voltage.s7,v13,v14,v15,v16};
   }
   // Voltages s8
   if(msg.id == 0x188755F4){ //SoC,Current,Current,Vpack
+    v4 = can4;
+    v3 = can3;
+    v2 = can2;
+    v1 = can1;
     data.voltage.s8 = {...data.voltage.s8,v1,v2,v3,v4};
   }
   if(msg.id == 0x188855F4){ //SoC,Current,Current,Vpack
+    v8 = can4;
+    v7 = can3;
+    v6 = can2;
+    v5 = can1;
     data.voltage.s8 = {...data.voltage.s8,v5,v6,v7,v8};
   }
   if(msg.id == 0x188955F4){ //SoC,Current,Current,Vpack
+    v12 = can4;
+    v11 = can3;
+    v10 = can2;
+    v9 = can1;
     data.voltage.s8 = {...data.voltage.s8,v9,v10,v11,v12};
   }
   if(msg.id == 0x188A55F4){ //SoC,Current,Current,Vpack
+    v16 = can4;
+    v15 = can3;
+    v14 = can2;
+    v13 = can1;
     data.voltage.s8 = {...data.voltage.s8,v13,v14,v15,v16};
   }
   // Voltages s9
   if(msg.id == 0x188B55F4){ //SoC,Current,Current,Vpack
+    v4 = can4;
+    v3 = can3;
+    v2 = can2;
+    v1 = can1;
     data.voltage.s9 = {...data.voltage.s9,v1,v2,v3,v4};
   }
   if(msg.id == 0x188C55F4){ //SoC,Current,Current,Vpack
+    v8 = can4;
+    v7 = can3;
+    v6 = can2;
+    v5 = can1;
     data.voltage.s9 = {...data.voltage.s9,v5,v6,v7,v8};
   }
   if(msg.id == 0x188D55F4){ //SoC,Current,Current,Vpack
+    v12 = can4;
+    v11 = can3;
+    v10 = can2;
+    v9 = can1;
     data.voltage.s9 = {...data.voltage.s9,v9,v10,v11,v12};
   }
   if(msg.id == 0x188E55F4){ //SoC,Current,Current,Vpack
+    v16 = can4;
+    v15 = can3;
+    v14 = can2;
+    v13 = can1;
     data.voltage.s9 = {...data.voltage.s9,v13,v14,v15,v16};
   }
   // Voltages s10
   if(msg.id == 0x188F55F4){ //SoC,Current,Current,Vpack
+    v4 = can4;
+    v3 = can3;
+    v2 = can2;
+    v1 = can1;
     data.voltage.s10 = {...data.voltage.s10,v1,v2,v3,v4};
   }
   if(msg.id == 0x189055F4){ //SoC,Current,Current,Vpack
+    v8 = can4;
+    v7 = can3;
+    v6 = can2;
+    v5 = can1;
     data.voltage.s10 = {...data.voltage.s10,v5,v6,v7,v8};
   }
   if(msg.id == 0x189155F4){ //SoC,Current,Current,Vpack
+    v12 = can4;
+    v11 = can3;
+    v10 = can2;
+    v9 = can1;
     data.voltage.s10 = {...data.voltage.s10,v9,v10,v11,v12};
   }
   if(msg.id == 0x189255F4){ //SoC,Current,Current,Vpack
+    v16 = can4;
+    v15 = can3;
+    v14 = can2;
+    v13 = can1;
     data.voltage.s10 = {...data.voltage.s10,v13,v14,v15,v16};
   }
   // Voltages s11
   if(msg.id == 0x189355F4){ //SoC,Current,Current,Vpack
+    v4 = can4;
+    v3 = can3;
+    v2 = can2;
+    v1 = can1;
     data.voltage.s11 = {...data.voltage.s11,v1,v2,v3,v4};
   }
   if(msg.id == 0x189455F4){ //SoC,Current,Current,Vpack
+    v8 = can4;
+    v7 = can3;
+    v6 = can2;
+    v5 = can1;
     data.voltage.s11 = {...data.voltage.s11,v5,v6,v7,v8};
   }
   if(msg.id == 0x189555F4){ //SoC,Current,Current,Vpack
+    v12 = can4;
+    v11 = can3;
+    v10 = can2;
+    v9 = can1;
     data.voltage.s11 = {...data.voltage.s11,v9,v10,v11,v12};
   }
   if(msg.id == 0x189655F4){ //SoC,Current,Current,Vpack
+    v16 = can4;
+    v15 = can3;
+    v14 = can2;
+    v13 = can1;
     data.voltage.s11 = {...data.voltage.s11,v13,v14,v15,v16};
   }
   // Voltages s12
   if(msg.id == 0x189755F4){ //SoC,Current,Current,Vpack
+    v4 = can4;
+    v3 = can3;
+    v2 = can2;
+    v1 = can1;
     data.voltage.s12 = {...data.voltage.s12,v1,v2,v3,v4};
   }
   if(msg.id == 0x189855F4){ //SoC,Current,Current,Vpack
+    v8 = can4;
+    v7 = can3;
+    v6 = can2;
+    v5 = can1;
     data.voltage.s12 = {...data.voltage.s12,v5,v6,v7,v8};
   }
   if(msg.id == 0x189955F4){ //SoC,Current,Current,Vpack
+    v12 = can4;
+    v11 = can3;
+    v10 = can2;
+    v9 = can1;
     data.voltage.s2 = {...data.voltage.s2,v9,v10,v11,v12};
   }
   if(msg.id == 0x189A55F4){ //SoC,Current,Current,Vpack
+    v16 = can4;
+    v15 = can3;
+    v14 = can2;
+    v13 = can1;
     data.voltage.s12 = {...data.voltage.s12,v13,v14,v15,v16};
   }
   // Voltages s13
   if(msg.id == 0x189B55F4){ //SoC,Current,Current,Vpack
+    v4 = can4;
+    v3 = can3;
+    v2 = can2;
+    v1 = can1;
     data.voltage.s13 = {...data.voltage.s13,v1,v2,v3,v4};
   }
   if(msg.id == 0x189C55F4){ //SoC,Current,Current,Vpack
+    v8 = can4;
+    v7 = can3;
+    v6 = can2;
+    v5 = can1;
     data.voltage.s13 = {...data.voltage.s13,v5,v6,v7,v8};
   }
   if(msg.id == 0x189D55F4){ //SoC,Current,Current,Vpack
+    v12 = can4;
+    v11 = can3;
+    v10 = can2;
+    v9 = can1;
     data.voltage.s13 = {...data.voltage.s13,v9,v10,v11,v12};
   }
   if(msg.id == 0x189E55F4){ //SoC,Current,Current,Vpack
+    v16 = can4;
+    v15 = can3;
+    v14 = can2;
+    v13 = can1;
     data.voltage.s13 = {...data.voltage.s13,v13,v14,v15,v16};
   }
   // Voltages s14
   if(msg.id == 0x189F55F4){ //SoC,Current,Current,Vpack
+    v4 = can4;
+    v3 = can3;
+    v2 = can2;
+    v1 = can1;
     data.voltage.s14 = {...data.voltage.s14,v1,v2,v3,v4};
   }
   if(msg.id == 0x18A055F4){ //SoC,Current,Current,Vpack
+    v8 = can4;
+    v7 = can3;
+    v6 = can2;
+    v5 = can1;
     data.voltage.s14 = {...data.voltage.s14,v5,v6,v7,v8};
   }
   if(msg.id == 0x18A155F4){ //SoC,Current,Current,Vpack
+    v12 = can4;
+    v11 = can3;
+    v10 = can2;
+    v9 = can1;
     data.voltage.s14 = {...data.voltage.s14,v9,v10,v11,v12};
   }
   if(msg.id == 0x18A255F4){ //SoC,Current,Current,Vpack
+    v16 = can4;
+    v15 = can3;
+    v14 = can2;
+    v13 = can1;
     data.voltage.s14 = {...data.voltage.s14,v13,v14,v15,v16};
   }
   // Voltages s15
   if(msg.id == 0x18A355F4){ //SoC,Current,Current,Vpack
+    v4 = can4;
+    v3 = can3;
+    v2 = can2;
+    v1 = can1;
     data.voltage.s15 = {...data.voltage.s15,v1,v2,v3,v4};
   }
   if(msg.id == 0x18A455F4){ //SoC,Current,Current,Vpack
+    v8 = can4;
+    v7 = can3;
+    v6 = can2;
+    v5 = can1;
     data.voltage.s15 = {...data.voltage.s15,v5,v6,v7,v8};
   }
   if(msg.id == 0x18A555F4){ //SoC,Current,Current,Vpack
+    v12 = can4;
+    v11 = can3;
+    v10 = can2;
+    v9 = can1;
     data.voltage.s15 = {...data.voltage.s15,v9,v10,v11,v12};
   }
   if(msg.id == 0x18A655F4){ //SoC,Current,Current,Vpack
+    v16 = can4;
+    v15 = can3;
+    v14 = can2;
+    v13 = can1;
     data.voltage.s2s15 = {...data.voltage.s15,v13,v14,v15,v16};
   }
   // Voltages s16
   if(msg.id == 0x18A755F4){ //SoC,Current,Current,Vpack
+    v4 = can4;
+    v3 = can3;
+    v2 = can2;
+    v1 = can1;
     data.voltage.s16 = {...data.voltage.s16,v1,v2,v3,v4};
   }
   if(msg.id == 0x18A855F4){ //SoC,Current,Current,Vpack
+    v8 = can4;
+    v7 = can3;
+    v6 = can2;
+    v5 = can1;
     data.voltage.s16 = {...data.voltage.s16,v5,v6,v7,v8};
   }
   if(msg.id == 0x18A955F4){ //SoC,Current,Current,Vpack
+    v12 = can4;
+    v11 = can3;
+    v10 = can2;
+    v9 = can1;
     data.voltage.s16 = {...data.voltage.s16,v9,v10,v11,v12};
   }
   if(msg.id == 0x18AA55F4){ //SoC,Current,Current,Vpack
+    v16 = can4;
+    v15 = can3;
+    v14 = can2;
+    v13 = can1;
     data.voltage.s16 = {...data.voltage.s16,v13,v14,v15,v16};
   }
+
+  /*
   //Just for web visualization propouse, will not be here in the future;
   upMsg = '{"Power":' + power + ',' +
           '"SoC":' + soc + ',' +
@@ -543,58 +963,5 @@ function can_msg(msg){
           '"Voltage 15":' + v15 + ',' +
           '"Voltage 16":' + v16 + ',' +
           '"latitude": -27.430775,' +
-          '"longitude": -48.441352}';
+          '"longitude": -48.441352}'; */
 }
-
-// every 1 sec
-function upStream(){
-  let d = new Date();
-  if(msgAvail!=0 && error == null){
-    let d = new Date();
-    client.publish('v1/devices/me/telemetry',  upMsg);
-    console.table(data);
-    console.clear();
-    console.table(data.main);
-    console.table(data.temp);
-    console.table(data.voltage);
-    console.log(upMsg);
-  }
-  msgAvail = 0;
-}
-
-try{
-  console.log('Connecting to: %s using access token: %s', THINGSBOARD_HOST, ACCESS_TOKEN);
-}catch(err){
-  error = "Mqtt conection problem";
-  console.log('Verifique os parametros do mqtt');
-}
-
-// can msg listener function
-channel.addListener("onMessage", function(msg){can_msg(msg)});
-
-// Starting can channel
-const caninit = 
-  new Promise((resolve,reject) => {
-    console.log("Closing any can instance");
-    cmd.get('sudo ifdown can0');
-    resolve();
-  })
-  .then(() =>{
-    console.log("Initializing can periferic");
-    cmd.get('sudo ifup can0');
-    resolve();
-  })
-  .then(() =>{
-    console.log("Configuring can interface");
-    cmd.get('sudo ip link set can0 up type can bitrate 125000');
-    resolve();
-  })
-  .then(() =>{
-    console.log("Starting can Channel");
-    channel.start();
-    resolve();
-  })
-
-// define periodic function
-console.log("Starting can Channel");
-setInterval(upStream,1000);
