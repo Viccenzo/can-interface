@@ -172,8 +172,8 @@ const cliWrite =
         return;
       }
       console.log(data);
+      resolve();
     });
-    resolve();
   })
   .then(() =>{
     console.log("*-----------------------------------------------*");
