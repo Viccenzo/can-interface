@@ -176,14 +176,17 @@ const caninit =
 
 // define periodic function
 console.log("Starting program");
-setInterval(upStream,1000);
+//setInterval(upStream,1000);
+imageToAscii("img/atlas_power_preta.png", (err, converted) => {
+  console.log(err || converted);
+});
 
 // Function Definitions:
 
 function can_msg(msg){
-  //imageToAscii("img/atlas_power_preta.png", (err, converted) => {
-  //  console.log(err || converted);
-  //});
+  imageToAscii("img/atlas_power_preta.png", (err, converted) => {
+    console.log(err || converted);
+  });
   msgAvail = 1;
   can4 = msg.data[6] | msg.data[7] << 8;
   can3 = msg.data[4] | msg.data[5] << 8;
