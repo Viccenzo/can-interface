@@ -289,7 +289,9 @@ const caninit =
     resolve();
   })
   .then(() =>{
+    console.log("Starting can Channel");
     channel.start();
+    resolve();
   })
 
 // define periodic function
