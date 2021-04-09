@@ -272,16 +272,19 @@ try{
 channel.addListener("onMessage", function(msg){can_msg(msg)});
 
 // Starting can channel
-const candown = 
+const caninit = 
   new Promise((resolve,reject) => {
-    cmd.get('sudo ifdown can0')
+    console.log("Closing any can instance");
+    cmd.get('sudo ifdown can0');
     resolve();
   })
   .then(() =>{
-    cmd.get('sudo ifup can0')
+    console.log("Initializing can periferic");
+    cmd.get('sudo ifup can0');
     resolve();
   })
   .then(() =>{
+    console.log("Configuring can interface");
     cmd.get('sudo ip link set can0 up type can bitrate 125000');
     resolve();
   })
