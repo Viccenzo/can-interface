@@ -140,53 +140,55 @@ const op = readline.createInterface({
   output: process.stdout
 });
 
-console.clear();
-const cliWrite = 
-  new Promise((resolve,reject) => {
-    figlet('Atlas Power', function(err, data) {
-      if (err) {
-        console.log('Something went wrong...');
-        console.dir(err);
-        return;
-      }
-      console.log(data);
+while(1){
+  console.clear();
+  const cliWrite = 
+    new Promise((resolve,reject) => {
+      figlet('Atlas Power', function(err, data) {
+        if (err) {
+          console.log('Something went wrong...');
+          console.dir(err);
+          return;
+        }
+        console.log(data);
+        resolve();
+      });
+    })
+    .then(() =>{
+      console.log("*-----------------------------------------------*");
+      console.log("\n");
+      console.log("EN - Welcome to Atlas Power BMS can interface CLI. Navigate through the options using your Keyboard. (Do you need help? Use --help option)");
+      console.log("\n");
+      console.log("PT - Bem vindo a interface CLI do BMS Atlas Power. Utilize o teclado para navegar pelas opções. (Precisa de ajuda? use a opção --help)");
+      console.log("\n");
+      console.log("*-----------------------------------------------*");
+      console.log("\n");
+      console.log("1 - (EN - Display BMS information)\/(PT - Mostrar informações do BMS)");
+      console.log("\n");
+      console.log("2 - (EN - Sendo BMS configuration file)\/(PT - Mandar arquivo de configuração do BMS)");
+      console.log("\n");
       resolve();
+    })
+    .then(() =>{
+      op.question('Enter an option / Escolha uma opção: ', (answer) => {
+        // TODO: Log the answer in a database
+        switch(answer){
+          case "1":
+            op.close();
+            console.log(1);
+            infoDisplay();
+            break;
+          case "2":
+            console.log(2);
+            break;
+          case "3":
+            console.log(3);
+            break;
+        }
+        op.close();
+      });
     });
-  })
-  .then(() =>{
-    console.log("*-----------------------------------------------*");
-    console.log("\n");
-    console.log("EN - Welcome to Atlas Power BMS can interface CLI. Navigate through the options using your Keyboard. (Do you need help? Use --help option)");
-    console.log("\n");
-    console.log("PT - Bem vindo a interface CLI do BMS Atlas Power. Utilize o teclado para navegar pelas opções. (Precisa de ajuda? use a opção --help)");
-    console.log("\n");
-    console.log("*-----------------------------------------------*");
-    console.log("\n");
-    console.log("1 - (EN - Display BMS information)\/(PT - Mostrar informações do BMS)");
-    console.log("\n");
-    console.log("2 - (EN - Sendo BMS configuration file)\/(PT - Mandar arquivo de configuração do BMS)");
-    console.log("\n");
-    resolve();
-  })
-  .then(() =>{
-    op.question('Enter an option / Escolha uma opção: ', (answer) => {
-      // TODO: Log the answer in a database
-      switch(answer){
-        case "1":
-          console.log(1);
-          infoDisplay();
-          break;
-        case "2":
-          console.log(2);
-          break;
-        case "3":
-          console.log(3);
-          break;
-      }
-    
-      op.close();
-    });
-  })
+}
 
 function infoDisplay(){
 
@@ -221,13 +223,15 @@ function infoDisplay(){
 
   // define periodic function
   console.log("Starting program");
-  setInterval(upStream,1000);
-
+  let timeOut = setInterval(upStream,1000);
+  //Teste
+  const caninit = 
+    new Promise((resolve,reject) => {
+      op.question('Enter an option / Escolha uma opção: ', (answer) => {});
+      clearInterval(timeOut);
+      resolve();
+    })
 }
-
-
-
-
 
 // Function Definitions:
 
@@ -235,6 +239,7 @@ function infoDisplay(){
 function upStream(){
   //console.table(data);
   console.clear();
+  console.log("Press Enter to exit\/Precione Enter para sair.")
   console.table(data.main);
   console.table(data.temp);
   console.table(data.voltage);
