@@ -224,12 +224,7 @@ function infoDisplay(){
   // define periodic function
   console.log("Starting program");
   let timeOut = setInterval(upStream,1000);
-  //Teste
-  const caninit = 
-    new Promise((resolve,reject) => {
-      clearInterval(timeOut);
-      resolve();
-    })
+
 }
 
 // Function Definitions:
