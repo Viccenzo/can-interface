@@ -133,9 +133,7 @@ try{
 }
 */
 
-// define periodic function
-console.log("Starting program");
-//setInterval(upStream,1000);
+
 
 const op = readline.createInterface({
   input: process.stdin,
@@ -176,6 +174,7 @@ const cliWrite =
       switch(answer){
         case "1":
           console.log(1);
+          infoDisplay();
           break;
         case "2":
           console.log(2);
@@ -184,42 +183,49 @@ const cliWrite =
           console.log(3);
           break;
       }
-      console.log(`Thank you for your valuable feedback: ${answer}`);
     
       op.close();
     });
   })
 
+function infoDisplay(){
+
+  // create can chanell
+  var channel = can.createRawChannel("can0", true);
+
+  // can msg listener function
+  channel.addListener("onMessage", function(msg){can_msg(msg)});
+
+  // Starting can channel
+  const caninit = 
+    new Promise((resolve,reject) => {
+      //console.log("Closing any can instance");
+      cmd.get('sudo ifdown can0');
+      resolve();
+    })
+    .then(() =>{
+      //console.log("Initializing can periferic");
+      cmd.get('sudo ifup can0');
+      resolve();
+    })
+    .then(() =>{
+      //console.log("Configuring can interface");
+      cmd.get('sudo ip link set can0 up type can bitrate 125000');
+      resolve();
+    })
+    .then(() =>{
+      //console.log("Starting can Channel");
+      channel.start();
+      resolve();
+    })
+
+  // define periodic function
+  console.log("Starting program");
+  setInterval(upStream,1000);
+
+}
 
 
-// create can chanell
-var channel = can.createRawChannel("can0", true);
-
-// can msg listener function
-channel.addListener("onMessage", function(msg){can_msg(msg)});
-
-// Starting can channel
-const caninit = 
-  new Promise((resolve,reject) => {
-    //console.log("Closing any can instance");
-    cmd.get('sudo ifdown can0');
-    resolve();
-  })
-  .then(() =>{
-    //console.log("Initializing can periferic");
-    cmd.get('sudo ifup can0');
-    resolve();
-  })
-  .then(() =>{
-    //console.log("Configuring can interface");
-    cmd.get('sudo ip link set can0 up type can bitrate 125000');
-    resolve();
-  })
-  .then(() =>{
-    //console.log("Starting can Channel");
-    channel.start();
-    resolve();
-  })
 
 
 
