@@ -210,26 +210,22 @@ const cliWrite =
 
 
 function createConfigJSON(){
-  return Promise.resolve()
-    .then(
-      op.question('Number of battery in series', (answer) => {
-        numberOfChannels = answer;
-        console.log("numberOfChannels: " + numberOfChannels);
-        resolve();
+  const question1 = () => {
+    return new Promise((resolve, reject) => {
+      op.question('Number of cells in series:  ', (answer) => {
+        console.log('Number in series: ${answer}')
+        resolve()
       })
-    )
-    .then(
-      op.question('Enter an option / Escolha uma opção: ', (answer) => {
-        numberOfThermistors = answer;
-        console.log("numberOfThermistors: " + numberOfChannels);
-        resolve();
+    })
+  }
+  const question2 = () => {
+    return new Promise((resolve, reject) => {
+      op.question('Number of cells in series:  ', (answer) => {
+        console.log('Number of Thermistor: ${answer}')
+        resolve()
       })
-    )
-    .then(
-      op.question('Enter an option / Escolha uma opção: ', (answer) => {
-        resolve();
-      })
-    )
+    })
+  }
 }
 
 function infoDisplay(){
