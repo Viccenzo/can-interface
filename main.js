@@ -154,7 +154,8 @@ try{
 
 // write ap function
 const menuWrite = () =>{
-  return new Promise((resolve, reject) => {
+  const cliWrite = 
+  new Promise((resolve,reject) => {
     figlet('Atlas Power', function(err, data) {
       if (err) {
         console.log('Something went wrong...');
@@ -163,23 +164,42 @@ const menuWrite = () =>{
       }
       console.log(data);
       resolve();
-    })
-    .then(()=>{
-      console.log("*-----------------------------------------------*");
-      console.log("\n");
-      console.log("Welcome to Atlas Power BMS can interface CLI. Navigate through the options using your Keyboard. (Do you need help? Use --help option)");
-      console.log("\n");
-      console.log("*-----------------------------------------------*");
-      console.log("\n");
-      console.log("1 - Display BMS information");
-      console.log("\n");
-      console.log("2 - Send BMS configuration file");
-      console.log("\n");
-      console.log("3 - Create BMS configuration file");
-      console.log("\n");
-      resolve();
-    })
+    });
   })
+  .then(() =>{
+    console.log("*-----------------------------------------------*");
+    console.log("\n");
+    console.log("Welcome to Atlas Power BMS can interface CLI. Navigate through the options using your Keyboard. (Do you need help? Use --help option)");
+    console.log("\n");
+    console.log("*-----------------------------------------------*");
+    console.log("\n");
+    console.log("1 - Display BMS information");
+    console.log("\n");
+    console.log("2 - Send BMS configuration file");
+    console.log("\n");
+    console.log("3 - Create BMS configuration file");
+    console.log("\n");
+    resolve();
+  })
+  .then(() =>{
+    op.question('Enter an option: ', (answer) => {
+      // TODO: Log the answer in a database
+      switch(answer){
+        case "1":
+          op.close();
+          console.log(1);
+          infoDisplay();
+          break;
+        case "2":
+          console.log(2);
+          break;
+        case "3":
+          console.log(3);
+          createConfigJSON();
+          break;
+      }
+    });
+  });
 }
 
 
