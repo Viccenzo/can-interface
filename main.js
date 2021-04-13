@@ -153,7 +153,7 @@ try{
 
 
 
-const main = () =>{
+const main = async() => {
   const op = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -167,8 +167,6 @@ const main = () =>{
 // create can chanell
 var channel = can.createRawChannel("can0", true);
 
-console.clear();
-await menuWrite();
 /*
 const cliWrite = 
   new Promise((resolve,reject) => {
@@ -226,7 +224,7 @@ function createConfigJSON(){
 */
 
 // write ap function
-const menuWrite = async() =>{
+const menuWrite = () =>{
   figlet('Atlas Power', function(err, data) {
     if (err) {
       console.log('Something went wrong...');
