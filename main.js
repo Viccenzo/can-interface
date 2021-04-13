@@ -80,6 +80,25 @@ var upMsg;
 const custoKwhFP = 0.3;
 const custoKwhP = 1.2;
 
+// BMS configuration variables
+
+var N_CHANNELS;
+var N_THERMISTORS;
+var OVERVOLTAGE;
+var UNDERVOLTAGE;
+var SHORTCIRCUIT_VALUE;
+var OVERCURRENT_VALUE;
+var OVERTEMPERATURE;
+var GAIN_I_SENSE;
+var dVolt;
+var LOWVOLTAGE;
+var HIGHVOLTAGE;
+var CANCHARGEVOLTAGE;
+var CHARGEDVOLTAGE;
+var OVERVOLTAGE_HISTERESYS;
+var DELAY_HISTERESYS;
+var BALANCE;
+
 // file load
 
 /*
@@ -167,6 +186,8 @@ const cliWrite =
     console.log("\n");
     console.log("2 - (EN - Sendo BMS configuration file)\/(PT - Mandar arquivo de configuração do BMS)");
     console.log("\n");
+    console.log("3 - (EN - Create BMS configuration file)\/(PT - Criar um arquivo de configuração do BMS)");
+    console.log("\n");
     resolve();
   })
   .then(() =>{
@@ -183,12 +204,37 @@ const cliWrite =
           break;
         case "3":
           console.log(3);
+          createConfigJSON();
           break;
       }
-      op.close();
     });
   });
 
+
+function createConfigJSON(){
+  return Promise.resolve()
+    .then({
+      op.question('Enter an option / Escolha uma opção: ', (answer) => {
+        N_CHANNELS = answer;
+        console.log N_CHANNELS;
+      }
+    })
+    .then{(
+      op.question('Enter an option / Escolha uma opção: ', (answer) => {
+        N_CHANNELS = answer;
+        console.log N_CHANNELS;
+      }
+    )}
+    
+    
+  })
+  .then({
+    op.question('Enter an option / Escolha uma opção: ', (answer) => {
+    }
+  })
+
+  
+}
 
 function infoDisplay(){
 
