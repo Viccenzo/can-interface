@@ -101,7 +101,7 @@ var balance;
 
 // Console read variable
 
-const op
+var op;
 
 /*
 try{
