@@ -176,22 +176,20 @@ const cliWrite =
   .then(() =>{
     console.log("*-----------------------------------------------*");
     console.log("\n");
-    console.log("EN - Welcome to Atlas Power BMS can interface CLI. Navigate through the options using your Keyboard. (Do you need help? Use --help option)");
-    console.log("\n");
-    console.log("PT - Bem vindo a interface CLI do BMS Atlas Power. Utilize o teclado para navegar pelas opções. (Precisa de ajuda? use a opção --help)");
+    console.log("Welcome to Atlas Power BMS can interface CLI. Navigate through the options using your Keyboard. (Do you need help? Use --help option)");
     console.log("\n");
     console.log("*-----------------------------------------------*");
     console.log("\n");
-    console.log("1 - (EN - Display BMS information)\/(PT - Mostrar informações do BMS)");
+    console.log("1 - Display BMS information");
     console.log("\n");
-    console.log("2 - (EN - Sendo BMS configuration file)\/(PT - Mandar arquivo de configuração do BMS)");
+    console.log("2 - EN - Sendo BMS configuration file");
     console.log("\n");
-    console.log("3 - (EN - Create BMS configuration file)\/(PT - Criar um arquivo de configuração do BMS)");
+    console.log("3 - EN - Create BMS configuration file");
     console.log("\n");
     resolve();
   })
   .then(() =>{
-    op.question('Enter an option / Escolha uma opção: ', (answer) => {
+    op.question('Enter an option: ', (answer) => {
       // TODO: Log the answer in a database
       switch(answer){
         case "1":
@@ -214,7 +212,7 @@ const cliWrite =
 function createConfigJSON(){
   return Promise.resolve()
     .then(
-      op.question('Enter an option / Escolha uma opção: ', (answer) => {
+      op.question('Number of battery in series', (answer) => {
         numberOfChannels = answer;
         console.log("numberOfChannels: " + numberOfChannels);
       })
