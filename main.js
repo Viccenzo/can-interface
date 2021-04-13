@@ -226,8 +226,12 @@ function createConfigJSON(){
       })
     })
   }
-  await question1();
-  await question2();
+  form();
+}
+
+const form = async() => {
+  await question1()
+  await question2()
 }
 
 function infoDisplay(){
