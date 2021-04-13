@@ -181,9 +181,9 @@ const cliWrite =
     console.log("\n");
     console.log("1 - Display BMS information");
     console.log("\n");
-    console.log("2 - EN - Sendo BMS configuration file");
+    console.log("2 - Send BMS configuration file");
     console.log("\n");
-    console.log("3 - EN - Create BMS configuration file");
+    console.log("3 - Create BMS configuration file");
     console.log("\n");
     resolve();
   })
