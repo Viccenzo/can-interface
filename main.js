@@ -99,7 +99,9 @@ var overVoltageHisteresys;
 var delayHisteresys;
 var balance;
 
-// file load
+// Console read variable
+
+const op
 
 /*
 try{
@@ -205,7 +207,7 @@ async function decision(){
 
 
 const main = async () => {
-  const op = readline.createInterface({
+  op = readline.createInterface({
     input: process.stdin,
     output: process.stdout
   });
