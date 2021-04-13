@@ -225,29 +225,31 @@ function createConfigJSON(){
 
 // write ap function
 const menuWrite = () =>{
-  figlet('Atlas Power', function(err, data) {
-    if (err) {
-      console.log('Something went wrong...');
-      console.dir(err);
-      return;
-    }
-    console.log(data);
-    resolve();
-  })
-  .then(()=>{
-    console.log("*-----------------------------------------------*");
-    console.log("\n");
-    console.log("Welcome to Atlas Power BMS can interface CLI. Navigate through the options using your Keyboard. (Do you need help? Use --help option)");
-    console.log("\n");
-    console.log("*-----------------------------------------------*");
-    console.log("\n");
-    console.log("1 - Display BMS information");
-    console.log("\n");
-    console.log("2 - Send BMS configuration file");
-    console.log("\n");
-    console.log("3 - Create BMS configuration file");
-    console.log("\n");
-    resolve();
+  return new Promise((resolve, reject) => {
+    figlet('Atlas Power', function(err, data) {
+      if (err) {
+        console.log('Something went wrong...');
+        console.dir(err);
+        return;
+      }
+      console.log(data);
+      resolve();
+    })
+    .then(()=>{
+      console.log("*-----------------------------------------------*");
+      console.log("\n");
+      console.log("Welcome to Atlas Power BMS can interface CLI. Navigate through the options using your Keyboard. (Do you need help? Use --help option)");
+      console.log("\n");
+      console.log("*-----------------------------------------------*");
+      console.log("\n");
+      console.log("1 - Display BMS information");
+      console.log("\n");
+      console.log("2 - Send BMS configuration file");
+      console.log("\n");
+      console.log("3 - Create BMS configuration file");
+      console.log("\n");
+      resolve();
+    })
   })
 }
 
