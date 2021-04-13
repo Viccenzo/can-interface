@@ -270,13 +270,14 @@ const cliWrite =
   });
 
 
+
+*/
+
 function createConfigJSON(){
   console.log("teste");
   
   form();
 }
-*/
-
 
 // Variable input declaration 
 
