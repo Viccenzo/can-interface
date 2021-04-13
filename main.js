@@ -210,23 +210,25 @@ const cliWrite =
 
 function createConfigJSON(){
   console.log("teste");
-  const question1 = () => {
-    return new Promise((resolve, reject) => {
-      op.question('Number of cells in series:  ', (answer) => {
-        console.log('Number in series: ${answer}')
-        resolve()
-      })
-    })
-  }
-  const question2 = () => {
-    return new Promise((resolve, reject) => {
-      op.question('Number of cells in series:  ', (answer) => {
-        console.log('Number of Thermistor: ${answer}')
-        resolve()
-      })
-    })
-  }
+  
   form();
+}
+
+const question1 = () => {
+  return new Promise((resolve, reject) => {
+    op.question('Number of cells in series:  ', (answer) => {
+      console.log('Number in series: ${answer}')
+      resolve()
+    })
+  })
+}
+const question2 = () => {
+  return new Promise((resolve, reject) => {
+    op.question('Number of cells in series:  ', (answer) => {
+      console.log('Number of Thermistor: ${answer}')
+      resolve()
+    })
+  })
 }
 
 const form = async() => {
