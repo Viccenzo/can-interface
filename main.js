@@ -215,17 +215,19 @@ function createConfigJSON(){
       op.question('Number of battery in series', (answer) => {
         numberOfChannels = answer;
         console.log("numberOfChannels: " + numberOfChannels);
+        resolve();
       })
     )
     .then(
       op.question('Enter an option / Escolha uma opção: ', (answer) => {
         numberOfThermistors = answer;
         console.log("numberOfThermistors: " + numberOfChannels);
+        resolve();
       })
     )
     .then(
       op.question('Enter an option / Escolha uma opção: ', (answer) => {
-      
+        resolve();
       })
     )
 }
