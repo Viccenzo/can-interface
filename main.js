@@ -218,24 +218,166 @@ function createConfigJSON(){
 
 const question1 = () => {
   return new Promise((resolve, reject) => {
-    op.question('Number of cells in series:  ', (answer) => {
-      console.log('Number in series: ${answer}')
-      resolve()
+    op.question('Number of cells in series: ', (answer) => {
+      numberOfChannels = answer;
+      //console.log(`Number in series: ${answer}`)
+      resolve();
     })
   })
 }
 const question2 = () => {
   return new Promise((resolve, reject) => {
+    op.question('Number of cells in series: ', (answer) => {
+      numberOfThermistors = answer;
+      //console.log(`Number of Thermistor: ${answer}`)
+      resolve();
+    })
+  })
+}
+const question3 = () => {
+  return new Promise((resolve, reject) => {
+    op.question('Over Voltage: ', (answer) => {
+      overVoltage = answer;
+      //console.log(`Number of Thermistor: ${answer}`)
+      resolve();
+    })
+  })
+}
+const question4 = () => {
+  return new Promise((resolve, reject) => {
+    op.question('Number of cells in series: ', (answer) => {
+      underVoltage = answer;
+      //console.log(`Number of Thermistor: ${answer}`)
+      resolve();
+    })
+  })
+}
+const question5 = () => {
+  return new Promise((resolve, reject) => {
+    op.question('Number of cells in series: ', (answer) => {
+      shortCircuit = answer;
+      //console.log(`Number of Thermistor: ${answer}`)
+      resolve();
+    })
+  })
+}
+const question6 = () => {
+  return new Promise((resolve, reject) => {
     op.question('Number of cells in series:  ', (answer) => {
-      console.log(`Number of Thermistor: ${answer}`)
-      resolve()
+      overCurrent = answer;
+      //console.log(`Number of Thermistor: ${answer}`)
+      resolve();
+    })
+  })
+}
+const question7 = () => {
+  return new Promise((resolve, reject) => {
+    op.question('Number of cells in series:  ', (answer) => {
+      overTemperature = answer;
+      //console.log(`Number of Thermistor: ${answer}`)
+      resolve();
+    })
+  })
+}
+const question8 = () => {
+  return new Promise((resolve, reject) => {
+    op.question('Number of cells in series:  ', (answer) => {
+      gainCurrentSense = answer;
+      //console.log(`Number of Thermistor: ${answer}`)
+      resolve();
+    })
+  })
+}
+const question9 = () => {
+  return new Promise((resolve, reject) => {
+    op.question('Number of cells in series:  ', (answer) => {
+      deltaVoltage = answer;
+      //console.log(`Number of Thermistor: ${answer}`)
+      resolve();
+    })
+  })
+}
+const question10 = () => {
+  return new Promise((resolve, reject) => {
+    op.question('Number of cells in series:  ', (answer) => {
+      lowVoltage = answer;
+      //console.log(`Number of Thermistor: ${answer}`)
+      resolve();
+    })
+  })
+}
+const question11 = () => {
+  return new Promise((resolve, reject) => {
+    op.question('Number of cells in series:  ', (answer) => {
+      highVoltage = answer;
+      //console.log(`Number of Thermistor: ${answer}`)
+      resolve();
+    })
+  })
+}
+const question12 = () => {
+  return new Promise((resolve, reject) => {
+    op.question('Number of cells in series:  ', (answer) => {
+      canChargeVoltage = answer;
+      //console.log(`Number of Thermistor: ${answer}`)
+      resolve();
+    })
+  })
+}
+const question13 = () => {
+  return new Promise((resolve, reject) => {
+    op.question('Number of cells in series:  ', (answer) => {
+      chargedVoltage = answer;
+      //console.log(`Number of Thermistor: ${answer}`)
+      resolve();
+    })
+  })
+}
+const question14 = () => {
+  return new Promise((resolve, reject) => {
+    op.question('Number of cells in series:  ', (answer) => {
+      overVoltageHisteresys = answer;
+      //console.log(`Number of Thermistor: ${answer}`)
+      resolve();
+    })
+  })
+}
+const question15 = () => {
+  return new Promise((resolve, reject) => {
+    op.question('Number of cells in series:  ', (answer) => {
+      delayHisteresys = answer;
+      //console.log(`Number of Thermistor: ${answer}`)
+      resolve();
+    })
+  })
+}
+const question16 = () => {
+  return new Promise((resolve, reject) => {
+    op.question('Number of cells in series:  ', (answer) => {
+      balance = answer;
+      //console.log(`Number of Thermistor: ${answer}`)
+      resolve();
     })
   })
 }
 
 const form = async() => {
-  await question1()
-  await question2()
+  await question1();
+  await question2();
+  await question3();
+  await question4();
+  await question5();
+  await question6();
+  await question7();
+  await question8();
+  await question9();
+  await question10();
+  await question11();
+  await question12();
+  await question13();
+  await question14();
+  await question15();
+  await question16();
 }
 
 function infoDisplay(){
