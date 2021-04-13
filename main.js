@@ -155,7 +155,7 @@ try{
 
 
 // write ap function
-const menuWrite = async() => {
+async function menuWrite(){
   return new Promise((resolve,reject) => {
     figlet('Atlas Power', function(err, data) {
       if (err) {
