@@ -180,26 +180,27 @@ const menuWrite = async() => {
     console.log("\n");
     resolve();
   })
-  /*
-  .then(() =>{
-    op.question('Enter an option: ', (answer) => {
-      // TODO: Log the answer in a database
-      switch(answer){
-        case "1":
-          op.close();
-          console.log(1);
-          infoDisplay();
-          break;
-        case "2":
-          console.log(2);
-          break;
-        case "3":
-          console.log(3);
-          createConfigJSON();
-          break;
-      }
-    });
-  });*/
+  console.log("teste");
+}
+
+const decision = async() => {
+  op.question('Enter an option: ', (answer) => {
+    // TODO: Log the answer in a database
+    switch(answer){
+      case "1":
+        op.close();
+        console.log(1);
+        infoDisplay();
+        break;
+      case "2":
+        console.log(2);
+        break;
+      case "3":
+        console.log(3);
+        createConfigJSON();
+        break;
+    }
+  });
 }
 
 
@@ -210,7 +211,7 @@ const main = async () => {
   });
   console.clear();
   await menuWrite();
-
+  await decision();
 }
 
 main();
