@@ -214,6 +214,8 @@ function createConfigJSON(){
   form();
 }
 
+// Variable input declaration 
+
 const question1 = () => {
   return new Promise((resolve, reject) => {
     op.question('Number of cells in series:  ', (answer) => {
@@ -225,7 +227,7 @@ const question1 = () => {
 const question2 = () => {
   return new Promise((resolve, reject) => {
     op.question('Number of cells in series:  ', (answer) => {
-      console.log('Number of Thermistor: ${answer}')
+      console.log(`Number of Thermistor: ${answer}`)
       resolve()
     })
   })
