@@ -226,6 +226,8 @@ function createConfigJSON(){
       })
     })
   }
+  await question1();
+  await question2();
 }
 
 function infoDisplay(){
