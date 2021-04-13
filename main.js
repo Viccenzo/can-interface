@@ -151,7 +151,7 @@ try{
 }
 */
 
-
+main();
 
 const main = async() => {
   const op = readline.createInterface({
@@ -159,7 +159,6 @@ const main = async() => {
     output: process.stdout
   });
   console.clear();
-  
   await menuWrite();
 
 }
