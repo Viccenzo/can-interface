@@ -151,9 +151,10 @@ try{
 }
 */
 
-main();
 
-const main = async() => {
+
+
+const main = async () => {
   const op = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -162,6 +163,8 @@ const main = async() => {
   await menuWrite();
 
 }
+
+main()
 
 // create can chanell
 var channel = can.createRawChannel("can0", true);
