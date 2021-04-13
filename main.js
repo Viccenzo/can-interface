@@ -136,8 +136,7 @@ catch(err){
 //let valueEnergySell = 0;
 //let energyBuy = 0;
 //let energySell = 0;
-// create can chanell
-var channel = can.createRawChannel("can0", true);
+
 
 // create mqtt client
 //var client = mqtt.connect('mqtt://'+THINGSBOARD_HOST,{username: ACCESS_TOKEN});
@@ -154,12 +153,23 @@ try{
 
 
 
-const op = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+const main = () =>{
+  const op = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+  console.clear();
+  
+  await menuWrite();
+
+}
+
+// create can chanell
+var channel = can.createRawChannel("can0", true);
 
 console.clear();
+await menuWrite();
+/*
 const cliWrite = 
   new Promise((resolve,reject) => {
     figlet('Atlas Power', function(err, data) {
@@ -213,6 +223,36 @@ function createConfigJSON(){
   
   form();
 }
+*/
+
+// write ap function
+const menuWrite = async() =>{
+  figlet('Atlas Power', function(err, data) {
+    if (err) {
+      console.log('Something went wrong...');
+      console.dir(err);
+      return;
+    }
+    console.log(data);
+    resolve();
+  })
+  .then(()=>{
+    console.log("*-----------------------------------------------*");
+    console.log("\n");
+    console.log("Welcome to Atlas Power BMS can interface CLI. Navigate through the options using your Keyboard. (Do you need help? Use --help option)");
+    console.log("\n");
+    console.log("*-----------------------------------------------*");
+    console.log("\n");
+    console.log("1 - Display BMS information");
+    console.log("\n");
+    console.log("2 - Send BMS configuration file");
+    console.log("\n");
+    console.log("3 - Create BMS configuration file");
+    console.log("\n");
+    resolve();
+  })
+}
+
 
 // Variable input declaration 
 
