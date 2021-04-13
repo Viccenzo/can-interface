@@ -183,7 +183,7 @@ const menuWrite = async() => {
   console.log("teste");
 }
 
-const decision = async() => {
+async function decision(){
   op.question('Enter an option: ', (answer) => {
     // TODO: Log the answer in a database
     switch(answer){
