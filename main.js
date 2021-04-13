@@ -227,7 +227,7 @@ const question1 = () => {
 }
 const question2 = () => {
   return new Promise((resolve, reject) => {
-    op.question('Number of cells in series: ', (answer) => {
+    op.question('Number of termistors: ', (answer) => {
       numberOfThermistors = answer;
       //console.log(`Number of Thermistor: ${answer}`)
       resolve();
@@ -245,7 +245,7 @@ const question3 = () => {
 }
 const question4 = () => {
   return new Promise((resolve, reject) => {
-    op.question('Number of cells in series: ', (answer) => {
+    op.question('Under Voltage: ', (answer) => {
       underVoltage = answer;
       //console.log(`Number of Thermistor: ${answer}`)
       resolve();
@@ -254,7 +254,7 @@ const question4 = () => {
 }
 const question5 = () => {
   return new Promise((resolve, reject) => {
-    op.question('Number of cells in series: ', (answer) => {
+    op.question('Short circuit current: ', (answer) => {
       shortCircuit = answer;
       //console.log(`Number of Thermistor: ${answer}`)
       resolve();
@@ -263,7 +263,7 @@ const question5 = () => {
 }
 const question6 = () => {
   return new Promise((resolve, reject) => {
-    op.question('Number of cells in series:  ', (answer) => {
+    op.question('Over current:  ', (answer) => {
       overCurrent = answer;
       //console.log(`Number of Thermistor: ${answer}`)
       resolve();
@@ -272,7 +272,7 @@ const question6 = () => {
 }
 const question7 = () => {
   return new Promise((resolve, reject) => {
-    op.question('Number of cells in series:  ', (answer) => {
+    op.question('Over temperature: ', (answer) => {
       overTemperature = answer;
       //console.log(`Number of Thermistor: ${answer}`)
       resolve();
@@ -281,7 +281,7 @@ const question7 = () => {
 }
 const question8 = () => {
   return new Promise((resolve, reject) => {
-    op.question('Number of cells in series:  ', (answer) => {
+    op.question('Current sensor gain: ', (answer) => {
       gainCurrentSense = answer;
       //console.log(`Number of Thermistor: ${answer}`)
       resolve();
@@ -290,7 +290,7 @@ const question8 = () => {
 }
 const question9 = () => {
   return new Promise((resolve, reject) => {
-    op.question('Number of cells in series:  ', (answer) => {
+    op.question('Max balance delta voltage: ', (answer) => {
       deltaVoltage = answer;
       //console.log(`Number of Thermistor: ${answer}`)
       resolve();
@@ -299,7 +299,7 @@ const question9 = () => {
 }
 const question10 = () => {
   return new Promise((resolve, reject) => {
-    op.question('Number of cells in series:  ', (answer) => {
+    op.question('Low voltage: ', (answer) => {
       lowVoltage = answer;
       //console.log(`Number of Thermistor: ${answer}`)
       resolve();
@@ -308,7 +308,7 @@ const question10 = () => {
 }
 const question11 = () => {
   return new Promise((resolve, reject) => {
-    op.question('Number of cells in series:  ', (answer) => {
+    op.question('High voltage: ', (answer) => {
       highVoltage = answer;
       //console.log(`Number of Thermistor: ${answer}`)
       resolve();
@@ -317,7 +317,7 @@ const question11 = () => {
 }
 const question12 = () => {
   return new Promise((resolve, reject) => {
-    op.question('Number of cells in series:  ', (answer) => {
+    op.question('Charge voltage enable: ', (answer) => {
       canChargeVoltage = answer;
       //console.log(`Number of Thermistor: ${answer}`)
       resolve();
@@ -326,7 +326,7 @@ const question12 = () => {
 }
 const question13 = () => {
   return new Promise((resolve, reject) => {
-    op.question('Number of cells in series:  ', (answer) => {
+    op.question('Charged voltage: ', (answer) => {
       chargedVoltage = answer;
       //console.log(`Number of Thermistor: ${answer}`)
       resolve();
@@ -335,7 +335,7 @@ const question13 = () => {
 }
 const question14 = () => {
   return new Promise((resolve, reject) => {
-    op.question('Number of cells in series:  ', (answer) => {
+    op.question('Over voltage histeresys ', (answer) => {
       overVoltageHisteresys = answer;
       //console.log(`Number of Thermistor: ${answer}`)
       resolve();
@@ -344,7 +344,7 @@ const question14 = () => {
 }
 const question15 = () => {
   return new Promise((resolve, reject) => {
-    op.question('Number of cells in series:  ', (answer) => {
+    op.question('Delay histeresys: ', (answer) => {
       delayHisteresys = answer;
       //console.log(`Number of Thermistor: ${answer}`)
       resolve();
@@ -353,7 +353,7 @@ const question15 = () => {
 }
 const question16 = () => {
   return new Promise((resolve, reject) => {
-    op.question('Number of cells in series:  ', (answer) => {
+    op.question('Balance: ', (answer) => {
       balance = answer;
       //console.log(`Number of Thermistor: ${answer}`)
       resolve();
