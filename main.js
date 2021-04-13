@@ -159,7 +159,6 @@ const op = readline.createInterface({
   output: process.stdout
 });
 
-
 console.clear();
 const cliWrite = 
   new Promise((resolve,reject) => {
@@ -210,6 +209,7 @@ const cliWrite =
 
 
 function createConfigJSON(){
+  console.log("teste");
   const question1 = () => {
     return new Promise((resolve, reject) => {
       op.question('Number of cells in series:  ', (answer) => {
