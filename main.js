@@ -153,9 +153,8 @@ try{
 
 
 // write ap function
-const menuWrite = () =>{
-  const cliWrite = 
-  new Promise((resolve,reject) => {
+const menuWrite = async() => {
+  return new Promise((resolve,reject) => {
     figlet('Atlas Power', function(err, data) {
       if (err) {
         console.log('Something went wrong...');
@@ -181,6 +180,7 @@ const menuWrite = () =>{
     console.log("\n");
     resolve();
   })
+  /*
   .then(() =>{
     op.question('Enter an option: ', (answer) => {
       // TODO: Log the answer in a database
@@ -199,7 +199,7 @@ const menuWrite = () =>{
           break;
       }
     });
-  });
+  });*/
 }
 
 
