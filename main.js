@@ -82,22 +82,22 @@ const custoKwhP = 1.2;
 
 // BMS configuration variables
 
-var N_CHANNELS;
-var N_THERMISTORS;
-var OVERVOLTAGE;
-var UNDERVOLTAGE;
-var SHORTCIRCUIT_VALUE;
-var OVERCURRENT_VALUE;
-var OVERTEMPERATURE;
-var GAIN_I_SENSE;
-var dVolt;
-var LOWVOLTAGE;
-var HIGHVOLTAGE;
-var CANCHARGEVOLTAGE;
-var CHARGEDVOLTAGE;
-var OVERVOLTAGE_HISTERESYS;
-var DELAY_HISTERESYS;
-var BALANCE;
+var numberOfChannels;
+var numberOfThermistors;
+var overVoltage;
+var underVoltage;
+var shortCircuit;
+var overCurrent;
+var overTemperature;
+var gainCurrentSense;
+var deltaVoltage;
+var lowVoltage;
+var highVoltage;
+var canChargeVoltage;
+var chargedVoltage;
+var overVoltageHisteresys;
+var delayHisteresys;
+var balance;
 
 // file load
 
@@ -213,27 +213,23 @@ const cliWrite =
 
 function createConfigJSON(){
   return Promise.resolve()
-    .then({
+    .then(
       op.question('Enter an option / Escolha uma opção: ', (answer) => {
-        N_CHANNELS = answer;
-        console.log N_CHANNELS;
-      }
-    })
-    .then{(
+        numberOfChannels = answer;
+        console.log("numberOfChannels: " + numberOfChannels);
+      })
+    )
+    .then(
       op.question('Enter an option / Escolha uma opção: ', (answer) => {
-        N_CHANNELS = answer;
-        console.log N_CHANNELS;
-      }
-    )}
-    
-    
-  })
-  .then({
-    op.question('Enter an option / Escolha uma opção: ', (answer) => {
-    }
-  })
-
-  
+        numberOfThermistors = answer;
+        console.log("numberOfThermistors: " + numberOfChannels);
+      })
+    )
+    .then(
+      op.question('Enter an option / Escolha uma opção: ', (answer) => {
+      
+      })
+    )
 }
 
 function infoDisplay(){
