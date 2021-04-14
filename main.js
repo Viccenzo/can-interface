@@ -211,7 +211,7 @@ async function decision(){
           //console.log(3);
           //await createConfigJSON();
           console.log("olar")
-          resolve();
+          return 3;
           //break;
       }
     });
@@ -230,8 +230,10 @@ async function main() {
   //.then(await decision())
   //.then(console.log("success"))
   (await decision())
-  .then(()=>{
-    console.log(wait)
+  .then(retorno=>{
+    console.log(retorno);
+  },()=>{
+    console.log("fdp");
   })
   
   //.then(decision())
