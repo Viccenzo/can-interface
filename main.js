@@ -182,6 +182,7 @@ async function menuWrite(){
     console.log("\n");
     console.log("3 - Create BMS configuration file");
     console.log("\n");
+    return 0
   })
 }
 
