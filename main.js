@@ -227,8 +227,11 @@ async function main() {
   //(await menuWrite())
   //.then(await decision())
   //.then(console.log("success"))
-  wait =  decision()
-  console.log(wait)
+  (await decision())
+  .then(()=>{
+    console.log(wait)
+  })
+  
   //.then(decision())
   //.then(console.log("sucess"))
 
