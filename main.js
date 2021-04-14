@@ -280,7 +280,7 @@ const cliWrite =
 */
 
 async function createConfigJSON(){
-  return new Promise((resolve,reject){
+  return new Promise((resolve,reject) => {
     console.log("teste");
     await form();
     resolve();
