@@ -211,7 +211,7 @@ async function decision(){
           //console.log(3);
           //await createConfigJSON();
           console.log("olar")
-          return 3;
+          resolve();
           //break;
       }
     });
