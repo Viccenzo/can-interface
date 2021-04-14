@@ -280,8 +280,11 @@ const cliWrite =
 */
 
 async function createConfigJSON(){
-  console.log("teste");
-  form();
+  return new Promise((resolve,reject){
+    console.log("teste");
+    await form();
+    resolve();
+  })
 }
 
 // Variable input declaration 
@@ -431,7 +434,7 @@ const question16 = () => {
   })
 }
 
-const form = async() => {
+async function form(){
   await question1();
   await question2();
   await question3();
@@ -448,6 +451,7 @@ const form = async() => {
   await question14();
   await question15();
   await question16();
+  resolve();
 }
 
 function infoDisplay(){
