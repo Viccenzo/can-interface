@@ -193,54 +193,22 @@ async function createConfigJSON(){
 
 async function decision(){
   op.question('Enter an option: ', (answer) => {
-    const promises = (async (answer) => {
-      switch (answer) {
-        case '1':
-          op.close();
-          console.log(1);
-          infoDisplay();
-          resolve();
-        case '2':
-          const secondPromise = await asyncCallNumber2()
-          return secondPromise
-        case '3':
-          console.log(3);
-          await createConfigJSON();
-          resolve();
-
-        default:
-          resolve();
-      } 
-    })
-  })
-  const data = await Promise.all(promises)
-  return data
-/*
-const data = await Promise.all(promises)
-return data
-  
-  return new Promise ((resolve,reject)=>{
-    op.question('Enter an option: ', (answer) => {
-      // TODO: Log the answer in a database
-      switch(answer){
-        case "1":
-          op.close();
-          console.log(1);
-          infoDisplay();
-          resolve();
-          break;
-        case "2":
-          console.log(2);
-          resolve();
-          break;
-        case "3":
-          console.log(3);
-          await createConfigJSON();
-          resolve();
-          break;
-      }
-    });
-  })  */
+    // TODO: Log the answer in a database
+    switch(answer){
+      case "1":
+        console.log(1);
+        resolve(1);
+        break;
+      case "2":
+        console.log(2);
+        resolve(2);
+        break;
+      case "3":
+        console.log(3);
+        resolve(2);
+        break;
+    }
+  });
 }
 
 
