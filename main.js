@@ -185,6 +185,12 @@ async function menuWrite(){
   console.log("teste");
 }
 
+async function createConfigJSON(){
+  console.log("teste");
+  await form();
+  resolve();
+}
+
 async function decision(){
   return new Promise ((resolve,reject)=>{
     op.question('Enter an option: ', (answer) => {
@@ -209,6 +215,7 @@ async function decision(){
     });
   })  
 }
+
 
 
 async function main() {
@@ -278,12 +285,6 @@ const cliWrite =
 
 
 */
-
-function createConfigJSON(){
-  console.log("teste");
-  await form();
-  resolve();
-}
 
 // Variable input declaration 
 
