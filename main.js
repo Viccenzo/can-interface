@@ -215,7 +215,10 @@ async function decision(){
           //break;
       }
     });
-  })  
+  })
+  .then(() =>{
+    return answer;
+  })
 }
 
 
