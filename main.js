@@ -225,7 +225,8 @@ async function main() {
     output: process.stdout
   });
   console.clear();
-  console.log(await menuWrite());
+  await menuWrite()
+  .then(await decision())
   //.then(decision())
   //.then(console.log("sucess"))
 
