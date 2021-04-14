@@ -194,17 +194,21 @@ async function createConfigJSON(){
 async function decision(){
   const promises = await Object.keys(myObject).map(async (k) => {
     switch (k) {
-        case '1':
-            const firstPromise = await asyncCallNumber1()
-            return firstPromise
-        case '2':
-            const secondPromise = await asyncCallNumber2()
-            return secondPromise
-        case '3':
-            const thirdPromise = await asyncCallNumber3()
-            return thirdPromise
-        default:
-            return
+      case '1':
+        op.close();
+        console.log(1);
+        infoDisplay();
+        resolve();
+      case '2':
+        const secondPromise = await asyncCallNumber2()
+        return secondPromise
+      case '3':
+        console.log(3);
+        await createConfigJSON();
+        resolve();
+
+      default:
+        return
     } 
   })
   const data = await Promise.all(promises)
