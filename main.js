@@ -226,8 +226,8 @@ async function main() {
   console.clear();
   await menuWrite();
   decision()
-  .then(() =>{
-    console.log("teste");
+  .then((data) =>{
+    console.log(data);
   })
   //main();
 }
