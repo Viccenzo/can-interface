@@ -163,7 +163,7 @@ async function menuWrite(){
       if (err) {
         console.log('Something went wrong...');
         console.dir(err);
-        return -1;
+        return -1
       }
       console.log(data);
       resolve();
@@ -182,9 +182,7 @@ async function menuWrite(){
     console.log("\n");
     console.log("3 - Create BMS configuration file");
     console.log("\n");
-    return 0;
   })
-  console.log("teste");
 }
 
 async function createConfigJSON(){
@@ -226,7 +224,7 @@ async function main() {
     output: process.stdout
   });
   console.clear();
-  console.log(menuWrite());
+  console.log(await menuWrite());
   //.then(decision())
   //.then(console.log("sucess"))
 
