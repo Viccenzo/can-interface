@@ -166,6 +166,7 @@ async function menuWrite(){
         return;
       }
       console.log(data);
+      resolve();
     });
   })
   .then(() =>{
@@ -181,7 +182,6 @@ async function menuWrite(){
     console.log("\n");
     console.log("3 - Create BMS configuration file");
     console.log("\n");
-    resolve();
   })
   console.log("teste");
 }
@@ -225,7 +225,7 @@ async function main() {
     output: process.stdout
   });
   console.clear();
-  menuWrite()
+  await menuWrite()
   .then(decision())
   .then(console.log("sucess"))
 
