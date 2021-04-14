@@ -224,8 +224,10 @@ async function main() {
     output: process.stdout
   });
   console.clear();
-  await menuWrite();
-  decision()
+  menuWrite();
+  .then(() => {
+    decision();
+  })
   .then((data) =>{
     console.log(data);
   })
