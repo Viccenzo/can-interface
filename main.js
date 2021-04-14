@@ -227,7 +227,7 @@ async function main() {
   console.clear();
   (await menuWrite())
   .then(await decision())
-  .then(console.log("success"))
+  //.then(console.log("success"))
   //.then(decision())
   //.then(console.log("sucess"))
   //main();
