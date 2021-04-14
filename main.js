@@ -166,7 +166,6 @@ async function menuWrite(){
         return;
       }
       console.log(data);
-      resolve();
     });
   })
   .then(() =>{
