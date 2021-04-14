@@ -193,7 +193,7 @@ async function createConfigJSON(){
 
 async function decision(){
   op.question('Enter an option: ', (answer) => {
-    const promises = (async (k) => {
+    const promises = (async (answer) => {
       switch (k) {
         case '1':
           op.close();
@@ -209,7 +209,7 @@ async function decision(){
           resolve();
 
         default:
-          return
+          resolve();
       } 
     })
   })
