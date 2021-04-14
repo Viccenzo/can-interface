@@ -193,28 +193,28 @@ async function createConfigJSON(){
 }
 
 async function decision(){
-  return new Promise ((resolve,reject)=>{
-    op.question('Enter an option: ', (answer) => {
-      // TODO: Log the answer in a database
-      switch(answer){
-        case "1":
-          //op.close();
-          //console.log(1);
-          //infoDisplay();
-          resolve(1);
-          //break;
-        case "2":
-          //console.log(2);
-          resolve(2);
-          //break;
-        case "3":
-          //console.log(3);
-          //await createConfigJSON();
-          resolve(3);
-          //break;
-      }
-    });
-  })  
+  op.question('Enter an option: ', (answer) => {
+    // TODO: Log the answer in a database
+    switch(answer){
+      case "1":
+        //op.close();
+        //console.log(1);
+        //infoDisplay();
+        return 0
+        //break;
+      case "2":
+        //console.log(2);
+        return 0
+        //break;
+      case "3":
+        //console.log(3);
+        //await createConfigJSON();
+        return 0
+        //break;
+      default:
+        return -1
+    }
+  });
 }
 
 
@@ -230,8 +230,6 @@ async function main() {
   .then(console.log("success"))
   //.then(decision())
   //.then(console.log("sucess"))
-
-
   //main();
 }
 
