@@ -226,7 +226,7 @@ async function main() {
     output: process.stdout
   });
   console.clear();
-  menuWrite();
+  wait = menuWrite();
   wait.then( 
     wait = decision()
   );
