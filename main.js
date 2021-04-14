@@ -192,24 +192,26 @@ async function createConfigJSON(){
 }
 
 async function decision(){
-  const promises = (async (k) => {
-    switch (k) {
-      case '1':
-        op.close();
-        console.log(1);
-        infoDisplay();
-        resolve();
-      case '2':
-        const secondPromise = await asyncCallNumber2()
-        return secondPromise
-      case '3':
-        console.log(3);
-        await createConfigJSON();
-        resolve();
+  op.question('Enter an option: ', (answer) => {
+    const promises = (async (k) => {
+      switch (k) {
+        case '1':
+          op.close();
+          console.log(1);
+          infoDisplay();
+          resolve();
+        case '2':
+          const secondPromise = await asyncCallNumber2()
+          return secondPromise
+        case '3':
+          console.log(3);
+          await createConfigJSON();
+          resolve();
 
-      default:
-        return
-    } 
+        default:
+          return
+      } 
+    })
   })
   const data = await Promise.all(promises)
   return data
