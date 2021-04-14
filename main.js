@@ -210,6 +210,7 @@ async function decision(){
         case "3":
           //console.log(3);
           //await createConfigJSON();
+          console.log("olar")
           return 3;
           resolve(3);
           //break;
