@@ -226,11 +226,10 @@ async function main() {
     output: process.stdout
   });
   console.clear();
-  wait = menuWrite();
-  wait.then( 
-    wait = decision()
-  );
-  //console.log(data);
+  menuWrite()
+  .then( => decision())
+  .then(console.log("sucess"))
+
 
   //main();
 }
