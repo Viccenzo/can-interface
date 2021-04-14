@@ -197,20 +197,20 @@ async function decision(){
       // TODO: Log the answer in a database
       switch(answer){
         case "1":
-          op.close();
-          console.log(1);
-          infoDisplay();
-          resolve();
-          break;
+          //op.close();
+          //console.log(1);
+          //infoDisplay();
+          resolve(1);
+          //break;
         case "2":
-          console.log(2);
-          resolve();
-          break;
+          //console.log(2);
+          resolve(2);
+          //break;
         case "3":
-          console.log(3);
-          await createConfigJSON();
-          resolve();
-          break;
+          //console.log(3);
+          //await createConfigJSON();
+          resolve(3);
+          //break;
       }
     });
   })  
@@ -225,8 +225,11 @@ async function main() {
   });
   console.clear();
   await menuWrite();
-  await decision();
-  main();
+  decision()
+  .then(() =>{
+    console.log("teste");
+  })
+  //main();
 }
 
 main();
