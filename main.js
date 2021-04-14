@@ -186,23 +186,28 @@ async function menuWrite(){
 }
 
 async function decision(){
-  op.question('Enter an option: ', (answer) => {
-    // TODO: Log the answer in a database
-    switch(answer){
-      case "1":
-        op.close();
-        console.log(1);
-        infoDisplay();
-        break;
-      case "2":
-        console.log(2);
-        break;
-      case "3":
-        console.log(3);
-        createConfigJSON();
-        break;
-    }
-  });
+  return new Promise ((resolve,reject)=>{
+    op.question('Enter an option: ', (answer) => {
+      // TODO: Log the answer in a database
+      switch(answer){
+        case "1":
+          op.close();
+          console.log(1);
+          infoDisplay();
+          resolve();
+          break;
+        case "2":
+          console.log(2);
+          resolve();
+          break;
+        case "3":
+          console.log(3);
+          await createConfigJSON();
+          resolve();
+          break;
+      }
+    });
+  })  
 }
 
 
@@ -274,9 +279,8 @@ const cliWrite =
 
 */
 
-function createConfigJSON(){
+async function createConfigJSON(){
   console.log("teste");
-  
   form();
 }
 
