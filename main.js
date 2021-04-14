@@ -224,13 +224,12 @@ async function main() {
     output: process.stdout
   });
   console.clear();
-  menuWrite()
-  .then(() => {
-    decision();
-  })
-  .then((data) =>{
-    console.log(data);
-  })
+  menuWrite();
+  wait.then( 
+    wait = decision()
+  );
+  //console.log(data);
+
   //main();
 }
 
