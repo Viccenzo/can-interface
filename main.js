@@ -103,6 +103,8 @@ var balance;
 
 var op;
 
+var wait;
+
 /*
 try{
   data = fs.readFileSync('./config.json');
