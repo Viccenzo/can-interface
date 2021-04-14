@@ -231,6 +231,7 @@ async function main() {
   //.then(console.log("success"))
   (await decision())
   .then(console.log("ahasdiuashd"))
+  console.log("jesus");
   //.then(decision())
   //.then(console.log("sucess"))
 
