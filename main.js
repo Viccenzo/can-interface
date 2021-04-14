@@ -192,6 +192,27 @@ async function createConfigJSON(){
 }
 
 async function decision(){
+  const promises = await Object.keys(myObject).map(async (k) => {
+    switch (k) {
+        case '1':
+            const firstPromise = await asyncCallNumber1()
+            return firstPromise
+        case '2':
+            const secondPromise = await asyncCallNumber2()
+            return secondPromise
+        case '3':
+            const thirdPromise = await asyncCallNumber3()
+            return thirdPromise
+        default:
+            return
+    } 
+  })
+  const data = await Promise.all(promises)
+  return data
+/*
+const data = await Promise.all(promises)
+return data
+  
   return new Promise ((resolve,reject)=>{
     op.question('Enter an option: ', (answer) => {
       // TODO: Log the answer in a database
@@ -213,7 +234,7 @@ async function decision(){
           break;
       }
     });
-  })  
+  })  */
 }
 
 
