@@ -192,7 +192,7 @@ async function createConfigJSON(){
 }
 
 async function decision(){
-  const promises = await Object.keys().map(async (k) => {
+  const promises = (async (k) => {
     switch (k) {
       case '1':
         op.close();
