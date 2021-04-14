@@ -227,9 +227,8 @@ async function main() {
   //(await menuWrite())
   //.then(await decision())
   //.then(console.log("success"))
-  (await decision())
-  .then(console.log("ahasdiuashd"))
-  console.log("jesus");
+  wait =  decision()
+  console.log(wait)
   //.then(decision())
   //.then(console.log("sucess"))
 
