@@ -210,7 +210,7 @@ async function decision(){
         case "3":
           //console.log(3);
           //await createConfigJSON();
-          console.log("olar")
+          //console.log("olar")
           return 3;
           //break;
       }
@@ -233,7 +233,7 @@ async function main() {
   .then(retorno=>{
     console.log(retorno);
   },()=>{
-    console.log("fdp");
+    console.log("qqmerda");
   })
   
   //.then(decision())
