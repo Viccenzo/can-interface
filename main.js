@@ -279,12 +279,10 @@ const cliWrite =
 
 */
 
-async function createConfigJSON(){
-  return new Promise((resolve,reject) => {
-    console.log("teste");
-    await form();
-    resolve();
-  })
+function createConfigJSON(){
+  console.log("teste");
+  await form();
+  resolve();
 }
 
 // Variable input declaration 
