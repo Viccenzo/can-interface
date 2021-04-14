@@ -211,7 +211,7 @@ async function decision(){
 }
 
 
-const main = async () => {
+async function main() {
   op = readline.createInterface({
     input: process.stdin,
     output: process.stdout
