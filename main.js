@@ -212,7 +212,6 @@ async function decision(){
           //await createConfigJSON();
           console.log("olar")
           return 3;
-          resolve(3);
           //break;
       }
     });
@@ -227,9 +226,11 @@ async function main() {
     output: process.stdout
   });
   console.clear();
-  (await menuWrite())
-  .then(await decision())
-  .then(console.log("success"))
+  //(await menuWrite())
+  //.then(await decision())
+  //.then(console.log("success"))
+  (await decision())
+  .then(console.log("ahasdiuashd"))
   //.then(decision())
   //.then(console.log("sucess"))
 
