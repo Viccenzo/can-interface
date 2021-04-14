@@ -214,6 +214,7 @@ const main = async () => {
   console.clear();
   await menuWrite();
   await decision();
+  main();
 }
 
 main();
