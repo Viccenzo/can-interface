@@ -200,7 +200,7 @@ async function decision(){
         case "1":
           //op.close();
           //console.log(1);
-          //infoDisplay();
+          await infoDisplay();
           resolve(1);
           //break;
         case "2":
@@ -227,14 +227,10 @@ main();
 
 async function main() {
   console.clear();
-  await menuWrite()
-  await decision()
+  await menuWrite();
+  await decision();
   main();
-
 }
-
-// create can chanell
-//var channel = can.createRawChannel("can0", true);
 
 /*
 const cliWrite = 
@@ -455,7 +451,7 @@ async function form(){
   resolve();
 }
 
-function infoDisplay(){
+async function infoDisplay(){
 
   // create can chanell
   var channel = can.createRawChannel("can0", true);
@@ -488,7 +484,12 @@ function infoDisplay(){
 
   // define periodic function
   console.log("Starting program");
-  let timeOut = setInterval(upStream,1000);
+  
+  setInterval(upStream,1000);
+  
+  await op.question('Enter an option: ', (answer) => {
+    resolve(0);
+  }
 
 }
 
