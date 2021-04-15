@@ -192,7 +192,7 @@ const question = (text) => {
 
 async function form(){
   config = {...config, numberOfChannels:await question("Number of Cells in series: ")} 
-  config = {...config, numberOfChannels:await question("Number of Thermistors in series: ")}
+  config = {...config, numberOfThermistors:await question("Number of Thermistors in series: ")}
   console.log(config);
   config = {...config, numberOfChannels:await question("Number of Cells in series: ")}
 
