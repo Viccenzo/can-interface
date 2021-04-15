@@ -106,10 +106,6 @@ var op;
 
 var dec;
 
-// JSON File handler
-
-var config;
-
 
 op = readline.createInterface({
   input: process.stdin,
@@ -133,6 +129,10 @@ async function main() {
 
   }
   main();
+}
+
+async function wait(){
+  while(1);
 }
 
 // write ap function
@@ -165,10 +165,17 @@ async function menuWrite(){
   })
 }
 
+
+
 async function createConfigJSON(){
+  let config;
   console.clear();
   console.log("Follow the steps to create a BMS config file:\n");
-  await form();
+  config = await form();
+
+  console.log(config + "\n");
+  console.log("Check if you data is corret. Repeat the proccess if not.");
+  await keypress();
   resolve();
 }
 
@@ -192,7 +199,7 @@ const question = (text) => {
 
 
 async function form(){
-  
+  let config;
   config = {...config, numberOfChannels: await question("Number of Cells in series: ")}; 
   config = {...config, numberOfThermistors: await question("Number of Thermistors in series: ")};
   config = {...config, overVoltage: await question("Overvoltage: ")};
@@ -208,8 +215,7 @@ async function form(){
   config = {...config, chargedVoltage: await question("Charged voltage: ")};
   config = {...config, overVoltageHisteresys: await question("Overvoltage histeresys: ")};
   config = {...config, balance: await question("Balance: ")};
-  
-  resolve();
+  resolve(config);
 }
 
 async function infoDisplay(){
