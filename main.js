@@ -218,7 +218,7 @@ async function decision(){
   })
 }
 
-
+main();
 
 async function main() {
   op = readline.createInterface({
@@ -232,8 +232,6 @@ async function main() {
   main();
 
 }
-
-//main();
 
 // create can chanell
 //var channel = can.createRawChannel("can0", true);
