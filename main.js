@@ -193,7 +193,7 @@ async function createConfigJSON(){
 }
 
 async function decision(){
-  //return new Promise((resolve,reject) => {
+  return new Promise((resolve,reject) => {
     op.question('Enter an option: ', (answer) => {
       // TODO: Log the answer in a database
       switch(answer){
@@ -215,8 +215,7 @@ async function decision(){
           //break;
       }
     });
-    //return 0;
-  //})
+  })
 }
 
 
