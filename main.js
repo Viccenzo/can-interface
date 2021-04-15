@@ -229,10 +229,11 @@ async function main() {
   await menuWrite()
   wait = await decision()
   console.log(wait)
+  main();
 
 }
 
-main();
+//main();
 
 // create can chanell
 //var channel = can.createRawChannel("can0", true);
