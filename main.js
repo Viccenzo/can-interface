@@ -105,6 +105,10 @@ var op;
 
 var dec;
 
+// JSON File handler
+
+var config;
+
 
 op = readline.createInterface({
   input: process.stdin,
@@ -223,9 +227,9 @@ const cliWrite =
 const question1 = () => {
   return new Promise((resolve, reject) => {
     op.question('Number of cells in series: ', (answer) => {
-      numberOfChannels = answer;
+      //numberOfChannels = answer;
       //console.log(`Number in series: ${answer}`)
-      resolve();
+      resolve(answer);
     })
   })
 }
@@ -341,7 +345,6 @@ const question14 = () => {
   return new Promise((resolve, reject) => {
     op.question('Over voltage histeresys ', (answer) => {
       overVoltageHisteresys = answer;
-      //console.log(`Number of Thermistor: ${answer}`)
       resolve();
     })
   })
@@ -350,8 +353,7 @@ const question15 = () => {
   return new Promise((resolve, reject) => {
     op.question('Delay histeresys: ', (answer) => {
       delayHisteresys = answer;
-      //console.log(`Number of Thermistor: ${answer}`)
-      resolve();
+      resolve(answer);
     })
   })
 }
@@ -366,7 +368,9 @@ const question16 = () => {
 }
 
 async function form(){
-  await question1();
+  config = await question1();
+  console.log(config);
+  /*
   await question2();
   await question3();
   await question4();
@@ -382,6 +386,7 @@ async function form(){
   await question14();
   await question15();
   await question16();
+  */
   resolve();
 }
 
