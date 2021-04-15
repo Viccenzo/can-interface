@@ -292,7 +292,6 @@ const keypress = async () => {
 // every 1 sec 
 function upStream(){
   console.clear();
-  console.log("Press Enter to exit\/Precione Enter para sair.")
   console.table(data.main);
   console.table(data.temp);
   console.table(data.voltage);
