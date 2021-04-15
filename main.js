@@ -1,12 +1,12 @@
-var can = require('socketcan');
-var mqtt = require('mqtt');
-var cmd = require('node-cmd');
-var figlet = require('figlet');
-const readline = require('readline');
+import { createRawChannel } from 'socketcan';
+import mqtt from 'mqtt';
+import { get } from 'node-cmd';
+import figlet from 'figlet';
+import { createInterface } from 'readline';
 
-var fs = require('fs');
-const { resolve } = require('path');
-const { create } = require('domain');
+import fs from 'fs';
+import { resolve } from 'path';
+import { create } from 'domain';
 
 // System variables
 
@@ -107,7 +107,7 @@ var op;
 var dec;
 
 
-op = readline.createInterface({
+op = createInterface({
   input: process.stdin,
   output: process.stdout
 });
@@ -174,7 +174,7 @@ async function createConfigJSON(){
   config = await form();
 
   console.log(JSON.stringify(config, null, 2) + "\n");
-  console.log("Check if you data is corret. Repeat the proccess if not.\n\nPress Enter to continue.");
+  console.log("\nCheck if you data is corret. Repeat the proccess if not.\n\nPress Enter to continue.");
   await keypress();
   resolve();
 }
@@ -221,7 +221,7 @@ async function form(){
 async function infoDisplay(){
 
   // create can chanell
-  var channel = can.createRawChannel("can0", true);
+  var channel = createRawChannel("can0", true);
 
   // can msg listener function
   channel.addListener("onMessage", function(msg){can_msg(msg)});
@@ -230,17 +230,17 @@ async function infoDisplay(){
   const caninit = 
     new Promise((resolve,reject) => {
       //console.log("Closing any can instance");
-      cmd.get('sudo ifdown can0');
+      get('sudo ifdown can0');
       resolve();
     })
     .then(() =>{
       //console.log("Initializing can periferic");
-      cmd.get('sudo ifup can0');
+      get('sudo ifup can0');
       resolve();
     })
     .then(() =>{
       //console.log("Configuring can interface");
-      cmd.get('sudo ip link set can0 up type can bitrate 125000');
+      get('sudo ip link set can0 up type can bitrate 125000');
       resolve();
     })
     .then(() =>{
