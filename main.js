@@ -115,15 +115,12 @@ main();
 
 async function main() {
   console.clear();
-  op.clearLine(process.stdin, 0);
+  //op.clearLine(process.stdin, 0);
   await menuWrite();
   dec = await decision();
   switch(dec){
     case '1':
       await infoDisplay();
-    default:
-      console.log("Select a valid option");
-      return -1;
   }
   main();
 }
