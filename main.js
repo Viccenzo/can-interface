@@ -325,6 +325,8 @@ const question16 = () => {
 async function form(){
   config = await question1();
   console.log(config);
+  config = await question1();
+  console.log(config);
   /*
   await question2();
   await question3();
