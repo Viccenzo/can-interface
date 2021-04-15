@@ -141,7 +141,7 @@ async function configRead(){
     if (err) throw err;
     let student = JSON.parse(data);
     console.log(student);
-    resolve();
+    return 1;
   });
 }
 
