@@ -422,7 +422,7 @@ async function infoDisplay(){
   
   setInterval(upStream,1000);
   try{
-    await op.question('Enter an option: ', (answer) => {
+    await op.question('Enter an option: ', () => {
       resolve(0);
     })
   }
