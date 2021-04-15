@@ -215,7 +215,7 @@ async function form(){
   config = {...config, chargedVoltage: await question("Charged voltage: ")};
   config = {...config, overVoltageHisteresys: await question("Overvoltage histeresys: ")};
   config = {...config, balance: await question("Balance: ")};
-  resolve();
+  resolve(config);
 }
 
 async function infoDisplay(){
