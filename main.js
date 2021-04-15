@@ -117,7 +117,11 @@ async function main() {
   await menuWrite();
   dec = await decision();
   switch(dec){
-    case 1:
+    case '1':
+      await infoDisplay();
+    default:
+      console.log("Select a valid option");
+      return -1;
   }
   main();
 }
