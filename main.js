@@ -128,9 +128,20 @@ async function main() {
       //await createConfigJSON();
     case '3':
       await createConfigJSON();
-
+    case '4':
+      await configRead();
+      console.log("\nPress Enter to continue");
+      await keypress();
   }
   main();
+}
+
+async function configRead(){
+  fs.readFile('BMS.config', (err, data) => {
+    if (err) throw err;
+    let student = JSON.parse(data);
+    console.log(student);
+  });
 }
 
 async function wait(){
@@ -162,6 +173,8 @@ async function menuWrite(){
     console.log("2 - Send BMS configuration file");
     console.log("\n");
     console.log("3 - Create BMS configuration file");
+    console.log("\n");
+    console.log("4 - Show current BMS configuration file");
     console.log("\n");
     return 0;
   })
