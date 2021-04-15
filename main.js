@@ -178,7 +178,7 @@ async function createConfigJSON(){
   console.log(JSON.stringify(config, null, 2) + "\n");
   console.log("\nCheck if you data is corret. Repeat the proccess if not.\n\nPress Enter to continue.");
   await keypress();
-  fs.writeFileSync('BMS.config', JSON.stringify);
+  fs.writeFileSync('BMS.config', JSON.stringify(config));
   resolve();
 }
 
