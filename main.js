@@ -105,23 +105,19 @@ var op;
 
 var dec;
 
-/*
+
 op = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-*/
+
 main();
 
 async function main() {
   console.clear();
-  op = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
+  op.clearLine(process.stdin, 0);
   await menuWrite();
   dec = await decision();
-  op.close();
   switch(dec){
     case '1':
       await infoDisplay();
@@ -158,7 +154,7 @@ async function menuWrite(){
     console.log("\n");
     console.log("3 - Create BMS configuration file");
     console.log("\n");
-    return 0
+    return 0;
   })
 }
 
