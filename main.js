@@ -128,7 +128,7 @@ async function main() {
 // write ap function
 async function menuWrite(){
   return new Promise((resolve,reject) => {
-    figlet('Atlas Power', function(err, data) {
+    figlet('AtlasPower -=- U&M', function(err, data) {
       if (err) {
         console.log('Something went wrong...');
         console.dir(err);
