@@ -1,12 +1,14 @@
-import { createRawChannel } from 'socketcan';
-import mqtt from 'mqtt';
-import { get } from 'node-cmd';
-import figlet from 'figlet';
-import { createInterface } from 'readline';
+'use strict';
 
-import fs from 'fs';
-import { resolve } from 'path';
-import { create } from 'domain';
+var can = require('socketcan');
+var mqtt = require('mqtt');
+var cmd = require('node-cmd');
+var figlet = require('figlet');
+const readline = require('readline');
+
+var fs = require('fs');
+const { resolve } = require('path');
+const { create } = require('domain');
 
 // System variables
 
@@ -107,7 +109,7 @@ var op;
 var dec;
 
 
-op = createInterface({
+op = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
@@ -176,6 +178,7 @@ async function createConfigJSON(){
   console.log(JSON.stringify(config, null, 2) + "\n");
   console.log("\nCheck if you data is corret. Repeat the proccess if not.\n\nPress Enter to continue.");
   await keypress();
+  fs.writeFileSync('BMS.config', JSON.stringify);
   resolve();
 }
 
@@ -221,7 +224,7 @@ async function form(){
 async function infoDisplay(){
 
   // create can chanell
-  var channel = createRawChannel("can0", true);
+  var channel = can.createRawChannel("can0", true);
 
   // can msg listener function
   channel.addListener("onMessage", function(msg){can_msg(msg)});
@@ -230,17 +233,17 @@ async function infoDisplay(){
   const caninit = 
     new Promise((resolve,reject) => {
       //console.log("Closing any can instance");
-      get('sudo ifdown can0');
+      cmd.get('sudo ifdown can0');
       resolve();
     })
     .then(() =>{
       //console.log("Initializing can periferic");
-      get('sudo ifup can0');
+      cmd.get('sudo ifup can0');
       resolve();
     })
     .then(() =>{
       //console.log("Configuring can interface");
-      get('sudo ip link set can0 up type can bitrate 125000');
+      cmd.get('sudo ip link set can0 up type can bitrate 125000');
       resolve();
     })
     .then(() =>{
