@@ -137,12 +137,8 @@ async function main() {
 }
 
 async function configRead(){
-  fs.readFile('BMS.config', (err, data) => {
-    if (err) throw err;
-    let student = JSON.parse(data);
-    console.log(student);
-    return 1;
-  });
+  data = fs.readFileSync('BMS.config');
+  console.log(data);
 }
 
 async function wait(){
