@@ -124,6 +124,7 @@ async function main() {
   switch(dec){
     case '1':
       await infoDisplay();
+      break;
     case '2':
       //await createConfigJSON();
     case '3':
