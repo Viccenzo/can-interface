@@ -167,7 +167,7 @@ async function menuWrite(){
 
 async function createConfigJSON(){
   console.clear();
-  console.log("Follow the steps to create a BMS config file:/n");
+  console.log("Follow the steps to create a BMS config file:\n");
   await form();
   resolve();
 }
