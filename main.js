@@ -227,8 +227,7 @@ async function main() {
   });
   console.clear();
   await menuWrite()
-  wait = await decision()
-  console.log(wait)
+  await decision()
   main();
 
 }
