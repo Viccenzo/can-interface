@@ -129,12 +129,14 @@ async function main() {
       //await createConfigJSON();
     case '3':
       await createConfigJSON();
+      break;
     case '4':
       console.clear();
       console.log("Your current BMS config File: \n")
       await configRead();
       console.log("\nPress Enter to continue");
       await keypress();
+      break;
   }
   main();
 }
