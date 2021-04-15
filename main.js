@@ -173,7 +173,7 @@ async function createConfigJSON(){
   console.log("Follow the steps to create a BMS config file:\n");
   config = await form();
 
-  console.log(JSON.stringify(config) + "\n");
+  console.log(JSON.stringify(config, null, 2) + "\n");
   console.log("Check if you data is corret. Repeat the proccess if not.\n\nPress Enter to continue.");
   await keypress();
   resolve();
