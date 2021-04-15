@@ -420,9 +420,9 @@ async function infoDisplay(){
   // define periodic function
   console.log("Starting program");
   
-  timer = setInterval(upStream,1000);
+  let timer = setInterval(upStream,1000);
   await keypress();
-  timer.clear();
+  clearInterval(timer);
 
 }
 
