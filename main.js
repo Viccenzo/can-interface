@@ -105,17 +105,23 @@ var op;
 
 var dec;
 
+/*
 op = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
-
+*/
 main();
 
 async function main() {
   console.clear();
+  op = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
   await menuWrite();
   dec = await decision();
+  op.close();
   switch(dec){
     case '1':
       await infoDisplay();
