@@ -103,58 +103,24 @@ var balance;
 
 var op;
 
-var wait;
+var dec;
 
-/*
-try{
-  data = fs.readFileSync('./config.json');
-  try {
-    let myObj = JSON.parse(data);
-    console.log("Config file loaded");
-    console.dir(myObj);
-    valueEnergyBuy = myObj.ValueEnergyBuy;
-    valueEnergySell = myObj.ValueEnergySell;
-    energyBuy = myObj.EnergyBuy;
-    energySell = myObj.EnergySell;
-    THINGSBOARD_HOST = myObj.ThingsboardHost;
-    ACCESS_TOKEN = myObj.AccessToken;
+op = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+main();
+
+async function main() {
+  console.clear();
+  await menuWrite();
+  dec = await decision();
+  switch(dec){
+    case 1:
   }
-  catch (err) {
-    console.log('There has been an error parsing your JSON.')
-    console.log(err);
-  }
+  main();
 }
-catch(err){
-  console.log("Complete config file with mqtt parameters");
-  let config = '{"ValueEnergyBuy":0.14831024999999898,"ValueEnergySell":0.3625647499999992,"EnergyBuy":0,"EnergySell":0,"ThingsboardHost":"demo.thingsboard.io","AccessToken":"Change!"}';
-  fs.writeFile('./config.json', config , function (err) {
-    if (err) throw err;
-    console.log('Saved!');
-  });
-}
-*/
-// EDP thingsboard info override
-//const THINGSBOARD_HOST = "demo.thingsboard.io";
-//const ACCESS_TOKEN = "RrDCEfZ8C6W0Rt24q9eQ";
-//let valueEnergyBuy = 0;
-//let valueEnergySell = 0;
-//let energyBuy = 0;
-//let energySell = 0;
-
-
-// create mqtt client
-//var client = mqtt.connect('mqtt://'+THINGSBOARD_HOST,{username: ACCESS_TOKEN});
-
-
-/*
-try{
-  console.log('Connecting to: %s using access token: %s', THINGSBOARD_HOST, ACCESS_TOKEN);
-}catch(err){
-  error = "Mqtt conection problem";
-  console.log('Verifique os parametros do mqtt');
-}
-*/
-
 
 // write ap function
 async function menuWrite(){
@@ -195,41 +161,9 @@ async function createConfigJSON(){
 async function decision(){
   return new Promise((resolve,reject) => {
     op.question('Enter an option: ', (answer) => {
-      // TODO: Log the answer in a database
-      switch(answer){
-        case "1":
-          //op.close();
-          //console.log(1);
-          await infoDisplay();
-          resolve(1);
-          //break;
-        case "2":
-          //console.log(2);
-          resolve(2);
-          //break;
-        case "3":
-          //console.log(3);
-          //await createConfigJSON();
-          //console.log("olar")
-          resolve(3);
-          //break;
-      }
+      resolve(answer);
     });
   })
-}
-
-op = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
-
-main();
-
-async function main() {
-  console.clear();
-  await menuWrite();
-  await decision();
-  main();
 }
 
 /*
@@ -279,9 +213,6 @@ const cliWrite =
       }
     });
   });
-
-
-
 */
 
 // Variable input declaration 
