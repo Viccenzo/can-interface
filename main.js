@@ -420,7 +420,7 @@ async function infoDisplay(){
   
   await op.question('Enter an option: ', (answer) => {
     resolve(0);
-  }
+  })
 
 }
 
