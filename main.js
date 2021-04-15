@@ -78,11 +78,6 @@ var v13;
 
 var upMsg;
 
-// Sistem Var
-
-const custoKwhFP = 0.3;
-const custoKwhP = 1.2;
-
 // BMS configuration variables
 
 var numberOfChannels;
@@ -103,10 +98,15 @@ var delayHisteresys;
 var balance;
 
 // Console read variable
-
 var op;
-
 var dec;
+
+// CAN variables
+
+var can4;
+var can3;
+var can2;
+var can1;
 
 
 op = readline.createInterface({
