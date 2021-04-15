@@ -179,177 +179,41 @@ async function decision(){
   })
 }
 
-const question1 = () => {
+const question = (text) => {
   return new Promise((resolve, reject) => {
-    op.question('Number of cells in series: ', (answer) => {
+    op.question(`${text}`, (answer) => {
       //numberOfChannels = answer;
       //console.log(`Number in series: ${answer}`)
       resolve(answer);
     })
   })
 }
-const question2 = () => {
-  return new Promise((resolve, reject) => {
-    op.question('Number of termistors: ', (answer) => {
-      numberOfThermistors = answer;
-      //console.log(`Number of Thermistor: ${answer}`)
-      resolve();
-    })
-  })
-}
-const question3 = () => {
-  return new Promise((resolve, reject) => {
-    op.question('Over Voltage: ', (answer) => {
-      overVoltage = answer;
-      //console.log(`Number of Thermistor: ${answer}`)
-      resolve();
-    })
-  })
-}
-const question4 = () => {
-  return new Promise((resolve, reject) => {
-    op.question('Under Voltage: ', (answer) => {
-      underVoltage = answer;
-      //console.log(`Number of Thermistor: ${answer}`)
-      resolve();
-    })
-  })
-}
-const question5 = () => {
-  return new Promise((resolve, reject) => {
-    op.question('Short circuit current: ', (answer) => {
-      shortCircuit = answer;
-      //console.log(`Number of Thermistor: ${answer}`)
-      resolve();
-    })
-  })
-}
-const question6 = () => {
-  return new Promise((resolve, reject) => {
-    op.question('Over current:  ', (answer) => {
-      overCurrent = answer;
-      //console.log(`Number of Thermistor: ${answer}`)
-      resolve();
-    })
-  })
-}
-const question7 = () => {
-  return new Promise((resolve, reject) => {
-    op.question('Over temperature: ', (answer) => {
-      overTemperature = answer;
-      //console.log(`Number of Thermistor: ${answer}`)
-      resolve();
-    })
-  })
-}
-const question8 = () => {
-  return new Promise((resolve, reject) => {
-    op.question('Current sensor gain: ', (answer) => {
-      gainCurrentSense = answer;
-      //console.log(`Number of Thermistor: ${answer}`)
-      resolve();
-    })
-  })
-}
-const question9 = () => {
-  return new Promise((resolve, reject) => {
-    op.question('Max balance delta voltage: ', (answer) => {
-      deltaVoltage = answer;
-      //console.log(`Number of Thermistor: ${answer}`)
-      resolve();
-    })
-  })
-}
-const question10 = () => {
-  return new Promise((resolve, reject) => {
-    op.question('Low voltage: ', (answer) => {
-      lowVoltage = answer;
-      //console.log(`Number of Thermistor: ${answer}`)
-      resolve();
-    })
-  })
-}
-const question11 = () => {
-  return new Promise((resolve, reject) => {
-    op.question('High voltage: ', (answer) => {
-      highVoltage = answer;
-      //console.log(`Number of Thermistor: ${answer}`)
-      resolve();
-    })
-  })
-}
-const question12 = () => {
-  return new Promise((resolve, reject) => {
-    op.question('Charge voltage enable: ', (answer) => {
-      canChargeVoltage = answer;
-      //console.log(`Number of Thermistor: ${answer}`)
-      resolve();
-    })
-  })
-}
-const question13 = () => {
-  return new Promise((resolve, reject) => {
-    op.question('Charged voltage: ', (answer) => {
-      chargedVoltage = answer;
-      //console.log(`Number of Thermistor: ${answer}`)
-      resolve();
-    })
-  })
-}
-const question14 = () => {
-  return new Promise((resolve, reject) => {
-    op.question('Over voltage histeresys ', (answer) => {
-      overVoltageHisteresys = answer;
-      resolve();
-    })
-  })
-}
-const question15 = () => {
-  return new Promise((resolve, reject) => {
-    op.question('Delay histeresys: ', (answer) => {
-      delayHisteresys = answer;
-      resolve(answer);
-    })
-  })
-}
-const question16 = () => {
-  return new Promise((resolve, reject) => {
-    op.question('Balance: ', (answer) => {
-      balance = answer;
-      //console.log(`Number of Thermistor: ${answer}`)
-      resolve();
-    })
-  })
-}
+
 
 async function form(){
-  config = await question1();
+  config = {...config, numberOfChannels:await question("Number of Cells in series: ")} 
+  config = {...config, numberOfChannels:await question("Number of Thermistors in series: ")}
   console.log(config);
-  config = await question1();
-  console.log(config);
-  config = await question1();
-  console.log(config);
-  config = await question1();
-  console.log(config);
-  config = await question1();
-  console.log(config);
+  config = {...config, numberOfChannels:await question("Number of Cells in series: ")}
+
   
   /*
-  await question2();
-  await question3();
-  await question4();
-  await question5();
-  await question6();
-  await question7();
-  await question8();
-  await question9();
-  await question10();
-  await question11();
-  await question12();
-  await question13();
-  await question14();
-  await question15();
-  await question16();
+  var numberOfChannels;
+  var numberOfThermistors;
+  var overVoltage;
+  var underVoltage;
+  var shortCircuit;
+  var overCurrent;
+  var overTemperature;
+  var gainCurrentSense;
+  var deltaVoltage;
+  var lowVoltage;
+  var highVoltage;
+  var canChargeVoltage;
+  var chargedVoltage;
+  var overVoltageHisteresys;
+  var delayHisteresys;
+  var balance;
   */
   resolve();
 }
