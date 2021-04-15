@@ -227,27 +227,16 @@ async function main() {
     output: process.stdout
   });
   console.clear();
-  //(await menuWrite())
-  //.then(await decision())
-  //.then(console.log("success"))
-  (await decision())
-  .then(retorno=>{
-    console.log(retorno);
-  },()=>{
-    console.log("qqmerda");
-  })
-  
-  //.then(decision())
-  //.then(console.log("sucess"))
+  await menuWrite()
+  await decision()
+  console.log("success")
 
-
-  //main();
 }
 
 main();
 
 // create can chanell
-var channel = can.createRawChannel("can0", true);
+//var channel = can.createRawChannel("can0", true);
 
 /*
 const cliWrite = 
