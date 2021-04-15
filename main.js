@@ -166,7 +166,8 @@ async function menuWrite(){
 }
 
 async function createConfigJSON(){
-  console.log("teste");
+  console.clear();
+  console.log("Follow the steps to create a BMS config file:/n");
   await form();
   resolve();
 }
@@ -191,30 +192,23 @@ const question = (text) => {
 
 
 async function form(){
-  config = {...config, numberOfChannels:await question("Number of Cells in series: ")} 
-  config = {...config, numberOfThermistors:await question("Number of Thermistors in series: ")}
-  console.log(config);
-  config = {...config, numberOfChannels:await question("Number of Cells in series: ")}
-
   
-  /*
-  var numberOfChannels;
-  var numberOfThermistors;
-  var overVoltage;
-  var underVoltage;
-  var shortCircuit;
-  var overCurrent;
-  var overTemperature;
-  var gainCurrentSense;
-  var deltaVoltage;
-  var lowVoltage;
-  var highVoltage;
-  var canChargeVoltage;
-  var chargedVoltage;
-  var overVoltageHisteresys;
-  var delayHisteresys;
-  var balance;
-  */
+  config = {...config, numberOfChannels: await question("Number of Cells in series: ")}; 
+  config = {...config, numberOfThermistors: await question("Number of Thermistors in series: ")};
+  config = {...config, overVoltage: await question("Overvoltage: ")};
+  config = {...config, underVoltage: await question("Undervoltage: ")};
+  config = {...config, shortCircuit: await question("Short circuit current: ")};
+  config = {...config, overCurrent: await question("Overcurrent: ")};
+  config = {...config, overTemperature: await question("Overtemperature: ")};
+  config = {...config, gainCurrentSense: await question("Current sensor gain: ")};
+  config = {...config, deltaVoltage: await question("Delta voltage: ")};
+  config = {...config, lowVoltage: await question("Low voltage: ")};
+  config = {...config, highVoltage: await question("High voltage: ")};
+  config = {...config, canChargeVoltage: await question("Charge voltage enable: ")};
+  config = {...config, chargedVoltage: await question("Charged voltage: ")};
+  config = {...config, overVoltageHisteresys: await question("Overvoltage histeresys: ")};
+  config = {...config, balance: await question("Balance: ")};
+  
   resolve();
 }
 
