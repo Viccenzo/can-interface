@@ -421,30 +421,27 @@ async function infoDisplay(){
   console.log("Starting program");
   
   setInterval(upStream,1000);
-  
-  await op.question('Enter an option: ', (answer) => {
+  try{
+    await op.question('Enter an option: ', (answer) => {
+      resolve(0);
+    })
+  }
+  catch(e){
     resolve(0);
-  })
-
+  }
 }
 
 // Function Definitions:
 
 // every 1 sec 
 function upStream(){
-  //console.table(data);
   console.clear();
   console.log("Press Enter to exit\/Precione Enter para sair.")
   console.table(data.main);
   console.table(data.temp);
   console.table(data.voltage);
-  //console.log(upMsg);
-  //let d = new Date();
-  /*if(msgAvail!=0 && error == null){
-    let d = new Date();
-    client.publish('v1/devices/me/telemetry',  upMsg);
-    
-  }*/
+  console.log("\n");
+  console.log("Press enter to return to menu options");
   msgAvail = 0;
 }
 
