@@ -171,9 +171,9 @@ async function createConfigJSON(){
   let config;
   console.clear();
   console.log("Follow the steps to create a BMS config file:\n");
-  await form();
+  config = await form();
 
-  console.log(config + "\n");
+  console.log(config.numberOfChannels + "\n");
   console.log("Check if you data is corret. Repeat the proccess if not.\n\n Press Enter to continue.");
   await keypress();
   resolve();
