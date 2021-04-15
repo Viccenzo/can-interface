@@ -218,13 +218,14 @@ async function decision(){
   })
 }
 
+op = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
 main();
 
 async function main() {
-  op = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
-  });
   console.clear();
   await menuWrite()
   await decision()
