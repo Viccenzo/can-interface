@@ -171,9 +171,9 @@ async function createConfigJSON(){
   let config;
   console.clear();
   console.log("Follow the steps to create a BMS config file:\n");
-  config = await form();
+  await form();
 
-  console.log(config + "\n");
+  console.log("hello!");
   console.log("Check if you data is corret. Repeat the proccess if not.");
   await keypress();
   resolve();
@@ -215,7 +215,7 @@ async function form(){
   config = {...config, chargedVoltage: await question("Charged voltage: ")};
   config = {...config, overVoltageHisteresys: await question("Overvoltage histeresys: ")};
   config = {...config, balance: await question("Balance: ")};
-  resolve(config);
+  resolve();
 }
 
 async function infoDisplay(){
