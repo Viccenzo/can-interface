@@ -141,7 +141,7 @@ async function main() {
       if (response[1] == 8){
         console.log("aqui =D")
       }
-      let response = await question();
+      await question();
     case '4':
       await createConfigJSON();
       break;
