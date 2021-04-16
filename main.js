@@ -308,7 +308,6 @@ async function canMsgSend(/*id,var1,var2,var3,var4*/){
   cm.data = {};
   cm.data[0] = 255;
   //msgSend.id = 0x186555F4;
-  msgSend.data[0] = 255;
   console.log(cm)
   await channel.send(cm);
 }
