@@ -51,22 +51,22 @@ var mintemp;
 var maxtemp;
 
 // 0x186b55F4
-var v4;
-var v3;
-var v2;
-var v1;
+var v4 = 0;
+var v3 = 0;
+var v2 = 0;
+var v1 = 0;
 
 // 0x186c55F4
-var v8;
-var v7;
-var v6;
-var v5;
+var v8 = 0;
+var v7 = 0;
+var v6 = 0;
+var v5 = 0;
 
 // 0x186d55F4
-var v12
-var v11
-var v10
-var v9
+var v12 = 0;
+var v11 = 0;
+var v10 = 0;
+var v9 = 0;
 
 // 0x186e55F4
 var v16;
