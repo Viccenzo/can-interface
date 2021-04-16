@@ -136,12 +136,13 @@ async function main() {
       await keypress();
       break;
     case '3':
-      let response = await question();
+      let response = await question("CAN message format (\"id\",\"word size\",<sequence,of,words>");
       response = response.split(",");
       if (response[1] == 8){
         console.log("aqui =D")
       }
-      await question();
+      await question("here");
+      break;
     case '4':
       await createConfigJSON();
       break;
