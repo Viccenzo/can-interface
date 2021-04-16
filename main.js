@@ -308,6 +308,7 @@ function canMsgSend(/*id,var1,var2,var3,var4*/){
   //msgSend.id = 0x186555F4;
   console.log(canSend)
   //channel.send(canSend);
+  await keypress();
 }
 
 function can_msg(msg){
