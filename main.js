@@ -142,19 +142,19 @@ async function main() {
       switch(response[1]){
         case 8:
           console.log("here1");
-          //canMsgSend(response[0],response[1],[response[2],response[3],response[4],response[5],response[6],response[7],response[8],response[9]]);
+          canMsgSend(response[0],response[1],[response[2],response[3],response[4],response[5],response[6],response[7],response[8],response[9]]);
           break;
         case 16:
           console.log("here2");
-          //canMsgSend(response[0],response[1],[response[2],response[3],response[4],response[5]]);
+          canMsgSend(response[0],response[1],[response[2],response[3],response[4],response[5]]);
           break;  
         case 32:
           console.log("here3");  
-          //canMsgSend(response[0],response[1],[response[2],response[3]]);
+          canMsgSend(response[0],response[1],[response[2],response[3]]);
           break;  
         case 64:
           console.log("here4");
-          //canMsgSend(response[0],response[1],[response[2]]);
+          canMsgSend(response[0],response[1],[response[2]]);
           break;
       }
       await question(response[1]);
