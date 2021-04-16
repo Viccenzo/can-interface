@@ -152,7 +152,7 @@ async function main() {
           console.log(response);
           canMsgSend(response[0],response[1],response[2]);
       }
-      await question("here");
+      await question(response[1]);
       break;
     case '4':
       await createConfigJSON();
