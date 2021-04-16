@@ -132,7 +132,7 @@ async function main() {
       await infoDisplay();
       break;
     case '2':
-      canMsgSend();
+      canMsgSend8(0x186955F4,1,2,3,4);
       await keypress();
       break;
     case '3':
@@ -304,16 +304,29 @@ function upStream(){
   msgAvail = 0;
 }
 
-async function canMsgSend(/*id,var1,var2,var3,var4*/){
-  var canSendId = "123";
-  var canSendMsg = "1122334455667788";
-  console.log(`sudo cansed can0 ${canSendId}#${canSendMsg}`);
-  cmd.get(`sudo cansed can0 ${canSendId}#${canSendMsg}`);
-  let obj = {
-    "id": 0x196455F4,
-    "data": Buffer.from([1,2,3,4,])
+async function canMsgSend(id,size,canInfo){
+  let canMsgSend;
+  canMsgSend.id = id;
+  switch(size){
+    case 8:
+      canMsgSend.data = Buffer.from([canInfo[0],canInfo[1],canInfo[2],canInfo[3],canInfo[4],canInfo[5],canInfo[6],canInfo[7]]);
+      channel.send(canMsgSend);
+      return 0;
+    case 16:
+      canMsgSend.data = Buffer.from([canInfo[0],canInfo[1],canInfo[2],canInfo[3]]);
+      channel.send(canMsgSend);
+      return 0;
+    case 32:
+      canMsgSend.data = Buffer.from([canInfo[0],canInfo[1]]);
+      channel.send(canMsgSend);
+      return 0;
+    case 64:
+      canMsgSend.data = Buffer.from([canInfo[0]]);
+      channel.send(canMsgSend);
+      return 0;
+    default:
+    return -1;
   }
-  channel.send(obj);
 }
 
 function can_msg(msg){
