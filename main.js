@@ -310,7 +310,7 @@ async function canMsgSend(/*id,var1,var2,var3,var4*/){
   console.log(`sudo cansed can0 ${canSendId}#${canSendMsg}`);
   cmd.get(`sudo cansed can0 ${canSendId}#${canSendMsg}`);
   let obj = {
-    "id": msg,
+    "id": 0x196455F4,
     "data": "1234"
   }
   channel.send(JSON.stringify(obj));
