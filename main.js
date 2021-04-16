@@ -272,9 +272,8 @@ async function infoDisplay(){
   
   let timer = setInterval(upStream,1000);
   await keypress();
-  canMsgSend();
   clearInterval(timer);
-
+  canMsgSend();
 }
 
 // Function Definitions:
