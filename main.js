@@ -139,7 +139,7 @@ async function main() {
       let response = await question("CAN message format (\"id\",\"word size\",<sequence,of,words>)\n");
       response = response.split(",").map(Number);
       console.log(response[1]);
-      switch(Number(response[1])){
+      switch(response[1]){
         case 8:
           console.log("here");
           canMsgSend(response[0],response[1],response[2],response[3],response[4],response[5],response[6],response[7],response[8],response[9]);
