@@ -306,7 +306,7 @@ function upStream(){
 }
 
 async function canMsgSend(/*id,var1,var2,var3,var4*/){
-  const canSend = Buffer.from('123#11223344AABBCCDD', 'utf8');
+  const canSend = Buffer.from('123#11223344AABBCCDD');
   //msgSend.id = 0x186555F4;
   console.log(canSend);
   channel.send(canSend);
