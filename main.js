@@ -132,7 +132,7 @@ async function main() {
       await infoDisplay();
       break;
     case '2':
-      canMsgSend(0x186955F4,8,1,2,3,4,5,6,7,8);
+      canMsgSend(0x186955F4,8,[1,2,3,4,5,6,7,8]);
       await keypress();
       break;
     case '3':
