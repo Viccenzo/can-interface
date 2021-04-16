@@ -138,18 +138,19 @@ async function main() {
     case '3':
       let response = await question("CAN message format (\"id\",\"word size\",<sequence,of,words>)\n");
       response = response.split(",");
+      console.log(Number(response[1]));
       switch(Number(response[1])){
         case 8:
-          console.log(response);
+          console.log("here");
           canMsgSend(response[0],response[1],response[2],response[3],response[4],response[5],response[6],response[7],response[8],response[9]);
         case 16:
-          console.log(response);
+          console.log("here");
           canMsgSend(response[0],response[1],response[2],response[3],response[4],response[5]);
         case 32:
-          console.log(response);  
+          console.log("here");  
           canMsgSend(response[0],response[1],response[2],response[3]);
         case 64:
-          console.log(response);
+          console.log("here");
           canMsgSend(response[0],response[1],response[2]);
       }
       await question(response[1]);
@@ -327,6 +328,7 @@ function upStream(){
 
 async function canMsgSend(id,size,canInfo){
   let canMsgSend;
+  canMsgSend.id = {};
   canMsgSend.id = id;
   switch(size){
     case 8:
