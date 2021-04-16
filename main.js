@@ -309,7 +309,11 @@ async function canMsgSend(/*id,var1,var2,var3,var4*/){
   var canSendMsg = "1122334455667788";
   console.log(`sudo cansed can0 ${canSendId}#${canSendMsg}`);
   cmd.get(`sudo cansed can0 ${canSendId}#${canSendMsg}`);
-  channel.send("123#1122334455667788");
+  let obj = {
+    "id": msg,
+    "data": "1234"
+  }
+  channel.send(JSON.stringify(obj));
 }
 
 function can_msg(msg){
