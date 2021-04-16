@@ -132,16 +132,13 @@ async function main() {
       await infoDisplay();
       break;
     case '2':
-      canMsgSend(0x186955F4,8,1,2,3,4);
+      canMsgSend(0x186955F4,8,1,2,3,4,5,6,7,8);
       await keypress();
       break;
     case '3':
       let response = await question("CAN message format (\"id\",\"word size\",<sequence,of,words>)\n");
       response = response.split(",").map(Number);
       console.log([response[2],response[3],response[4],response[5],response[6],response[7],response[8],response[9]]);
-      console.log(typeof(response[1]));
-      console.log(typeof("8"));
-      console.log(typeof(8));
       switch(response[1]){
         case 8:
           console.log("here1");
