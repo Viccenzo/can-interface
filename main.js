@@ -136,9 +136,16 @@ async function main() {
       await keypress();
       break;
     case '3':
+      let response = await question();
+      response = response.split(",");
+      if (response[1] == 8){
+        console.log("aqui =D")
+      }
+      let response = await question();
+    case '4':
       await createConfigJSON();
       break;
-    case '4':
+    case '5':
       console.clear();
       console.log("Your current BMS config File: \n")
       await configRead();
@@ -147,15 +154,6 @@ async function main() {
       break;
   }
   main();
-}
-
-async function configRead(){
-  let configFileData = JSON.parse(fs.readFileSync('BMS.config'));
-  console.log(configFileData);
-}
-
-async function wait(){
-  while(1);
 }
 
 // write ap function
@@ -182,13 +180,26 @@ async function menuWrite(){
     console.log("\n");
     console.log("2 - Send BMS configuration file");
     console.log("\n");
-    console.log("3 - Create BMS configuration file");
+    console.log("3 - Send BMS raw config comand");
     console.log("\n");
-    console.log("4 - Show current BMS configuration file");
+    console.log("4 - Create BMS configuration file");
+    console.log("\n");
+    console.log("5 - Show current BMS configuration file");
     console.log("\n");
     return 0;
   })
 }
+
+async function configRead(){
+  let configFileData = JSON.parse(fs.readFileSync('BMS.config'));
+  console.log(configFileData);
+}
+
+async function wait(){
+  while(1);
+}
+
+
 
 
 
@@ -216,8 +227,6 @@ async function decision(){
 const question = (text) => {
   return new Promise((resolve, reject) => {
     op.question(`${text}`, (answer) => {
-      //numberOfChannels = answer;
-      //console.log(`Number in series: ${answer}`)
       resolve(answer);
     })
   })
