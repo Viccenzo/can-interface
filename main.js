@@ -306,10 +306,11 @@ function upStream(){
 }
 
 async function canMsgSend(/*id,var1,var2,var3,var4*/){
-  var canSend = Buffer.from(["1","2","3","#","1","1","2","2","3","3","4","4","A","A","B","B","C","C","D","D"]);
+  canSendId = "123"
+  canSendMsg = "1122334455667788"
   //msgSend.id = 0x186555F4;
-  console.log(canSend);
-  channel.send(canSend);
+  cmd.get(`cansed can0 ${canSendId}#${canSendMsg}`);
+  
 }
 
 function can_msg(msg){
