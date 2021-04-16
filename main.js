@@ -132,14 +132,21 @@ async function main() {
       await infoDisplay();
       break;
     case '2':
-      canMsgSend8(0x186955F4,1,2,3,4);
+      canMsgSend(0x186955F4,8,1,2,3,4);
       await keypress();
       break;
     case '3':
-      let response = await question("CAN message format (\"id\",\"word size\",<sequence,of,words>");
+      let response = await question("CAN message format (\"id\",\"word size\",<sequence,of,words>)\n");
       response = response.split(",");
-      if (response[1] == 8){
-        console.log("aqui =D")
+      switch(response[1]){
+        case 8:
+          canMsgSend(response[0],response[1],response[2],response[3],response[4],response[5],response[6],response[7],response[8],response[9]);
+        case 16:
+          canMsgSend(response[0],response[1],response[2],response[3],response[4],response[5]);
+        case 32:
+          canMsgSend(response[0],response[1],response[2],response[3]);
+        case 64:
+          canMsgSend(response[0],response[1],response[2]);
       }
       await question("here");
       break;
