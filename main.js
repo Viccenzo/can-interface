@@ -332,6 +332,7 @@ function upStream(){
 
 async function canMsgSend(id,size,canInfo){
   let canMsgSend;
+  console.log(id);
   canMsgSend.id = id;
   switch(size){
     case 8:
