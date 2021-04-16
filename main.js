@@ -139,8 +139,9 @@ async function main() {
       let response = await question("CAN message format (\"id\",\"word size\",<sequence,of,words>)\n");
       response = response.split(",").map(Number);
       console.log([response[2],response[3],response[4],response[5],response[6],response[7],response[8],response[9]]);
-      console.log(response[1]);
-      console.log("8");
+      console.log(typeof(response[1]));
+      console.log(typeof("8"));
+      console.log(typeof(8));
       switch(response[1]){
         case "8":
           console.log("here1");
