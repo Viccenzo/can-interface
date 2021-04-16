@@ -140,12 +140,16 @@ async function main() {
       response = response.split(",");
       switch(response[1]){
         case 8:
+          console.log(response);
           canMsgSend(response[0],response[1],response[2],response[3],response[4],response[5],response[6],response[7],response[8],response[9]);
         case 16:
+          console.log(response);
           canMsgSend(response[0],response[1],response[2],response[3],response[4],response[5]);
         case 32:
+          console.log(response);  
           canMsgSend(response[0],response[1],response[2],response[3]);
         case 64:
+          console.log(response);
           canMsgSend(response[0],response[1],response[2]);
       }
       await question("here");
