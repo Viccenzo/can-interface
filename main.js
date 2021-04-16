@@ -148,7 +148,7 @@ async function main() {
 }
 
 async function configRead(){
-  configFileData = JSON.parse(fs.readFileSync('BMS.config'));
+  let configFileData = JSON.parse(fs.readFileSync('BMS.config'));
   console.log(configFileData);
 }
 
