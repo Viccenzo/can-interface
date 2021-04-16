@@ -272,7 +272,7 @@ async function infoDisplay(){
   
   let timer = setInterval(upStream,1000);
   await keypress();
-  //channel.stop();
+  canMsgSend();
   clearInterval(timer);
 
 }
@@ -302,6 +302,10 @@ function upStream(){
   console.log("\n");
   console.log("Press enter to return to menu options");
   msgAvail = 0;
+}
+
+function canMsgSend(/*id,var1,var2,var3,var4*/){
+  channel.send("Teste");
 }
 
 function can_msg(msg){
