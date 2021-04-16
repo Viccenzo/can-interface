@@ -303,7 +303,7 @@ function upStream(){
   msgAvail = 0;
 }
 
-function canMsgSend(/*id,var1,var2,var3,var4*/){
+async function canMsgSend(/*id,var1,var2,var3,var4*/){
   let msgSend = {};
   msgSend.id = 0x186555F4;
   msgSend.data = [1,2,3,4,5,6,7,8];
