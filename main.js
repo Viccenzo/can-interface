@@ -308,7 +308,7 @@ async function canMsgSend(/*id,var1,var2,var3,var4*/){
   var canSendId = "123";
   var canSendMsg = "1122334455667788";
   //console.log(`cansed can0 ${canSendId}#${canSendMsg}`);
-  cmd.get(`cansed can0 ${canSendId}#${canSendMsg}`);
+  cmd.get(`sudo cansed can0 ${canSendId}#${canSendMsg}`);
 }
 
 function can_msg(msg){
