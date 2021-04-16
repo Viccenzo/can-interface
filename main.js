@@ -275,7 +275,6 @@ async function infoDisplay(){
   let timer = setInterval(upStream,1000);
   await keypress();
   clearInterval(timer);
-  canMsgSend();
 }
 
 // Function Definitions:
@@ -306,8 +305,8 @@ function upStream(){
 }
 
 async function canMsgSend(/*id,var1,var2,var3,var4*/){
-  let canSendId = "123"
-  let canSendMsg = "1122334455667788"
+  var canSendId = "123";
+  var canSendMsg = "1122334455667788";
   //msgSend.id = 0x186555F4;
   try{
     cmd.get(`cansed can0 ${canSendId}#${canSendMsg}`);
