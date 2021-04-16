@@ -305,8 +305,8 @@ function upStream(){
 
 async function canMsgSend(/*id,var1,var2,var3,var4*/){
   let msgSend = {};
-  msgSend.id = 0x186555F4;
-  msgSend.data = [1,2,3,4,5,6,7,8];
+  //msgSend.id = 0x186555F4;
+  msgSend.data[0] = 255;
   console.log(msgSend)
   await channel.send(msgSend);
 }
