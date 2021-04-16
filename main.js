@@ -139,7 +139,7 @@ async function main() {
     case '4':
       console.clear();
       console.log("Your current BMS config File: \n")
-      //await configRead();
+      await configRead();
       console.log("\nPress Enter to continue");
       await keypress();
       break;
