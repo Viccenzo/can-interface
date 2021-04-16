@@ -306,8 +306,8 @@ function upStream(){
 }
 
 async function canMsgSend(/*id,var1,var2,var3,var4*/){
-  canSendId = "123"
-  canSendMsg = "1122334455667788"
+  let canSendId = "123"
+  let canSendMsg = "1122334455667788"
   //msgSend.id = 0x186555F4;
   try{
     cmd.get(`cansed can0 ${canSendId}#${canSendMsg}`);
