@@ -142,16 +142,16 @@ async function main() {
       switch(response[1]){
         case 8:
           console.log("here");
-          canMsgSend(response[0],response[1],response[2],response[3],response[4],response[5],response[6],response[7],response[8],response[9]);
+          canMsgSend(response[0],response[1],[response[2],response[3],response[4],response[5],response[6],response[7],response[8],response[9]]);
         case 16:
           console.log("here");
-          canMsgSend(response[0],response[1],response[2],response[3],response[4],response[5]);
+          canMsgSend(response[0],response[1],[response[2],response[3],response[4],response[5]]);
         case 32:
           console.log("here");  
-          canMsgSend(response[0],response[1],response[2],response[3]);
+          canMsgSend(response[0],response[1],[response[2],response[3]]);
         case 64:
           console.log("here");
-          canMsgSend(response[0],response[1],response[2]);
+          canMsgSend(response[0],response[1],[response[2]]);
       }
       await question(response[1]);
       break;
@@ -328,7 +328,6 @@ function upStream(){
 
 async function canMsgSend(id,size,canInfo){
   let canMsgSend;
-  canMsgSend.id = {};
   canMsgSend.id = id;
   switch(size){
     case 8:
