@@ -140,6 +140,7 @@ async function main() {
       response = response.split(",").map(Number);
       console.log([response[2],response[3],response[4],response[5],response[6],response[7],response[8],response[9]]);
       console.log(response[1]);
+      console.log("8");
       switch(response[1]){
         case 8:
           console.log("here1");
