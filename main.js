@@ -311,7 +311,7 @@ async function canMsgSend(/*id,var1,var2,var3,var4*/){
   cmd.get(`sudo cansed can0 ${canSendId}#${canSendMsg}`);
   let obj = {
     "id": 0x196455F4,
-    "data": "1234"
+    "data": Buffer.from([1,2,3,4,])
   }
   channel.send(obj);
 }
