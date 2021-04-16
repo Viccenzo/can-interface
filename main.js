@@ -304,12 +304,10 @@ function upStream(){
 }
 
 async function canMsgSend(/*id,var1,var2,var3,var4*/){
-  var cm = {}
-  cm.data = {};
-  cm.data[0] = 255;
+  const canSend = Buffer.from('123#11223344AABBCCDD', 'utf8');
   //msgSend.id = 0x186555F4;
-  console.log(cm)
-  await channel.send(cm);
+  console.log(canSend)
+  await channel.send(canSend);
 }
 
 function can_msg(msg){
