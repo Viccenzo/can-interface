@@ -108,6 +108,12 @@ var can3;
 var can2;
 var can1;
 
+// create can chanell
+var channel = can.createRawChannel("can0", true);
+
+// can msg listener function
+channel.addListener("onMessage", function(msg){can_msg(msg)});
+
 
 op = readline.createInterface({
   input: process.stdin,
@@ -238,12 +244,6 @@ async function form(){
 
 async function infoDisplay(){
 
-  // create can chanell
-  var channel = can.createRawChannel("can0", true);
-
-  // can msg listener function
-  channel.addListener("onMessage", function(msg){can_msg(msg)});
-
   // Starting can channel
   const caninit = 
     new Promise((resolve,reject) => {
@@ -272,6 +272,7 @@ async function infoDisplay(){
   
   let timer = setInterval(upStream,1000);
   await keypress();
+  channel.stop();
   clearInterval(timer);
 
 }
