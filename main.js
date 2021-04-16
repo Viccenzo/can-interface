@@ -313,7 +313,7 @@ async function canMsgSend(/*id,var1,var2,var3,var4*/){
     "id": 0x196455F4,
     "data": "1234"
   }
-  channel.send(JSON.stringify(obj));
+  channel.send(obj);
 }
 
 function can_msg(msg){
