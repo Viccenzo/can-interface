@@ -145,7 +145,7 @@ async function main() {
           canMsgSend(response[0],response[1],[response[2],response[3],response[4],response[5],response[6],response[7],response[8],response[9]]);
           break;
         case 16:
-          console.log("here2");
+          console.log("teste");
           canMsgSend(response[0],response[1],[response[2],response[3],response[4],response[5]]);
           break;  
         case 32:
@@ -337,19 +337,22 @@ async function canMsgSend(id,size,canInfo){
   switch(size){
     case 8:
       canMsgSend.data = Buffer.from([canInfo[0],canInfo[1],canInfo[2],canInfo[3],canInfo[4],canInfo[5],canInfo[6],canInfo[7]]);
-      console.log(canMsgSend);
+      console.log("here1");
       channel.send(canMsgSend);
       return 0;
     case 16:
       canMsgSend.data = Buffer.from([canInfo[0],canInfo[1],canInfo[2],canInfo[3]]);
+      console.log("here2");
       channel.send(canMsgSend);
       return 0;
     case 32:
       canMsgSend.data = Buffer.from([canInfo[0],canInfo[1]]);
+      console.log("here3");
       channel.send(canMsgSend);
       return 0;
     case 64:
       canMsgSend.data = Buffer.from([canInfo[0]]);
+      console.log("here4");
       channel.send(canMsgSend);
       return 0;
     default:
