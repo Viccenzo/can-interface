@@ -151,7 +151,7 @@ async function main() {
           canMsgSend(response[0],response[1],[response[2],response[3]]);
           break;  
       }
-      await question(response[1]);
+      //await keypress();
       break;
     case '4':
       await createConfigJSON();
