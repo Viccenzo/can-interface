@@ -172,8 +172,25 @@ async function main() {
       break;
     case '6':
       console.clear();
-      console.log("Resetting device  \n");
-      await sleep(3000);
+      console.log("Resetting device [      ]");
+      await sleep(500);
+      console.clear();
+      console.log("Resetting device [.     ]");
+      await sleep(500);
+      console.clear();
+      console.log("Resetting device [..    ]");
+      await sleep(500);
+      console.clear();
+      console.log("Resetting device [...    ]");
+      await sleep(500);
+      console.clear();
+      console.log("Resetting device [....  ]");
+      await sleep(500);
+      console.clear();
+      console.log("Resetting device [..... ]");
+      await sleep(500);
+      console.clear();
+      console.log("Resetting device [......]");
   }
   main();
 }
