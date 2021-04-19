@@ -326,22 +326,22 @@ function upStream(){
 
 async function canMsgSend(id,size,canInfo){
   let canMsgSend = {};
-  console.log(id);
+  //console.log(id);
   canMsgSend.id = id;
   switch(size){
     case 8:
       canMsgSend.data = Buffer.from([canInfo[0],canInfo[1],canInfo[2],canInfo[3],canInfo[4],canInfo[5],canInfo[6],canInfo[7]]);
       console.log("here1");
-      channel.send(canMsgSend);
+      //channel.send(canMsgSend);
       return 0;
     case 16:
       canMsgSend.data = Buffer.from([canInfo[0],canInfo[0]>>8,canInfo[1],canInfo[1]>>8,canInfo[2],canInfo[2]>>8,canInfo[3],canInfo[3]>>8]);
-      console.log("here2");
+      //console.log("here2");
       channel.send(canMsgSend);
       return 0;
     case 32:
       canMsgSend.data = Buffer.from([canInfo[0],canInfo[0]>>8,canInfo[0]>16,canInfo[0]>>24,canInfo[1],canInfo[1]>>8,canInfo[1]>>16,canInfo[1]>>24]);
-      console.log("here3");
+      //console.log("here3");
       channel.send(canMsgSend);
       return 0;
     default:
