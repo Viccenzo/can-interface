@@ -137,7 +137,7 @@ async function main() {
       break;
     case '3':
       let response = await question("CAN message format (\"id\",\"word size\",[vector,of,words])\n");
-      response = response.split(",").map(Number);
+      response = BigInt(response.split(",").map(Number));
       console.log([response[2],response[3],response[4],response[5],response[6],response[7],response[8],response[9]]);
       switch(response[1]){
         case 8:
@@ -352,7 +352,7 @@ async function canMsgSend(id,size,canInfo){
       return 0;
     case 64:
       let canInfo64 = BigInt(canInfo[0]);
-      canMsgSend.data = Buffer.from([canInfo64,canInfo64>>8,canInfo64>>16,canInfo64>>24,canInfo64>>32,canInfo64>>40,canInfo64>>48,canInfo64>>56]);
+      canMsgSend.data = Buffer.from([canInfo[0],canInfo[0]>>8,canInfo[0]>>16,canInfo[0]>>24,canInfo[0]>>32,canInfo[0]>>40,canInfo[0]>>48,canInfo[0]>>56]);
       console.log("here4");
       channel.send(canMsgSend);
       return 0;
