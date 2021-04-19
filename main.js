@@ -266,6 +266,11 @@ async function form(){
 
 async function infoDisplay(){
 
+  await cmd.get('sudo ifdown can0');
+  await cmd.get('sudo ifup can0');
+  await cmd.get('sudo ip link set can0 up type can bitrate 125000');
+  channel.start();
+  /*
   // Starting can channel
   const caninit = 
     new Promise((resolve,reject) => {
@@ -288,7 +293,7 @@ async function infoDisplay(){
       channel.start();
       resolve();
     })
-
+    */
   // define periodic function
   console.log("Starting program");
   
