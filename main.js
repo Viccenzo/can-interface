@@ -171,6 +171,7 @@ async function main() {
       await keypress();
       break;
     case '6':
+      canMsgSend(0x1FFFFFFF,8,[0,0,0,0,0,0,0,1]); // Reset command
       console.clear();
       console.log("Resetting device [      ]");
       await sleep(500);
@@ -181,7 +182,7 @@ async function main() {
       console.log("Resetting device [..    ]");
       await sleep(500);
       console.clear();
-      console.log("Resetting device [...    ]");
+      console.log("Resetting device [...   ]");
       await sleep(500);
       console.clear();
       console.log("Resetting device [....  ]");
