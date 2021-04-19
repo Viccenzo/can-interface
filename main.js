@@ -170,12 +170,10 @@ async function main() {
       console.log("\nPress Enter to continue");
       await keypress();
       break;
-    case 6:
+    case '6':
       console.clear();
       console.log("Resetting device  \n");
       await sleep(3000);
-      console.log("presse enter...")
-      await keypress();
   }
   main();
 }
