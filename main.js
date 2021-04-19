@@ -171,7 +171,7 @@ async function main() {
       await keypress();
       break;
     case '6':
-      canMsgSend(0x2,8,[1,2,3,4,5,6,7,8]); // Reset command
+      canMsgSend(0x1FFFFFFF,8,[1,2,3,4,5,6,7,8]); // Reset command
       console.log(0x1FFFFFFF);
       await keypress();
       console.clear();
