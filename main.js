@@ -9,6 +9,7 @@ const readline = require('readline');
 var fs = require('fs');
 const { resolve } = require('path');
 const { create } = require('domain');
+const { SSL_OP_EPHEMERAL_RSA } = require('constants');
 
 // System variables
 
@@ -114,14 +115,16 @@ var channel = can.createRawChannel("can0", true);
 // can msg listener function
 channel.addListener("onMessage", function(msg){can_msg(msg)});
 
-function delay(msecs){
-  setTimeout(()=>{return 0},msec);
-}
-
 op = readline.createInterface({
   input: process.stdin,
   output: process.stdout
 });
+
+function sleep(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}   
 
 main();
 
@@ -169,7 +172,7 @@ async function main() {
     case 6:
       console.clear();
       console.log("Resetting device  \n");
-      await delay(2000);
+      await sleep(3000);
   }
   main();
 }
