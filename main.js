@@ -115,7 +115,7 @@ var channel = can.createRawChannel("can0", true);
 channel.addListener("onMessage", function(msg){can_msg(msg)});
 
 function delay(msecs){
-  setTimeout(()=>{},msec);
+  setTimeout(()=>{return 0},msec);
 }
 
 op = readline.createInterface({
@@ -169,7 +169,7 @@ async function main() {
     case 6:
       console.clear();
       console.log("Resetting device  \n");
-      delay(2000);
+      await delay(2000);
   }
   main();
 }
