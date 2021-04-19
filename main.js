@@ -141,7 +141,7 @@ async function main() {
       console.log([response[2],response[3],response[4],response[5],response[6],response[7],response[8],response[9]]);
       switch(response[1]){
         case 8:
-          console.log("here1");
+          console.log(response[2]);
           canMsgSend(response[0],response[1],[response[2],response[3],response[4],response[5],response[6],response[7],response[8],response[9]]);
           break;
         case 16:
