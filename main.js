@@ -136,7 +136,7 @@ async function main() {
       await keypress();
       break;
     case '3':
-      let response = await question("CAN message format (\"id\",\"word size\",<sequence,of,words>)\n");
+      let response = await question("CAN message format (\"id\",\"word size\",[vector,of,words])\n");
       response = response.split(",").map(Number);
       console.log([response[2],response[3],response[4],response[5],response[6],response[7],response[8],response[9]]);
       switch(response[1]){
