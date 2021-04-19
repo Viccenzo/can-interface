@@ -346,12 +346,12 @@ async function canMsgSend(id,size,canInfo){
       channel.send(canMsgSend);
       return 0;
     case 32:
-      canMsgSend.data = Buffer.from([canInfo[0],canInfo[1]]);
+      canMsgSend.data = Buffer.from([canInfo[0],canInfo[0]>>8,canInfo[0]>16,canInfo[0]>>24,canInfo[1],canInfo[1]>>8,canInfo[1]>>16,canInfo[1]>>24]);
       console.log("here3");
       channel.send(canMsgSend);
       return 0;
     case 64:
-      canMsgSend.data = Buffer.from([canInfo[0]]);
+      canMsgSend.data = Buffer.from([canInfo[0],canInfo[0]>>8,canInfo[0]>>16,canInfo[0]>>24,canInfo[0]>>32,canInfo[0]>>40,canInfo[0]>>48,canInfo[0]>>56]);
       console.log("here4");
       channel.send(canMsgSend);
       return 0;
