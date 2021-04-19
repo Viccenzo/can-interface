@@ -133,6 +133,7 @@ async function main() {
   //op.clearLine(process.stdin, 0);
   await menuWrite();
   dec = await decision();
+  console.log(dec);
   switch(dec){
     case '1':
       await infoDisplay();
