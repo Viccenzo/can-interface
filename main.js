@@ -171,7 +171,9 @@ async function main() {
       await keypress();
       break;
     case '6':
-      canMsgSend(0x1FFFFFFF,8,[0,0,0,0,0,0,0,1]); // Reset command
+      canMsgSend(0x1FFFFFFF,8,[0,0,0,0,0,0,0,0]); // Reset command
+      console.log(0x1FFFFFFF);
+      await keypress();
       console.clear();
       console.log("Resetting device [      ]");
       await sleep(500);
@@ -334,7 +336,7 @@ function upStream(){
 
 async function canMsgSend(id,size,canInfo){
   let canMsgSend = {};
-  //console.log(id);
+  console.log(id);
   canMsgSend.id = id;
   switch(size){
     case 8:
