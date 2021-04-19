@@ -114,6 +114,9 @@ var channel = can.createRawChannel("can0", true);
 // can msg listener function
 channel.addListener("onMessage", function(msg){can_msg(msg)});
 
+function delay(msecs){
+  setTimeout(()=>{},msec);
+}
 
 op = readline.createInterface({
   input: process.stdin,
@@ -163,6 +166,10 @@ async function main() {
       console.log("\nPress Enter to continue");
       await keypress();
       break;
+    case 6:
+      console.clear();
+      console.log("Resetting device  \n");
+      delay(2000);
   }
   main();
 }
@@ -209,9 +216,6 @@ async function configRead(){
 async function wait(){
   while(1);
 }
-
-
-
 
 
 async function createConfigJSON(){
@@ -265,36 +269,11 @@ async function form(){
 }
 
 async function infoDisplay(){
-
   await cmd.get('sudo ifdown can0');
   await cmd.get('sudo ifup can0');
   await cmd.get('sudo ip link set can0 up type can bitrate 125000');
   channel.start();
-  /*
-  // Starting can channel
-  const caninit = 
-    new Promise((resolve,reject) => {
-      //console.log("Closing any can instance");
-      cmd.get('sudo ifdown can0');
-      resolve();
-    })
-    .then(() =>{
-      //console.log("Initializing can periferic");
-      cmd.get('sudo ifup can0');
-      resolve();
-    })
-    .then(() =>{
-      //console.log("Configuring can interface");
-      cmd.get('sudo ip link set can0 up type can bitrate 125000');
-      resolve();
-    })
-    .then(() =>{
-      //console.log("Starting can Channel");
-      channel.start();
-      resolve();
-    })
-    */
-  // define periodic function
+
   console.log("Starting program");
   
   let timer = setInterval(upStream,1000);
