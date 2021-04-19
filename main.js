@@ -341,7 +341,7 @@ async function canMsgSend(id,size,canInfo){
       channel.send(canMsgSend);
       return 0;
     case 16:
-      canMsgSend.data = Buffer.from([canInfo[0],canInfo[1],canInfo[2],canInfo[3]]);
+      canMsgSend.data = Buffer.from([canInfo[0],canInfo[0]>>8,canInfo[1],canInfo[1]>>8,canInfo[2],canInfo[2]>>8,canInfo[3],canInfo[3]>>8]);
       console.log("here2");
       channel.send(canMsgSend);
       return 0;
