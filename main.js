@@ -173,6 +173,8 @@ async function main() {
       console.clear();
       console.log("Resetting device  \n");
       await sleep(3000);
+      console.log("presse enter...")
+      await keypress();
   }
   main();
 }
