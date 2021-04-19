@@ -138,22 +138,6 @@ async function main() {
     case '3':
       let response = await question("CAN message format (\"id\",\"word size\",[vector,of,words])\n");
       response = response.split(",").map(Number);
-      if(response[0])
-        response[0] = BigInt(response[0]);
-      if(response[1])
-        response[1] = BigInt(response[1]);
-      if(response[2])
-        response[2] = BigInt(response[2]);
-      if(response[3])
-        response[3] = BigInt(response[3]);
-      if(response[4])
-        response[4] = BigInt(response[4]);
-      if(response[5])
-        response[5] = BigInt(response[5]);
-      if(response[6])
-        response[6] = BigInt(response[6]);
-      if(response[7])
-        response[7] = BigInt(response[7]);
       console.log([response[2],response[3],response[4],response[5],response[6],response[7],response[8],response[9]]);
       switch(response[1]){
         case 8:
@@ -168,10 +152,6 @@ async function main() {
           console.log("here3");  
           canMsgSend(response[0],response[1],[response[2],response[3]]);
           break;  
-        case 64:
-          console.log("here4");
-          canMsgSend(response[0],response[1],[response[2]]);
-          break;
       }
       await question(response[1]);
       break;
@@ -351,25 +331,19 @@ async function canMsgSend(id,size,canInfo){
   console.log(id);
   canMsgSend.id = id;
   switch(size){
-    case 8n:
+    case 8:
       canMsgSend.data = Buffer.from([canInfo[0],canInfo[1],canInfo[2],canInfo[3],canInfo[4],canInfo[5],canInfo[6],canInfo[7]]);
       console.log("here1");
       channel.send(canMsgSend);
       return 0;
-    case 16n:
+    case 16:
       canMsgSend.data = Buffer.from([canInfo[0],canInfo[0]>>8,canInfo[1],canInfo[1]>>8,canInfo[2],canInfo[2]>>8,canInfo[3],canInfo[3]>>8]);
       console.log("here2");
       channel.send(canMsgSend);
       return 0;
-    case 32n:
+    case 32:
       canMsgSend.data = Buffer.from([canInfo[0],canInfo[0]>>8,canInfo[0]>16,canInfo[0]>>24,canInfo[1],canInfo[1]>>8,canInfo[1]>>16,canInfo[1]>>24]);
       console.log("here3");
-      channel.send(canMsgSend);
-      return 0;
-    case 64n:
-      console.log
-      canMsgSend.data = Buffer.from([canInfo[0],canInfo[0]>>8,canInfo[0]>>16,canInfo[0]>>24,canInfo[0]>>32,canInfo[0]>>40,canInfo[0]>>48,canInfo[0]>>56]);
-      console.log("here4");
       channel.send(canMsgSend);
       return 0;
     default:
