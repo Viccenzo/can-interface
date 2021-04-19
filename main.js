@@ -204,6 +204,8 @@ async function menuWrite(){
     console.log("\n");
     console.log("5 - Show current BMS configuration file");
     console.log("\n");
+    console.log("6 - Device reset");
+    console.log("\n");
     return 0;
   })
 }
