@@ -138,14 +138,22 @@ async function main() {
     case '3':
       let response = await question("CAN message format (\"id\",\"word size\",[vector,of,words])\n");
       response = response.split(",").map(Number);
-      response[0] = BigInt(response[0]);
-      response[1] = BigInt(response[1]);
-      response[2] = BigInt(response[2]);
-      response[3] = BigInt(response[3]);
-      response[4] = BigInt(response[4]);
-      response[5] = BigInt(response[5]);
-      response[6] = BigInt(response[6]);
-      response[7] = BigInt(response[7]);
+      if(response[0])
+        response[0] = BigInt(response[0]);
+      if(response[1])
+        response[1] = BigInt(response[1]);
+      if(response[2])
+        response[2] = BigInt(response[2]);
+      if(response[3])
+        response[3] = BigInt(response[3]);
+      if(response[4])
+        response[4] = BigInt(response[4]);
+      if(response[5])
+        response[5] = BigInt(response[5]);
+      if(response[6])
+        response[6] = BigInt(response[6]);
+      if(response[7])
+        response[7] = BigInt(response[7]);
       console.log([response[2],response[3],response[4],response[5],response[6],response[7],response[8],response[9]]);
       switch(response[1]){
         case 8:
