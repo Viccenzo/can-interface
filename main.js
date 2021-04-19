@@ -171,7 +171,7 @@ async function main() {
       await keypress();
       break;
     case '6':
-      canMsgSend(0x1FFFFFFF,8,[1,2,3,4,5,6,7,8]); // Reset command
+      canMsgSend(536870911,8,[1,2,3,4,5,6,7,8]); // Reset command
       console.log(0x1FFFFFFF);
       await keypress();
       console.clear();
@@ -338,6 +338,7 @@ async function canMsgSend(id,size,canInfo){
   let canMsgSend = {};
   console.log(id);
   canMsgSend.id = id;
+  canMsgSend.flags = 0;
   switch(size){
     case 8:
       canMsgSend.data = Buffer.from([canInfo[0],canInfo[1],canInfo[2],canInfo[3],canInfo[4],canInfo[5],canInfo[6],canInfo[7]]);
