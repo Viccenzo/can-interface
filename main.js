@@ -367,7 +367,6 @@ async function canMsgSend(id,size,canInfo){
       channel.send(canMsgSend);
       return 0;
     case 64:
-      let canInfo64 = BigInt(canInfo[0]);
       canMsgSend.data = Buffer.from([canInfo[0],canInfo[0]>>8,canInfo[0]>>16,canInfo[0]>>24,canInfo[0]>>32,canInfo[0]>>40,canInfo[0]>>48,canInfo[0]>>56]);
       console.log("here4");
       channel.send(canMsgSend);
