@@ -139,7 +139,7 @@ async function main() {
       await infoDisplay();
       break;
     case '2':
-      configRead();
+      configSend();
       await keypress();
       break;
     case '3':
@@ -240,6 +240,12 @@ async function menuWrite(){
 //Open the BMS config file
 async function configRead(){
   let configFileData = JSON.parse(fs.readFileSync('BMS.config'));
+  console.log(configFileData);
+  return configFileData;
+}
+
+async function configSend(){
+  let configFileData =  configRead();
   console.log(configFileData);
 }
 
