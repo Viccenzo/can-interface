@@ -139,7 +139,7 @@ async function main() {
       await infoDisplay();
       break;
     case '2':
-      canMsgSend(0x186955F4,8,[1,2,3,4,5,6,7,8]);
+      configRead();
       await keypress();
       break;
     case '3':
@@ -173,7 +173,6 @@ async function main() {
     case '6':
       canMsgSend(536870911,8,[1,2,3,4,5,6,7,8]); // Reset command
       console.log(0x1FFFFFFF);
-      await keypress();
       console.clear();
       console.log("Resetting device [      ]");
       await sleep(500);
@@ -198,10 +197,14 @@ async function main() {
   main();
 }
 
-// write ap function
+/* 
+ *      Function declaration 
+ */
+
+// This function is used to write the menu options
 async function menuWrite(){
   return new Promise((resolve,reject) => {
-    figlet('AtlasPower <=> U&M', function(err, data) {
+    figlet('AtlasPower', function(err, data) {
       if (err) {
         console.log('Something went wrong...');
         console.dir(err);
@@ -234,16 +237,13 @@ async function menuWrite(){
   })
 }
 
+//Open the BMS config file
 async function configRead(){
   let configFileData = JSON.parse(fs.readFileSync('BMS.config'));
   console.log(configFileData);
 }
 
-async function wait(){
-  while(1);
-}
-
-
+//Create a JSON BMS config file
 async function createConfigJSON(){
   let config;
   console.clear();
@@ -257,6 +257,7 @@ async function createConfigJSON(){
   resolve();
 }
 
+// Function to wait menu option
 async function decision(){
   return new Promise((resolve,reject) => {
     op.question('Enter an option: ', (answer) => {
@@ -265,6 +266,7 @@ async function decision(){
   })
 }
 
+// Function to as a user input
 const question = (text) => {
   return new Promise((resolve, reject) => {
     op.question(`${text}`, (answer) => {
@@ -273,7 +275,7 @@ const question = (text) => {
   })
 }
 
-
+// Function to ask for config
 async function form(){
   let config;
   config = {...config, numberOfChannels: await question("Number of Cells in series: ")}; 
@@ -339,7 +341,6 @@ async function canMsgSend(id,size,canInfo){
   console.log(id);
   canMsgSend.ext = true;
   canMsgSend.id = id;
-  canMsgSend.flags = 0;
   switch(size){
     case 8:
       canMsgSend.data = Buffer.from([canInfo[0],canInfo[1],canInfo[2],canInfo[3],canInfo[4],canInfo[5],canInfo[6],canInfo[7]]);
