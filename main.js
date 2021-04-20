@@ -161,7 +161,7 @@ async function main() {
       //await keypress();
       break;
     case '4':
-      await createConfigJSON();
+      await createConfigJSON();1
       break;
     case '5':
       console.clear();
@@ -337,6 +337,7 @@ function upStream(){
 async function canMsgSend(id,size,canInfo){
   let canMsgSend = {};
   console.log(id);
+  canMsgSend.ext = true;
   canMsgSend.id = id;
   canMsgSend.flags = 0;
   switch(size){
