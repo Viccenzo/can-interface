@@ -247,8 +247,7 @@ async function configRead(){
 async function configSend(){
   let configFileData =  await configRead();
   console.log(configFileData);
-  configFileData = JSON.parse(configFileData)
-;  await canMsgSend(10000000, 16, 
+  await canMsgSend(10000000, 16, 
     [configFileData.numberOfChannels, 
     configFileData.numberOfThermistors,
     configFileData.overVoltage*1000,
