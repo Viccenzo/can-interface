@@ -250,7 +250,8 @@ async function configSend(){
     configFileData.numberOfChannels, 
     configFileData.numberOfThermistors,
     configFileData.overVoltage*1000,
-    configFileData.underVoltage*1000);
+    configFileData.underVoltage*1000
+    );
   await canMsgSend(10000001, 16,
     configFileData.shortCircuit,
     configFileData.OverCurrent,
@@ -261,13 +262,14 @@ async function configSend(){
     configFileData.deltaVoltage*1000,
     configFileData.lowVoltage*1000,
     configFileData.highVoltage*1000,
-    configFileData.canChargeVoltage*1000,
-    )
+    configFileData.canChargeVoltage*1000
+    );
   await canMsgSend(10000003,16,
     configFileData.chargedVoltage*1000,
     configFileData.overVoltageHisteresys*1000,
     configFileData.balance,
-    )
+    0
+    );
 }
 
 //Create a JSON BMS config file
