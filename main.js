@@ -240,13 +240,34 @@ async function menuWrite(){
 //Open the BMS config file
 async function configRead(){
   let configFileData = JSON.parse(fs.readFileSync('BMS.config'));
-  console.log(configFileData);
   return configFileData;
 }
 
+// Falta  adequar essa funcão para mandar 16 bits apenas
 async function configSend(){
   let configFileData =  configRead();
-  console.log(configFileData);
+  await canMsgSend(10000000, 16, 
+    configFileData.numberOfChannels, 
+    configFileData.numberOfThermistors,
+    configFileData.overVoltage*1000,
+    configFileData.underVoltage*1000);
+  await canMsgSend(10000001, 16,
+    configFileData.shortCircuit,
+    configFileData.OverCurrent,
+    configFileData.overTemperature*1000,
+    configFileData.gainCurrentSense
+    );
+  await canMsgSend(10000002,16,
+    configFileData.deltaVoltage*1000,
+    configFileData.lowVoltage*1000,
+    configFileData.highVoltage*1000,
+    configFileData.canChargeVoltage*1000,
+    )
+  await canMsgSend(10000003,16,
+    configFileData.chargedVoltage*1000,
+    configFileData.overVoltageHisteresys*1000,
+    configFileData.balance,
+    )
 }
 
 //Create a JSON BMS config file
