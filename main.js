@@ -245,7 +245,7 @@ async function configRead(){
 
 // Falta  adequar essa funcão para mandar 16 bits apenas
 async function configSend(){
-  let configFileData =  await configRead();
+  let configFileData =  JSON.parse(await configRead());
   console.log(configFileData);
   await canMsgSend(10000000, 16, 
     [configFileData.numberOfChannels, 
