@@ -252,7 +252,7 @@ async function configSend(){
     configFileData.numberOfThermistors,
     configFileData.overVoltage*1000,
     configFileData.underVoltage*1000]
-    );
+    );/*
   sleep(500);
   await canMsgSend(10000010, 16,
     [configFileData.shortCircuit,
@@ -273,7 +273,7 @@ async function configSend(){
     configFileData.overVoltageHisteresys*1000,
     configFileData.balance,
     0]
-    );
+    );*/
 }
 
 //Create a JSON BMS config file
