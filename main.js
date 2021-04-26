@@ -253,27 +253,27 @@ async function configSend(){
     configFileData.overVoltage*1000,
     configFileData.underVoltage*1000]
     );
-  await sleep(500);
+  await sleep(5);
   await canMsgSend(10000010, 16,
     [configFileData.shortCircuit,
     configFileData.OverCurrent,
     configFileData.overTemperature*1000,
     configFileData.gainCurrentSense]
-    );/*
-  sleep(500);
+    );
+  await sleep(5);
   await canMsgSend(10000020,16,
     [configFileData.deltaVoltage*1000,
     configFileData.lowVoltage*1000,
     configFileData.highVoltage*1000,
     configFileData.canChargeVoltage*1000]
     );
-    sleep(500);
+  await sleep(5);
   await canMsgSend(10000030,16,
     [configFileData.chargedVoltage*1000,
     configFileData.overVoltageHisteresys*1000,
     configFileData.balance,
     0]
-    );*/
+    );
 }
 
 //Create a JSON BMS config file
