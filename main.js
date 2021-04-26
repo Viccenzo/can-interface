@@ -133,7 +133,6 @@ async function main() {
   //op.clearLine(process.stdin, 0);
   await menuWrite();
   dec = await decision();
-  console.log(dec);
   switch(dec){
     case '1':
       await infoDisplay();
@@ -194,7 +193,7 @@ async function main() {
       console.clear();
       console.log("Resetting device [......]");
     case '7':
-      return process.exit(22);
+      return process.exit(0);
   }
   main();
 }
