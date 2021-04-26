@@ -253,7 +253,7 @@ async function configSend(){
     configFileData.overVoltage*1000,
     configFileData.underVoltage*1000]
     );
-  sleep(500);
+  await sleep(500);
   await canMsgSend(10000010, 16,
     [configFileData.shortCircuit,
     configFileData.OverCurrent,
