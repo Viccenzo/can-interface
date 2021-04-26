@@ -252,14 +252,14 @@ async function configSend(){
     configFileData.numberOfThermistors,
     configFileData.overVoltage*1000,
     configFileData.underVoltage*1000]
-    );/*
+    );
   sleep(500);
   await canMsgSend(10000010, 16,
     [configFileData.shortCircuit,
     configFileData.OverCurrent,
     configFileData.overTemperature*1000,
     configFileData.gainCurrentSense]
-    );
+    );/*
   sleep(500);
   await canMsgSend(10000020,16,
     [configFileData.deltaVoltage*1000,
