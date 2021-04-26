@@ -254,7 +254,7 @@ async function configSend(){
     configFileData.underVoltage*1000]
     );
   console.log(result);
-  await sleep(500);
+  await sleep(5000);
   result = await canMsgSend(10000010, 16,
     [configFileData.shortCircuit,
     configFileData.OverCurrent,
@@ -262,7 +262,7 @@ async function configSend(){
     configFileData.gainCurrentSense]
     );
   console.log(result);
-  await sleep(500);
+  await sleep(5000);
   result = await canMsgSend(10000020,16,
     [configFileData.deltaVoltage*1000,
     configFileData.lowVoltage*1000,
@@ -270,7 +270,7 @@ async function configSend(){
     configFileData.canChargeVoltage*1000]
     );
   console.log(result);
-  await sleep(500);
+  await sleep(5000);
   result = await canMsgSend(10000030,16,
     [configFileData.chargedVoltage*1000,
     configFileData.overVoltageHisteresys*1000,
