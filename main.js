@@ -244,36 +244,40 @@ async function configRead(){
 }
 
 // Falta  adequar essa funcão para mandar 16 bits apenas
+let result;
 async function configSend(){
   let configFileData =  await configRead();
-  console.log(configFileData.numberOfChannels);
-  await canMsgSend(10000000, 16, 
+  result = await canMsgSend(10000000, 16, 
     [configFileData.numberOfChannels, 
     configFileData.numberOfThermistors,
     configFileData.overVoltage*1000,
     configFileData.underVoltage*1000]
     );
+  console.log(result);
   await sleep(500);
-  await canMsgSend(10000010, 16,
+  result = await canMsgSend(10000010, 16,
     [configFileData.shortCircuit,
     configFileData.OverCurrent,
     configFileData.overTemperature*1000,
     configFileData.gainCurrentSense]
     );
+  console.log(result);
   await sleep(500);
-  await canMsgSend(10000020,16,
+  result = await canMsgSend(10000020,16,
     [configFileData.deltaVoltage*1000,
     configFileData.lowVoltage*1000,
     configFileData.highVoltage*1000,
     configFileData.canChargeVoltage*1000]
     );
+  console.log(result);
   await sleep(500);
-  await canMsgSend(10000030,16,
+  result = await canMsgSend(10000030,16,
     [configFileData.chargedVoltage*1000,
     configFileData.overVoltageHisteresys*1000,
     configFileData.balance,
     0]
     );
+  console.log(result);
 }
 
 //Create a JSON BMS config file
