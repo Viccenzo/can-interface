@@ -161,7 +161,7 @@ async function main() {
       //await keypress();
       break;
     case '4':
-      await createConfigJSON();1
+      await createConfigJSON();
       break;
     case '5':
       console.clear();
@@ -193,6 +193,8 @@ async function main() {
       await sleep(500);
       console.clear();
       console.log("Resetting device [......]");
+    case '7':
+      return process.exit(22);
   }
   main();
 }
@@ -232,6 +234,8 @@ async function menuWrite(){
     console.log("5 - Show current BMS configuration file");
     console.log("\n");
     console.log("6 - Device reset");
+    console.log("\n");
+    console.log("7 - Exit program");
     console.log("\n");
     return 0;
   })
